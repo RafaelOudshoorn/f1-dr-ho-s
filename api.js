@@ -1,17 +1,14 @@
 $( "#test" ).click(function() {
-    $.ajax({
-        type: "GET",
-        url: "http://ergast.com/api/f1/2022/",
-        dataType: "xml",
-        success: Race
+    var race = {
+        "url": "http://ergast.com/api/f1/2022.json",
+        "method": "GET",
+        "timeout": 0,
+    };
+      
+    $.ajax(race).done(function (response) {
+        var html = "<h1>" + MRData.Racetable.Race + "</h1>";
+        html += $('race').html();
+        html += $("#race").html(html);
+        console.log(response);
     });
-    function Race(xml){
-        var race = $.parseXML(xml);
-        $eventItem = $(race).find("Race");  
-
-        $eventItem.each(function(index, element) {   
-            alert("ID: " + element.attributes["Racename"].value);  
-            alert("Country: " + $(element).find('Date').text());   
-        });
-    }
 });
