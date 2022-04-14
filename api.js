@@ -1,10 +1,8 @@
-$( "#test" ).click(function() {
+$("#test").click(function() {
     $.get(
     "http://ergast.com/api/f1/2022.json",
         function(data){
-            var race = data.MRData.RaceTable.Races;
-            for(let i = 0; i < data.MRData.RaceTable.Races.length; i++){
-                var race = data.MRData.RaceTable.Races[i];
+            for(var i = data.MRData.RaceTable.Races.length -1;i >=0; i--){
                 var Race = "<td>"+ data.MRData.RaceTable.Races[i].round +"</td>";
                 var Name = "<td>"+ data.MRData.RaceTable.Races[i].raceName +"</td>";
                 var Date = "<td>"+ data.MRData.RaceTable.Races[i].date +"</td>";
