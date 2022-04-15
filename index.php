@@ -5,6 +5,7 @@
     </head>
     <body>
         <button id="test">test</button>
+        <button id="race">race</button>
         <table class="table table-striped">
             <tr id="trrace">
             </tr>
@@ -34,12 +35,12 @@
         </table>
     </body>
     <script>
-        $("#test").click(function() {
+        $("#race").click(function() {
             $.get(
             "http://ergast.com/api/f1/current.json",
                 function(races){
                     for(var i = races.MRData.RaceTable.Races.length -1;i >=0; i--){
-                        //ophalen van data van de api af en er td om zetten
+                        //planning race ophalen van de api af en er td om zetten
                         var Race = "<td>"+ races.MRData.RaceTable.Races[i].round +"</td>";
                         var Name = "<td>"+ races.MRData.RaceTable.Races[i].raceName +"</td>";
                         var Dateraw = races.MRData.RaceTable.Races[i].date;
@@ -60,31 +61,47 @@
                         var timefront = parseInt(timefront);
                         var Timeplus = timefront + 6;
                         //eerste en laatste gedeelde van de tijd bij elkaar zetten
+                        var Timer = Timeplus +timeback;
                         var Timeplus = "<td>"+ Timeplus +timeback +"</td>";
 
                         Timeplus +=$("#trtime").html();
                         $("#trtime").html(Timeplus);
 
+                        // date goed draaien
                         var Dateraw = String(Dateraw);
-                        console.log(Dateraw);
                         var datefront = Dateraw.substr(0, 4);
                         var datecenter = Dateraw.substr(4,4);
                         var dateback = Dateraw.substr(8,8);
-                        console.log(datecenter);
 
                         var Date = "<td>"+dateback+datecenter+datefront+"</td>";
                         Date +=$("#trdate").html();
                         $("#trdate").html(Date);
+                        date(Dateraw, Timer);
                     };       
                 }        
             )
+            function date(Dateraw, Timer){
+                console.log(Dateraw, Timer);
+                var dateObj = new Date();
+
+                var date = new Date(Dateraw);
+                var time = new Date(Timer);
+                console.log(Timer);
+                //console.log(date);
+
+                // if (Dater > newdate){
+                //     console.log("before");
+                // } else{
+                //     console.log("after");
+                // }
+            }
         });
         $("#person").click(function() {
             $.get(
             "http://ergast.com/api/f1/current/driverStandings.json",
                 function(stands){
                     for(var i = stands.MRData.StandingsTable.StandingsLists[0].DriverStandings.length -1;i >=0; i--){
-                        //ophalen van data van de api af en er td om zetten
+                        //driver stands ophalen van de api af en er td om zetten
                         var Position = "<p>"+ stands.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].position +"</p>";
                         var Firstname = "<p>"+ stands.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName +"</p>";
                         var Lastname = "<p>"+ stands.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName +"</p>";

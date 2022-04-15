@@ -31,11 +31,12 @@ $("#test").click(function() {
 
                 var Dateraw = String(Dateraw);
                 console.log(Dateraw);
-                var datefront = Dateraw.substr(0, 3);
-                var datecenter = Dateraw.substr(5,6);
-                var dateback = Dateraw.substr(8,9);
+                var datefront = Dateraw.substr(0, 4);
+                var datecenter = Dateraw.substr(4,4);
+                var dateback = Dateraw.substr(8,8);
+                console.log(datecenter);
 
-                var Date = "<td>"+dateback+'&minus'+datecenter+'&minus'+datefront+"</td>";
+                var Date = "<td>"+dateback+datecenter+datefront+"</td>";
                 Date +=$("#trdate").html();
                 $("#trdate").html(Date);
             };       
