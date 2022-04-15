@@ -6,7 +6,7 @@ $("#test").click(function() {
                 //ophalen van data van de api af en er td om zetten
                 var Race = "<td>"+ races.MRData.RaceTable.Races[i].round +"</td>";
                 var Name = "<td>"+ races.MRData.RaceTable.Races[i].raceName +"</td>";
-                var Date = "<td>"+ races.MRData.RaceTable.Races[i].date +"</td>";
+                var Dateraw = races.MRData.RaceTable.Races[i].date;
                 var Timeraw = races.MRData.RaceTable.Races[i].time;
                 
                 Race +=$("#trrace").html();
@@ -29,6 +29,13 @@ $("#test").click(function() {
                 Timeplus +=$("#trtime").html();
                 $("#trtime").html(Timeplus);
 
+                var Dateraw = String(Dateraw);
+                console.log(Dateraw);
+                var datefront = Dateraw.substr(0, 3);
+                var datecenter = Dateraw.substr(5,6);
+                var dateback = Dateraw.substr(8,9);
+
+                var Date = "<td>"+dateback+'&minus'+datecenter+'&minus'+datefront+"</td>";
                 Date +=$("#trdate").html();
                 $("#trdate").html(Date);
             };       
