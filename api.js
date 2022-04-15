@@ -35,7 +35,7 @@ $("#test").click(function() {
                 var datecenter = Dateraw.substr(5,6);
                 var dateback = Dateraw.substr(8,9);
 
-                var Date = "<td>"+dateback+'&minus'+datecenter+'&minus'+datefront+"</td>";
+                var Date = "<td>"+dateback+"&#8722;"+datecenter+'&#8722;'+datefront+"</td>";
                 Date +=$("#trdate").html();
                 $("#trdate").html(Date);
             };       
