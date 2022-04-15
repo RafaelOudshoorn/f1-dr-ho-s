@@ -6,7 +6,7 @@ $("#test").click(function() {
                 //ophalen van data van de api af en er td om zetten
                 var Race = "<td>"+ races.MRData.RaceTable.Races[i].round +"</td>";
                 var Name = "<td>"+ races.MRData.RaceTable.Races[i].raceName +"</td>";
-                var Date = "<td>"+ races.MRData.RaceTable.Races[i].date +"</td>";
+                var Dateraw = races.MRData.RaceTable.Races[i].date;
                 var Timeraw = races.MRData.RaceTable.Races[i].time;
                 
                 Race +=$("#trrace").html();
