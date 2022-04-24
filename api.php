@@ -1,17 +1,24 @@
 <?php
-    $curl = curl_init();
+    $data = file_get_contents('http://ergast.com/api/f1/current/last/results.json');
+    $jsonObject = json_decode($data);
+    $jsonArray = $jsonObject->MRData->RaceTable->Races[0]->Results;
 
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://ergast.com/api/f1/current.json',
-        CURLOPT_RETURNTRANSFER => false,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'GET',
-    ));
-    $response = curl_exec($curl);
-    curl_close($curl);
-    var_dump(json_decode($response));
+    foreach ($jsonArray as $jsonItem) {
+        echo "<br>";
+
+        echo "Position: ".$jsonItem->position;
+        echo "<br>";
+
+        echo "Driver: ".$jsonItem->number;
+        echo "<br>";
+
+        echo "Race: ".$jsonObject->MRData->RaceTable->round;
+        echo "<br>";
+
+
+        echo "Points: ".$jsonItem->points;
+        echo "<br>";
+
+        echo "<br>";
+    }
 ?>

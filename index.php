@@ -59,7 +59,7 @@
                         var timeback = Timeraw.substr(2, 3);
 
                         var timefront = parseInt(timefront);
-                        var Timeplus = timefront + 6;
+                        var Timeplus = timefront + 2;
                         //eerste en laatste gedeelde van de tijd bij elkaar zetten
                         var Timer = Timeplus +timeback;
                         var Timeplus = "<td>"+ Timeplus +timeback +"</td>";
