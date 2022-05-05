@@ -30,39 +30,51 @@
         echo "date ".$jsonItem->date;
 
         echo "<br>";
-        echo "time ".$jsonItem->time;
+        $time = $jsonItem->time;
+        $time = substr($time, 0,8);
+        echo "time ".$time;
 
         echo "<br>";
         echo "firstpractice date ".$jsonItem->FirstPractice->date;
 
         echo "<br>";
-        echo "firstpractice time ".$jsonItem->FirstPractice->time;
+        $timefirst = $jsonItem->FirstPractice->time;
+        $timefirst = substr($timefirst,0, 8);
+        echo "firstpractice time ".$timefirst;
 
         echo "<br>";
         echo "secondpractice date ".$jsonItem->SecondPractice->date;
 
         echo "<br>";
-        echo "secondpractice time ".$jsonItem->SecondPractice->time;
+        $timesecond = $jsonItem->SecondPractice->time;
+        $timesecond = substr($timesecond, 0, 8);
+        echo "secondpractice time ".$timesecond;
 
         if (isset($jsonItem->ThirdPractice)){
             echo "<br>";
             echo "thirdpractice date ".$jsonItem->ThirdPractice->date;
 
             echo "<br>";
-            echo "thirdpractice time ".$jsonItem->ThirdPractice->time;
+            $timethird = $jsonItem->ThirdPractice->time;
+            $timethird = substr($timethird, 0,8);
+            echo "thirdpractice time ".$timethird;
         }else{
             echo "<br>";
             echo "sprint date ".$jsonItem->Sprint->date;
 
             echo "<br>";
-            echo "sprint time ".$jsonItem->Sprint->time;
+            $timesprint = $jsonItem->Sprint->time;
+            $timesprint = substr($timesprint, 0, 8);
+            echo "sprint time ".$timesprint;
         }
         
         echo "<br>";
         echo "qualifying date ".$jsonItem->Qualifying->date;
 
         echo "<br>";
-        echo "qualifying time ".$jsonItem->Qualifying->time;
+        $timequaly = $jsonItem->Qualifying->time;
+        $timequaly = substr($timequaly, 0,8);
+        echo "qualifying time ".$timequaly;
 
         echo "<br>";
         echo "<br>";
