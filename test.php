@@ -1,9 +1,20 @@
+<?php
+    require_once "autoloader.php";
+
+    var_dump($_POST);
+    if($_POST){
+        DriverManager::update();
+    }
+?>
 <html>
     <head>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     </head>
     <body>
+        <form method="POST">
+            <input name="xx" value="Verzender" type="submit"/>
+        </form>
         <button id="race">race</button>
         <table class="table table-striped">
             <tr id="trrace">
@@ -51,7 +62,7 @@
                         Name +=$("#trname").html();
                         $("#trname").html(Name);
 
-                        //tijd naar europees zetten dus +6 uur
+                        //tijd naar europees zetten dus +2 uur
                         var Timeraw = String(Timeraw);
                         var timefront = Timeraw.substr(0, 2);
                         //eerste gedeelde van de tijd pakken

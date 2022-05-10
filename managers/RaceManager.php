@@ -1,6 +1,4 @@
 <?php
-    require_once "database.php";
-
     $data = file_get_contents('http://ergast.com/api/f1/current.json');
     $jsonObject = json_decode($data);
     $jsonArray = $jsonObject->MRData->RaceTable->Races;
