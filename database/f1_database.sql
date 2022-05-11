@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 05 mei 2022 om 13:34
+-- Gegenereerd op: 11 mei 2022 om 19:46
 -- Serverversie: 5.7.31
 -- PHP-versie: 7.3.21
 
@@ -61,15 +61,42 @@ CREATE TABLE IF NOT EXISTS `construcotors_has_drivers` (
 
 DROP TABLE IF EXISTS `drivers`;
 CREATE TABLE IF NOT EXISTS `drivers` (
-  `idDrivers` int(11) NOT NULL AUTO_INCREMENT,
-  `driverID` varchar(45) NOT NULL,
+  `IDdrivers` int(11) NOT NULL AUTO_INCREMENT,
+  `drivername` varchar(45) NOT NULL,
   `permanentNumber` varchar(45) NOT NULL,
   `givenName` varchar(45) NOT NULL,
   `familyName` varchar(45) NOT NULL,
   `dateOfBirth` varchar(45) NOT NULL,
   `nationality` varchar(45) NOT NULL,
-  PRIMARY KEY (`idDrivers`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`IDdrivers`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `drivers`
+--
+
+INSERT INTO `drivers` (`IDdrivers`, `drivername`, `permanentNumber`, `givenName`, `familyName`, `dateOfBirth`, `nationality`) VALUES
+(1, 'albon', '23', 'Alexander', 'Albon', '1996-03-23', 'Thai'),
+(2, 'alonso', '14', 'Fernando', 'Alonso', '1981-07-29', 'Spanish'),
+(3, 'bottas', '77', 'Valtteri', 'Bottas', '1989-08-28', 'Finnish'),
+(4, 'gasly', '10', 'Pierre', 'Gasly', '1996-02-07', 'French'),
+(5, 'hamilton', '44', 'Lewis', 'Hamilton', '1985-01-07', 'British'),
+(6, 'hulkenberg', '27', 'Nico', 'HÃ¼lkenberg', '1987-08-19', 'German'),
+(7, 'latifi', '6', 'Nicholas', 'Latifi', '1995-06-29', 'Canadian'),
+(8, 'leclerc', '16', 'Charles', 'Leclerc', '1997-10-16', 'Monegasque'),
+(9, 'kevin_magnussen', '20', 'Kevin', 'Magnussen', '1992-10-05', 'Danish'),
+(10, 'norris', '4', 'Lando', 'Norris', '1999-11-13', 'British'),
+(11, 'ocon', '31', 'Esteban', 'Ocon', '1996-09-17', 'French'),
+(12, 'perez', '11', 'Sergio', 'PÃ©rez', '1990-01-26', 'Mexican'),
+(13, 'ricciardo', '3', 'Daniel', 'Ricciardo', '1989-07-01', 'Australian'),
+(14, 'russell', '63', 'George', 'Russell', '1998-02-15', 'British'),
+(15, 'sainz', '55', 'Carlos', 'Sainz', '1994-09-01', 'Spanish'),
+(16, 'mick_schumacher', '47', 'Mick', 'Schumacher', '1999-03-22', 'German'),
+(17, 'stroll', '18', 'Lance', 'Stroll', '1998-10-29', 'Canadian'),
+(18, 'tsunoda', '22', 'Yuki', 'Tsunoda', '2000-05-11', 'Japanese'),
+(19, 'max_verstappen', '33', 'Max', 'Verstappen', '1997-09-30', 'Dutch'),
+(20, 'vettel', '5', 'Sebastian', 'Vettel', '1987-07-03', 'German'),
+(21, 'zhou', '24', 'Guanyu', 'Zhou', '1999-05-30', 'Chinese');
 
 -- --------------------------------------------------------
 
@@ -107,22 +134,6 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   `Drivers_idDrivers` int(11) NOT NULL,
   PRIMARY KEY (`idDriverStandings_overall`),
   KEY `fk_DriverStandings_overall_Drivers_idx` (`Drivers_idDrivers`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `person`
---
-
-DROP TABLE IF EXISTS `person`;
-CREATE TABLE IF NOT EXISTS `person` (
-  `idperson` int(11) NOT NULL,
-  `firstname` varchar(45) NOT NULL,
-  `lastname` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(90) NOT NULL,
-  PRIMARY KEY (`idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -177,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `race` (
   `Sprint_date` varchar(45) DEFAULT NULL,
   `Sprint_time` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idRace`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `race`
@@ -207,6 +218,23 @@ INSERT INTO `race` (`idRace`, `season`, `round`, `raceName`, `circuitid`, `circu
 (21, 2022, 21, 'Brazilian Grand Prix', 'interlagos', 'AutÃ³dromo JosÃ© Carlos Pace', 'Brazil', '2022-11-13', '18:00:00', '2022-11-11', '15:30:00', '2022-11-12', '15:30:00', '0000-00-00', '00:00', '2022-11-11', '19:00:00', '2022-11-12', '19:30'),
 (22, 2022, 22, 'Abu Dhabi Grand Prix', 'yas_marina', 'Yas Marina Circuit', 'UAE', '2022-11-20', '13:00:00', '2022-11-18', '09:00:00', '2022-11-18', '12:00:00', '2022-11-19', '10:00', '2022-11-19', '13:00:00', '0000-00-00', '00:00');
 
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `idperson` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `lastname` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(90) NOT NULL,
+  PRIMARY KEY (`idperson`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
@@ -216,25 +244,25 @@ INSERT INTO `race` (`idRace`, `season`, `round`, `raceName`, `circuitid`, `circu
 --
 ALTER TABLE `construcotors_has_drivers`
   ADD CONSTRAINT `fk_Construcotors_has_Drivers_Construcotors1` FOREIGN KEY (`Construcotors_idConstrucotors`) REFERENCES `construcotors` (`idConstrucotors`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Construcotors_has_Drivers_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`idDrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Construcotors_has_Drivers_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `driverstandings_lastrace`
 --
 ALTER TABLE `driverstandings_lastrace`
-  ADD CONSTRAINT `fk_DriverStandings_lastrace_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`idDrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_DriverStandings_lastrace_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `driverstandings_overall`
 --
 ALTER TABLE `driverstandings_overall`
-  ADD CONSTRAINT `fk_DriverStandings_overall_Drivers` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`idDrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_DriverStandings_overall_Drivers` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `qualifying`
 --
 ALTER TABLE `qualifying`
-  ADD CONSTRAINT `fk_Qualifying_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`idDrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Qualifying_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
