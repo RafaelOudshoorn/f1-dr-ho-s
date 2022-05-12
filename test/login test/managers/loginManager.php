@@ -2,7 +2,7 @@
     require_once "../../database/database.php";
 
     class loginManager{
-        public static function select($username){
+        public static function selectUserLogin($username){
             global $con;
 
             $query = "SELECT * ";
@@ -11,6 +11,32 @@
 
             $stmt=$con->prepare($query);
             $stmt->bindValue(1, $username);
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+        }
+        public static function selectUsernameInsert($username){
+            global $con;
+
+            $query = "SELECT * ";
+            $query .= "FROM user ";
+            $query .= "WHERE LOWER(username) = ? ";
+
+            $stmt=$con->prepare($query);
+            $stmt->bindValue(1, $username);
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+        }
+        public static function selectMailInsert($email){
+            global $con;
+
+            $query = "SELECT * ";
+            $query .= "FROM user ";
+            $query .= "WHERE LOWER(email) = ? ";
+
+            $stmt=$con->prepare($query);
+            $stmt->bindValue(1, $email);
             $stmt->execute();
 
             return $stmt->fetchObject();
