@@ -226,7 +226,7 @@ INSERT INTO `race` (`idRace`, `season`, `round`, `raceName`, `circuitid`, `circu
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `idperson` int(11) NOT NULL,
+  `idperson` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `firstname` varchar(45) NOT NULL,
   `lastname` varchar(45) NOT NULL,
