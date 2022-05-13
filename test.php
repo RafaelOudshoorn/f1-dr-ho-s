@@ -3,7 +3,7 @@
 
     var_dump($_POST);
     if($_POST){
-        DriverManager::insert();
+        QualifyingManager::insert();
     }
 ?>
 <html>

@@ -16,7 +16,7 @@ ini_set('xdebug.var_display_max_data', 1024);
             global $con;
             // $stmt = $con -> prepare("TRUNCATE TABLE drivers");
             // $stmt->execute();
-            $stmt=$con->prepare("select IDdriver from drivers");
+            $stmt=$con->prepare("SELECT IDdriver from drivers");
             $stmt->execute();
             
             $data = file_get_contents('http://ergast.com/api/f1/2022/drivers.json');
