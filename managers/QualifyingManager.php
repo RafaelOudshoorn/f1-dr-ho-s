@@ -6,7 +6,7 @@ ini_set('xdebug.var_display_max_data', 1024);
     class QualifyingManager{
         public static function select(){
             global $con;
-            $stmt = $con->prepare("SELECT * FROM qualifying");
+            $stmt = $con->prepare("SELECT permanentNumber FROM qualifying");
             $stmt -> execute();
             
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
@@ -14,7 +14,7 @@ ini_set('xdebug.var_display_max_data', 1024);
         }
         public static function insert(){
             global $con;
-            $stmt = $con->prepare("SELECT permanentNumber FROM drivers");
+            $stmt = $con->prepare("SELECT * FROM drivers");
             $stmt -> execute();
             $ID =$stmt -> fetchAll(PDO::FETCH_OBJ);
 
@@ -23,6 +23,7 @@ ini_set('xdebug.var_display_max_data', 1024);
             $data = file_get_contents('http://ergast.com/api/f1/2022/5/qualifying.json');
             $jsonObject = json_decode($data);
             $jsonArray = $jsonObject->MRData->RaceTable->Races[0]->QualifyingResults;
+
 
             // foreach ($jsonArray as $jsonItem){
             //     $time = $jsonObject->MRData->RaceTable->Races[0]->time;
@@ -68,15 +69,17 @@ ini_set('xdebug.var_display_max_data', 1024);
             $stmt -> execute();
             $number =$stmt -> fetchAll(PDO::FETCH_OBJ);
 
-
-            foreach(){
-                
-            }
-            if($ID->permanentNumber == $number->permanentNumber){
-                var_dump($ID->permanentNumber, $number->number);
-            }
+            //!var_dump(array_combine($number , $ID));
 
 
+            // foreach($number as $id $ID as $id){
+            //     if($ID->permanentNumber == $number->permanentNumber){
+            //     var_dump($ID->permanentNumber, $number->number);
+
+            //     }
+            // }
+
+            
             // foreach($ID as $id){
             //     $stmt = $con-> prepare("UPDATE `f1_db`.`qualifying` SET `Drivers_idDrivers` = ? WHERE (`idqualifying` = ?);")
             //     $stmt->bindValue(1, $id);
