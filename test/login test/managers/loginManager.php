@@ -44,6 +44,9 @@
         public static function insert($username, $firstname, $lastname, $email, $nHashedPassword){
             global $con;
 
+            $points = 0;
+            $profile_picture = "pictures/user_profile.png";
+
             $password = password_hash($nHashedPassword, PASSWORD_DEFAULT);
 
             $query = "INSERT INTO ";
