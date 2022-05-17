@@ -11,8 +11,7 @@
     box-sizing: border-box;
 }
 body{
-    /* background: linear-gradient(120deg, #2980b9, #8e44ad); */
-    background-image: url(unknown.png);
+    background: linear-gradient(120deg, #2980b9, #8e44ad);
     height: 100vh;
     overflow: hidden;
 }
