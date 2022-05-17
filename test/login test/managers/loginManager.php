@@ -2,15 +2,15 @@
     require_once "../../database/database.php";
 
     class loginManager{
-        public static function selectUserLogin($username){
+        public static function selectUserLogin($email){
             global $con;
 
             $query = "SELECT * ";
             $query .= "FROM user ";
-            $query .= "WHERE LOWER(username) = ? ";
+            $query .= "WHERE LOWER(email) = ? ";
 
             $stmt=$con->prepare($query);
-            $stmt->bindValue(1, $username);
+            $stmt->bindValue(1, $email);
             $stmt->execute();
 
             return $stmt->fetchObject();
@@ -43,6 +43,9 @@
         }
         public static function insert($username, $firstname, $lastname, $email, $nHashedPassword){
             global $con;
+
+            $points = 0;
+            $profile_picture = "pictures/user_profile.png";
 
             $password = password_hash($nHashedPassword, PASSWORD_DEFAULT);
 
