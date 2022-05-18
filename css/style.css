@@ -1,5 +1,21 @@
+body{
+    margin: 0;
+}
 header{
     height: 100px;
     width: 100%;
-    background-color: black;
+    background-color: #28282B;
+    position: sticky;
+    top: 0;
+    display: grid;
+    grid-template: 1fr / 100px 1fr;
+}
+.logo{
+    height: 100px;
+    width: 100px;
+}
+nav{
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
