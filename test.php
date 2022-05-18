@@ -1,9 +1,9 @@
 <?php
     require_once "autoloader.php";
 
-    var_dump($_POST);
+    //var_dump($_POST);
     if($_POST){
-        QualifyingManager::insert();
+        LastraceManager::insert();
     }
 ?>
 <html>

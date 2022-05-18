@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 17 mei 2022 om 09:38
+-- Gegenereerd op: 18 mei 2022 om 11:48
 -- Serverversie: 5.7.31
 -- PHP-versie: 7.3.21
 
@@ -109,15 +109,45 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
   `idDriverStandings_lastrace` int(11) NOT NULL AUTO_INCREMENT,
   `season` varchar(45) NOT NULL,
   `round` varchar(45) NOT NULL,
+  `timerace` time NOT NULL,
+  `permanentNumber` int(11) NOT NULL,
   `position` varchar(45) NOT NULL,
   `points` varchar(45) NOT NULL,
-  `wins` varchar(45) NOT NULL,
+  `grid` int(11) NOT NULL,
+  `status` varchar(45) NOT NULL,
+  `time` varchar(45) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
   PRIMARY KEY (`idDriverStandings_lastrace`),
   KEY `fk_DriverStandings_lastrace_Drivers1_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_lastrace_race1_idx` (`race_idRace`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `driverstandings_lastrace`
+--
+
+INSERT INTO `driverstandings_lastrace` (`idDriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
+(1, '2022', '5', '19:30:00', 33, '1', '26', 3, 'Finished', '1:34:24.258', 19, 5),
+(2, '2022', '5', '19:30:00', 16, '2', '18', 1, 'Finished', '+3.786', 8, 5),
+(3, '2022', '5', '19:30:00', 55, '3', '15', 2, 'Finished', '+8.229', 15, 5),
+(4, '2022', '5', '19:30:00', 11, '4', '12', 4, 'Finished', '+10.638', 12, 5),
+(5, '2022', '5', '19:30:00', 63, '5', '10', 12, 'Finished', '+18.582', 14, 5),
+(6, '2022', '5', '19:30:00', 44, '6', '8', 6, 'Finished', '+21.368', 5, 5),
+(7, '2022', '5', '19:30:00', 77, '7', '6', 5, 'Finished', '+25.073', 3, 5),
+(8, '2022', '5', '19:30:00', 31, '8', '4', 20, 'Finished', '+28.386', 11, 5),
+(9, '2022', '5', '19:30:00', 23, '9', '2', 18, 'Finished', '+32.365', 1, 5),
+(10, '2022', '5', '19:30:00', 18, '10', '1', 0, 'Finished', '+37.026', 17, 5),
+(11, '2022', '5', '19:30:00', 14, '11', '0', 11, 'Finished', '+37.128', 2, 5),
+(12, '2022', '5', '19:30:00', 22, '12', '0', 9, 'Finished', '+40.146', 18, 5),
+(13, '2022', '5', '19:30:00', 3, '13', '0', 14, 'Finished', '+40.902', 13, 5),
+(14, '2022', '5', '19:30:00', 6, '14', '0', 19, 'Finished', '+49.936', 7, 5),
+(15, '2022', '5', '19:30:00', 47, '15', '0', 15, 'Finished', '+1:13.305', 16, 5),
+(16, '2022', '5', '19:30:00', 20, '16', '0', 16, 'Front wing', '00:00', 9, 5),
+(17, '2022', '5', '19:30:00', 5, '17', '0', 0, 'Collision', '00:00', 20, 5),
+(18, '2022', '5', '19:30:00', 10, '18', '0', 7, 'Suspension', '00:00', 4, 5),
+(19, '2022', '5', '19:30:00', 4, '19', '0', 8, 'Collision', '00:00', 10, 5),
+(20, '2022', '5', '19:30:00', 24, '20', '0', 17, 'Water leak', '00:00', 21, 5);
 
 -- --------------------------------------------------------
 
@@ -130,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   `idDriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
+  `permanentNumber` int(11) NOT NULL,
   `position` int(11) NOT NULL,
   `points` int(11) NOT NULL,
   `wins` int(11) NOT NULL,
@@ -165,23 +196,50 @@ CREATE TABLE IF NOT EXISTS `points` (
 
 DROP TABLE IF EXISTS `qualifying`;
 CREATE TABLE IF NOT EXISTS `qualifying` (
-  `idqualifying` int(11) NOT NULL AUTO_INCREMENT,
+  `IDqualifying` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
   `raceName` varchar(45) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `number` int(11) NOT NULL,
+  `permanentNumber` int(11) NOT NULL,
   `position` int(11) NOT NULL,
   `Q1` time NOT NULL,
   `Q2` time DEFAULT NULL,
   `Q3` time DEFAULT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
-  PRIMARY KEY (`idqualifying`),
+  PRIMARY KEY (`IDqualifying`),
   KEY `fk_Qualifying_Drivers1_idx` (`Drivers_idDrivers`),
   KEY `fk_qualifying_race1_idx` (`race_idRace`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `qualifying`
+--
+
+INSERT INTO `qualifying` (`IDqualifying`, `season`, `round`, `raceName`, `date`, `time`, `number`, `permanentNumber`, `position`, `Q1`, `Q2`, `Q3`, `Drivers_idDrivers`, `race_idRace`) VALUES
+(1, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 16, 16, 1, '01:29:00', '01:29:00', '01:28:01', 8, 5),
+(2, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 55, 55, 2, '01:30:00', '01:29:01', '01:28:01', 15, 5),
+(3, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 1, 33, 3, '01:29:01', '01:29:00', '01:28:01', 19, 5),
+(4, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 11, 11, 4, '01:30:00', '01:29:01', '01:29:00', 12, 5),
+(5, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 77, 77, 5, '01:30:01', '01:29:01', '01:29:00', 3, 5),
+(6, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 44, 44, 6, '01:30:00', '01:29:01', '01:29:01', 5, 5),
+(7, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 10, 10, 7, '01:30:01', '01:30:00', '01:29:01', 4, 5),
+(8, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 4, 4, 8, '01:30:01', '01:29:01', '01:29:01', 10, 5),
+(9, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 22, 22, 9, '01:30:00', '01:30:00', '01:29:01', 18, 5),
+(10, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 18, 18, 10, '01:30:00', '01:29:01', '01:30:01', 17, 5),
+(11, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 14, 14, 11, '01:30:00', '01:30:00', '00:00:00', 2, 5),
+(12, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 63, 63, 12, '01:30:00', '01:30:00', '00:00:00', 14, 5),
+(13, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 5, 5, 13, '01:30:01', '01:30:00', '00:00:00', 20, 5),
+(14, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 3, 3, 14, '01:30:01', '01:30:00', '00:00:00', 13, 5),
+(15, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 47, 47, 15, '01:30:01', '01:30:00', '00:00:00', 16, 5),
+(16, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 20, 20, 16, '01:30:01', '00:00:00', '00:00:00', 9, 5),
+(17, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 24, 24, 17, '01:31:00', '00:00:00', '00:00:00', 21, 5),
+(18, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 23, 23, 18, '01:31:00', '00:00:00', '00:00:00', 1, 5),
+(19, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 6, 6, 19, '01:31:00', '00:00:00', '00:00:00', 7, 5),
+(20, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 31, 31, 20, '00:00:00', '00:00:00', '00:00:00', 11, 5);
 
 -- --------------------------------------------------------
 
@@ -191,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `qualifying` (
 
 DROP TABLE IF EXISTS `race`;
 CREATE TABLE IF NOT EXISTS `race` (
-  `idRace` int(11) NOT NULL AUTO_INCREMENT,
+  `IDrace` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
   `raceName` varchar(45) NOT NULL,
@@ -210,14 +268,14 @@ CREATE TABLE IF NOT EXISTS `race` (
   `Qualifying_time` time NOT NULL,
   `Sprint_date` varchar(45) DEFAULT NULL,
   `Sprint_time` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idRace`)
+  PRIMARY KEY (`IDrace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `race`
 --
 
-INSERT INTO `race` (`idRace`, `season`, `round`, `raceName`, `circuitid`, `circuitName`, `country`, `race_date`, `race_time`, `FirstPractice_date`, `FirstPractice_time`, `SecondPractice_date`, `SecondPractice_time`, `ThirdPractice_date`, `ThirdPractice_time`, `Qualifying_date`, `Qualifying_time`, `Sprint_date`, `Sprint_time`) VALUES
+INSERT INTO `race` (`IDrace`, `season`, `round`, `raceName`, `circuitid`, `circuitName`, `country`, `race_date`, `race_time`, `FirstPractice_date`, `FirstPractice_time`, `SecondPractice_date`, `SecondPractice_time`, `ThirdPractice_date`, `ThirdPractice_time`, `Qualifying_date`, `Qualifying_time`, `Sprint_date`, `Sprint_time`) VALUES
 (1, 2022, 1, 'Bahrain Grand Prix', 'bahrain', 'Bahrain International Circuit', 'Bahrain', '2022-03-20', '15:00:00', '2022-03-18', '12:00:00', '2022-03-18', '15:00:00', '2022-03-19', '12:00', '2022-03-19', '15:00:00', '0000-00-00', '00:00'),
 (2, 2022, 2, 'Saudi Arabian Grand Prix', 'jeddah', 'Jeddah Corniche Circuit', 'Saudi Arabia', '2022-03-27', '17:00:00', '2022-03-25', '14:00:00', '2022-03-25', '17:00:00', '2022-03-26', '14:00', '2022-03-26', '17:00:00', '0000-00-00', '00:00'),
 (3, 2022, 3, 'Australian Grand Prix', 'albert_park', 'Albert Park Grand Prix Circuit', 'Australia', '2022-04-10', '05:00:00', '2022-04-08', '03:00:00', '2022-04-08', '06:00:00', '2022-04-09', '03:00', '2022-04-09', '06:00:00', '0000-00-00', '00:00'),
@@ -276,20 +334,20 @@ ALTER TABLE `construcotors_has_drivers`
 --
 ALTER TABLE `driverstandings_lastrace`
   ADD CONSTRAINT `fk_DriverStandings_lastrace_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_driverstandings_lastrace_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`idRace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_driverstandings_lastrace_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`IDrace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `driverstandings_overall`
 --
 ALTER TABLE `driverstandings_overall`
   ADD CONSTRAINT `fk_DriverStandings_overall_Drivers` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_driverstandings_overall_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`idRace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_driverstandings_overall_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`IDrace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `points`
 --
 ALTER TABLE `points`
-  ADD CONSTRAINT `fk_Points_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`idRace`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Points_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`IDrace`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Points_user1` FOREIGN KEY (`user_idperson`) REFERENCES `user` (`idperson`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -297,7 +355,7 @@ ALTER TABLE `points`
 --
 ALTER TABLE `qualifying`
   ADD CONSTRAINT `fk_Qualifying_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_qualifying_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`idRace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_qualifying_race1` FOREIGN KEY (`race_idRace`) REFERENCES `race` (`IDrace`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
