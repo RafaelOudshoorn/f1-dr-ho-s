@@ -14,8 +14,6 @@ ini_set('xdebug.var_display_max_data', 1024);
         }
         public static function update(){
             global $con;
-            // $stmt = $con -> prepare("TRUNCATE TABLE drivers");
-            // $stmt->execute();
             $stmt=$con->prepare("SELECT IDdrivers from drivers");
             $stmt->execute();
             
