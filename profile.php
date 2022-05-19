@@ -9,8 +9,8 @@
         </header>
         <main>
         <?php
-            echo "<div class="profielAfbeeldingKader">";
-            echo "<img src="profile/" . $pf->profile_picture . "" class="profielAfbeelding" >";
+            echo "<div class=\"profielAfbeeldingKader\">";
+            echo "<img src=\"profile/" . $pf->profile_picture . "\" class=\"profielAfbeelding\" >";
             echo "</div>";
         ?>
         <br/>
@@ -22,9 +22,9 @@
                     $_SESSION["user_id"]
                 );
             }
-            echo "<form method="POST" enctype="multipart/form-data">";
-            echo "<input type="file" name="file" class="buttonChooseFile"><br/>";
-            echo "<input type="submit" name="cPF" value="change profile picture">";
+            echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
+            echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\"><br/>";
+            echo "<input type=\"submit\" name=\"cPF\" value=\"change profile picture\">";
             echo "</form>";
         ?>
         </main>
