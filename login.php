@@ -39,8 +39,9 @@
                                                         echo "</div>";
 
                                                         $_SESSION["user_id"] = $userInlog->idperson;
+                                                        $_SESSION["is_admin"] = $userInlog->is_admin;
 
-                                                        header("location:index");
+                                                        header("location:index.php");
                                                     }
                                                     else{
                                                         echo "<div class=\"txt_field\">";
