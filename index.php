@@ -1,8 +1,6 @@
 <html>
     <head>
-        <?php
-            include "include/head.php";
-        ?>
+        <?php include "include/head.php"; ?>
     </head>
     <body>
         <header>
@@ -24,9 +22,7 @@
             </div>
         </main>
         <footer>
-            <?php
-                include "include/footer.php";
-            ?>
+            <?php include "include/footer.php"; ?>
         </footer>
     </body>
 </html>
