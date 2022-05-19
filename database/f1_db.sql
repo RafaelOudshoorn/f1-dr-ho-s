@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 18 mei 2022 om 11:48
+-- Gegenereerd op: 19 mei 2022 om 15:16
 -- Serverversie: 5.7.31
 -- PHP-versie: 7.3.21
 
@@ -160,16 +160,43 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   `idDriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
-  `permanentNumber` int(11) NOT NULL,
   `position` int(11) NOT NULL,
   `points` int(11) NOT NULL,
   `wins` int(11) NOT NULL,
+  `permanentNumber` int(11) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
   PRIMARY KEY (`idDriverStandings_overall`),
   KEY `fk_DriverStandings_overall_Drivers_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_overall_race1_idx` (`race_idRace`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `driverstandings_overall`
+--
+
+INSERT INTO `driverstandings_overall` (`idDriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
+(1, 2022, 5, 1, 104, 2, 16, 8, 5),
+(2, 2022, 5, 2, 85, 3, 33, 19, 5),
+(3, 2022, 5, 3, 66, 0, 11, 12, 5),
+(4, 2022, 5, 4, 59, 0, 63, 14, 5),
+(5, 2022, 5, 5, 53, 0, 55, 15, 5),
+(6, 2022, 5, 6, 36, 0, 44, 5, 5),
+(7, 2022, 5, 7, 35, 0, 4, 10, 5),
+(8, 2022, 5, 8, 30, 0, 77, 3, 5),
+(9, 2022, 5, 9, 24, 0, 31, 11, 5),
+(10, 2022, 5, 10, 15, 0, 20, 9, 5),
+(11, 2022, 5, 11, 11, 0, 3, 13, 5),
+(12, 2022, 5, 12, 10, 0, 22, 18, 5),
+(13, 2022, 5, 13, 6, 0, 10, 4, 5),
+(14, 2022, 5, 14, 4, 0, 5, 20, 5),
+(15, 2022, 5, 15, 3, 0, 23, 1, 5),
+(16, 2022, 5, 16, 2, 0, 14, 2, 5),
+(17, 2022, 5, 17, 2, 0, 18, 17, 5),
+(18, 2022, 5, 18, 1, 0, 24, 21, 5),
+(19, 2022, 5, 19, 0, 0, 47, 16, 5),
+(20, 2022, 5, 20, 0, 0, 27, 6, 5),
+(21, 2022, 5, 21, 0, 0, 6, 7, 5);
 
 -- --------------------------------------------------------
 

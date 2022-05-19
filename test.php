@@ -3,7 +3,7 @@
 
     //var_dump($_POST);
     if($_POST){
-        LastraceManager::insert();
+        Driverstandings_overall::update();
     }
 ?>
 <html>
