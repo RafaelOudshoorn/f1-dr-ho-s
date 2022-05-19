@@ -16,7 +16,21 @@
                         Aankomende race:
                     </div>
                     <div class="nextBlock">
-
+                        <div class="nextDetail">
+                            Locatie:
+                            <br>
+                            sdaaaaa
+                        </div>
+                        <div>
+                            Datum:
+                            <br>
+                            sssssss
+                        </div>
+                        <div>
+                            Tijd:
+                            <br>
+                            ssssssssss
+                        </div>
                     </div>
                 </div>
             </div>

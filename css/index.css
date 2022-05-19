@@ -8,13 +8,17 @@
 }
 .nextTitle{
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     padding: 20px;
 }
 .nextBlock{
     background-color: white;
     color: black;
-    height: 490px;
+    height: 460px;
     width: 600px;
     margin-left: 20px;
+}
+.nextDetail{
+    font-size: 40px;
+    color: black;
 }
