@@ -28,6 +28,7 @@ nav{
 nav a{
     color: #FFFFFF;
     padding-left: 10px;
+    text-decoration: none;
 }
 nav a:last-child{
     padding-left: 10px;
