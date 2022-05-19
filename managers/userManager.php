@@ -44,10 +44,10 @@
                 if($cPF_fileError === 0){
                     if($cPF_fileSize < 3000000){
                         if($oldfileName != "pictures/user_profile.png"){
-                            unlink("../profile/" . $oldfileName);
+                            unlink("profile/" . $oldfileName);
                         }
                         $cPF_fileNameUpload = uniqid("", true) . "." . $cPF_fileLowerType;
-                        $cPF_fileDestination = "../profile/pictures/" . $cPF_fileNameUpload;
+                        $cPF_fileDestination = "profile/pictures/" . $cPF_fileNameUpload;
                         move_uploaded_file($cPF_fileTmpName, $cPF_fileDestination);
 
                         $query = "UPDATE user ";
@@ -59,7 +59,7 @@
                         $stmt->bindValue(2, $id);
                         $stmt->execute();
 
-                        header("location:test_index_for_login");
+                        header("location:profile.php");
                     }else{
                         echo "The image you uploaded was too big. Plz downscale the image or choose another one.";
                     }
