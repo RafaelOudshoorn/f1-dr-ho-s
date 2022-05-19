@@ -3,7 +3,7 @@
 
     //var_dump($_POST);
     if($_POST){
-        Driverstandings_overall::update();
+        QualifyingManager::update();
     }
 ?>
 <html>
@@ -13,7 +13,7 @@
     </head>
     <body>
         <form method="POST">
-            <input name="xx" value="Verzender" type="submit"/>
+            <input name="xx" value="Verzenden" type="submit"/>
         </form>
         <button id="race">race</button>
         <table class="table table-striped">

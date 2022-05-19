@@ -106,7 +106,7 @@ INSERT INTO `drivers` (`IDdrivers`, `drivername`, `permanentNumber`, `givenName`
 
 DROP TABLE IF EXISTS `driverstandings_lastrace`;
 CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
-  `idDriverStandings_lastrace` int(11) NOT NULL AUTO_INCREMENT,
+  `IDdriverStandings_lastrace` int(11) NOT NULL AUTO_INCREMENT,
   `season` varchar(45) NOT NULL,
   `round` varchar(45) NOT NULL,
   `timerace` time NOT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
 -- Gegevens worden geëxporteerd voor tabel `driverstandings_lastrace`
 --
 
-INSERT INTO `driverstandings_lastrace` (`idDriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
+INSERT INTO `driverstandings_lastrace` (`IDdriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
 (1, '2022', '5', '19:30:00', 33, '1', '26', 3, 'Finished', '1:34:24.258', 19, 5),
 (2, '2022', '5', '19:30:00', 16, '2', '18', 1, 'Finished', '+3.786', 8, 5),
 (3, '2022', '5', '19:30:00', 55, '3', '15', 2, 'Finished', '+8.229', 15, 5),
@@ -157,7 +157,7 @@ INSERT INTO `driverstandings_lastrace` (`idDriverStandings_lastrace`, `season`, 
 
 DROP TABLE IF EXISTS `driverstandings_overall`;
 CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
-  `idDriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
+  `IDdriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
   `position` int(11) NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
 -- Gegevens worden geëxporteerd voor tabel `driverstandings_overall`
 --
 
-INSERT INTO `driverstandings_overall` (`idDriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
+INSERT INTO `driverstandings_overall` (`IDdriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
 (1, 2022, 5, 1, 104, 2, 16, 8, 5),
 (2, 2022, 5, 2, 85, 3, 33, 19, 5),
 (3, 2022, 5, 3, 66, 0, 11, 12, 5),
