@@ -1,5 +1,20 @@
-.mainBlock{
-    height: 400px;
+.next{
+    height: 600px;
     width: 95%;
     background-color: #28282B;
+    margin: 25px auto 0 auto;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+}
+.nextTitle{
+    color: white;
+    font-size: 40px;
+    padding: 20px;
+}
+.nextBlock{
+    background-color: white;
+    color: black;
+    height: 490px;
+    width: 600px;
+    margin-left: 20px;
 }
