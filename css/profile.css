@@ -1,0 +1,17 @@
+.profielAfbeeldingKader{
+    width:250px;
+    height:250px;
+    border:solid 5px #28282B;
+    border-radius:50%;
+    overflow:hidden;
+    background:#28282B;
+    margin-left: 80px;
+    margin-top: 80px;
+}
+.profielAfbeelding{
+    height:250px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
