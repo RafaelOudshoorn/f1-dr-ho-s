@@ -7,7 +7,16 @@
             global $con;
 
             $stmt=$con->prepare("SELECT * FROM user WHERE idperson = ? ");
-            $stmt->bindValue(1, $_SESSION["user_id"]);
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+        }
+        public static function getProfileInfoHeader($id){
+            global $con;
+
+            $stmt=$con->prepare("SELECT * FROM user WHERE idperson = ? ");
+            $stmt->bindValue(1, $id);
             $stmt->execute();
 
             return $stmt->fetchObject();
@@ -64,5 +73,20 @@
         public static function insert(){
             
         }
+        public static function checkIsAdmin($id){
+            global $con;
+
+            $stmt=$con->prepare("SELECT is_admin FROM user WHERE idperson = ? ");
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+
+            // 0 = geen admin
+            // 1 = is admin zonder rechten om andere admin te geven of te ontemen
+            // 2 = is admin met de rechten om andere admin te geven of te ontemen
+
+        }
     }
+
 ?>

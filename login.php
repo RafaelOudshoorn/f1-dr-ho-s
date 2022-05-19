@@ -1,6 +1,7 @@
 <?php
     error_reporting(0);
     include "autoloader.php";
+    // $insertTest = loginManager::inserttest();
 ?>
 <!doctype html>
 <html>
@@ -37,10 +38,9 @@
                                                             echo "<label style=\"color:green;\">Wachtwoord correct</label>";
                                                         echo "</div>";
 
-                                                        session_start();
                                                         $_SESSION["user_id"] = $userInlog->idperson;
 
-                                                        header("location:test/test_index_for_login.php");
+                                                        header("location:index");
                                                     }
                                                     else{
                                                         echo "<div class=\"txt_field\">";
