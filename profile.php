@@ -1,7 +1,25 @@
-<?php
-    include "header-footer/header.php";
-?>
+<html>
+    <head>
+        <?php
+            include "include/head.php";
+        ?>
+    </head>
+    <body>
+        <header>
+            <?php
+                include "include/header.php";
+            ?>
+        </header>
+        <main>
 
+        </main>
+        <footer>
+            <?php
+                include "include/footer.php";
+            ?>
+        </footer>
+    </body>
+</html>
         <?php
             echo "<div style=\"width:150px;height:150px;border:solid 5px #28282B;border-radius:50%;overflow:hidden;background:#28282B;\">";
                 echo "<img src=\"profile/" . $pf->profile_picture . "\" style=\"height:150px;display:block;margin-left:auto;margin-right:auto;\">";
