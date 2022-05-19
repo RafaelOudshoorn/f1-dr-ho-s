@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 19 mei 2022 om 15:16
--- Serverversie: 5.7.31
--- PHP-versie: 7.3.21
+-- Gegenereerd op: 19 mei 2022 om 21:18
+-- Serverversie: 5.7.36
+-- PHP-versie: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
   `time` varchar(45) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
-  PRIMARY KEY (`idDriverStandings_lastrace`),
+  PRIMARY KEY (`IDdriverStandings_lastrace`),
   KEY `fk_DriverStandings_lastrace_Drivers1_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_lastrace_race1_idx` (`race_idRace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   `permanentNumber` int(11) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
-  PRIMARY KEY (`idDriverStandings_overall`),
+  PRIMARY KEY (`IDdriverStandings_overall`),
   KEY `fk_DriverStandings_overall_Drivers_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_overall_race1_idx` (`race_idRace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
@@ -340,8 +340,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(90) NOT NULL,
-  `total points` int(11) NOT NULL,
+  `total_points` int(11) NOT NULL,
   `profile_picture` varchar(200) NOT NULL,
+  `is_admin` int(11) NOT NULL,
   PRIMARY KEY (`idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
