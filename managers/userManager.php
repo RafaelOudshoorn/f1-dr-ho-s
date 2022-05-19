@@ -1,0 +1,68 @@
+<?php
+    class userManager{
+        public static function select(){
+
+        }
+        public static function selectOnId($id){
+            global $con;
+
+            $stmt=$con->prepare("SELECT * FROM user WHERE idperson = ? ");
+            $stmt->bindValue(1, $_SESSION["user_id"]);
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+        }
+        public static function updateProfilePicture($oldfileName, $file, $id){
+            global $con;
+
+            $cPF_file = $file;
+
+            $cPF_fileName = $_FILES["file"]["name"];
+            $cPF_fileTmpName = $_FILES["file"]["tmp_name"];
+            $cPF_fileSize = $_FILES["file"]["size"];
+            $cPF_fileError = $_FILES["file"]["error"];
+            $cPF_fileType = $_FILES["file"]["type"];
+
+            $cPF_fileExt = explode(".", $cPF_fileName);
+            $cPF_fileLowerType = strtolower(end($cPF_fileExt));
+            $cPF_allowedTypes = array(
+                "jpg",
+                "jpeg",
+                "gif",
+                "png"
+            );
+            if (in_array($cPF_fileLowerType, $cPF_allowedTypes)) {
+                if($cPF_fileError === 0){
+                    if($cPF_fileSize < 3000000){
+                        if($oldfileName != "pictures/user_profile.png"){
+                            unlink("../profile/" . $oldfileName);
+                        }
+                        $cPF_fileNameUpload = uniqid("", true) . "." . $cPF_fileLowerType;
+                        $cPF_fileDestination = "../profile/pictures/" . $cPF_fileNameUpload;
+                        move_uploaded_file($cPF_fileTmpName, $cPF_fileDestination);
+
+                        $query = "UPDATE user ";
+                        $query .= "SET profile_picture = ? ";
+                        $query .= "WHERE idperson = ? ";
+            
+                        $stmt=$con->prepare($query);
+                        $stmt->bindValue(1, "pictures/" . $cPF_fileNameUpload);
+                        $stmt->bindValue(2, $id);
+                        $stmt->execute();
+
+                        header("location:test_index_for_login");
+                    }else{
+                        echo "The image you uploaded was too big. Plz downscale the image or choose another one.";
+                    }
+                }else{
+                    echo "There was an error uploading your profile picture. Plz try again.";
+                }
+            }else{
+                echo "Upload an picture you moron!!";
+            }
+        }
+        public static function insert(){
+            
+        }
+    }
+?>
