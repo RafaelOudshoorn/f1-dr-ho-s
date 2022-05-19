@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 19 mei 2022 om 15:16
--- Serverversie: 5.7.31
--- PHP-versie: 7.3.21
+-- Gegenereerd op: 19 mei 2022 om 21:18
+-- Serverversie: 5.7.36
+-- PHP-versie: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -106,7 +106,7 @@ INSERT INTO `drivers` (`IDdrivers`, `drivername`, `permanentNumber`, `givenName`
 
 DROP TABLE IF EXISTS `driverstandings_lastrace`;
 CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
-  `idDriverStandings_lastrace` int(11) NOT NULL AUTO_INCREMENT,
+  `IDdriverStandings_lastrace` int(11) NOT NULL AUTO_INCREMENT,
   `season` varchar(45) NOT NULL,
   `round` varchar(45) NOT NULL,
   `timerace` time NOT NULL,
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
   `time` varchar(45) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
-  PRIMARY KEY (`idDriverStandings_lastrace`),
+  PRIMARY KEY (`IDdriverStandings_lastrace`),
   KEY `fk_DriverStandings_lastrace_Drivers1_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_lastrace_race1_idx` (`race_idRace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
 -- Gegevens worden geëxporteerd voor tabel `driverstandings_lastrace`
 --
 
-INSERT INTO `driverstandings_lastrace` (`idDriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
+INSERT INTO `driverstandings_lastrace` (`IDdriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
 (1, '2022', '5', '19:30:00', 33, '1', '26', 3, 'Finished', '1:34:24.258', 19, 5),
 (2, '2022', '5', '19:30:00', 16, '2', '18', 1, 'Finished', '+3.786', 8, 5),
 (3, '2022', '5', '19:30:00', 55, '3', '15', 2, 'Finished', '+8.229', 15, 5),
@@ -157,7 +157,7 @@ INSERT INTO `driverstandings_lastrace` (`idDriverStandings_lastrace`, `season`, 
 
 DROP TABLE IF EXISTS `driverstandings_overall`;
 CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
-  `idDriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
+  `IDdriverStandings_overall` int(11) NOT NULL AUTO_INCREMENT,
   `season` int(11) NOT NULL,
   `round` int(11) NOT NULL,
   `position` int(11) NOT NULL,
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   `permanentNumber` int(11) NOT NULL,
   `Drivers_idDrivers` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
-  PRIMARY KEY (`idDriverStandings_overall`),
+  PRIMARY KEY (`IDdriverStandings_overall`),
   KEY `fk_DriverStandings_overall_Drivers_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_overall_race1_idx` (`race_idRace`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
 -- Gegevens worden geëxporteerd voor tabel `driverstandings_overall`
 --
 
-INSERT INTO `driverstandings_overall` (`idDriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
+INSERT INTO `driverstandings_overall` (`IDdriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
 (1, 2022, 5, 1, 104, 2, 16, 8, 5),
 (2, 2022, 5, 2, 85, 3, 33, 19, 5),
 (3, 2022, 5, 3, 66, 0, 11, 12, 5),
@@ -340,8 +340,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(90) NOT NULL,
-  `total points` int(11) NOT NULL,
+  `total_points` int(11) NOT NULL,
   `profile_picture` varchar(200) NOT NULL,
+  `is_admin` int(11) NOT NULL,
   PRIMARY KEY (`idperson`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
