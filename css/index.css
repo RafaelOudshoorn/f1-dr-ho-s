@@ -1,11 +1,50 @@
 .next{
     height: 300px;
-    width: 95%;
+    width: 85%;
     background-color: #28282B;
     margin: 25px auto 0 auto;
     display: grid;
     grid-template: 1fr 1fr / 1fr;
+    color: white;
+    font-size: 50px;
+    border-radius: 10px 250px 10px 250px;
 }
 .nextTitle{
-
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 100px;
+}
+.nextBlock{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 50px 100px;
+}
+.nextTime{
+    color: black;
+    background-color: white;
+    height: 100px;
+    width: 30%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #D2042D;
+    border-radius: 10px;
+}
+.nextButton{
+    color: white;
+    background-color: #D2042D;
+    height: 100px;
+    width: 30%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+.nextButton:hover{
+    border-color: white;
 }

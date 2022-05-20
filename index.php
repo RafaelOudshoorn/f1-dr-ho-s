@@ -11,19 +11,19 @@
         </header>
         <main>
             <div class="next">
-                <div>
-                    <div class="titleFont">
+                <div class="nextTitle titleFont">
+                    <div>
                         Aankomende race:
                     </div>
                     <div>
                         Gegeven locatie idk
                     </div>
                 </div>
-                <div>
-                    <div>
+                <div class="nextBlock">
+                    <div class="nextTime">
                         Tijd 21203-1203-1023
                     </div>
-                    <div>
+                    <div class="nextButton">
                         Ga naar race
                     </div>
                 </div>
