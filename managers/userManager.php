@@ -1,7 +1,12 @@
 <?php
     class userManager{
         public static function select(){
+            global $con;
 
+            $stmt=$con->prepare("SELECT * FROM user");
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
         public static function selectOnId($id){
             global $con;

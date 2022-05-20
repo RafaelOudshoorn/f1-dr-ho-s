@@ -1,6 +1,9 @@
 <?php
-    include "autoloader.php";
-    $loginCheck = loginManager::loginCheck();    
+    include "include/autoloader.php";
+    $loginCheck = loginManager::loginCheck();
+    $au = userManager::select();    
+    $ac = userManager::selectOnId($_SESSION["user_id"]);
+    $_SESSION["is_admin"] = $ac->is_admin;
     $pf = userManager::getProfileInfoHeader($_SESSION["user_id"]);
 ?>
 <link rel="stylesheet" href="css/style.css">
