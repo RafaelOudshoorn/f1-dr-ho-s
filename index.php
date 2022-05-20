@@ -28,6 +28,44 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <th>Filler</th>
+                        <th>Filler</th>
+                        <th>Filler</th>
+                        <th>Filler</th>
+                        <th>Filler</th>
+                        <th>Filler</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                        </tr>
+                        <tr>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                        </tr>
+                        <tr>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                            <td>fffffffffff</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </main>
         <footer>
             <?php include "include/footer.php"; ?>

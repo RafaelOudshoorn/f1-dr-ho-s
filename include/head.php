@@ -2,11 +2,6 @@
     include "autoloader.php";
     $loginCheck = loginManager::loginCheck();    
     $pf = userManager::getProfileInfoHeader($_SESSION["user_id"]);
-    if($_SESSION["is_admin"] == 0){
-
-    }else{
-        echo "<a href=\"admin\">Admin</a>";
-    }
 ?>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
