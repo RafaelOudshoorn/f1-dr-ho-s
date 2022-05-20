@@ -49,3 +49,31 @@ nav a:hover{
 nav img:hover{
     border-color: #D2042D;
 }
+
+footer{
+    height: 80px;
+    width: 100%;
+    background-color: #28282B;
+    margin-top: 1000px;
+    color:white ; 
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+}
+
+footer p{
+    margin-left: 40px;
+}
+footer span{
+    color:white ;
+    margin-right: 40px;
+    font-size: 40px !important;
+}
+.footer1{
+    display: flex;
+    align-items: center;
+}
+.footer2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
