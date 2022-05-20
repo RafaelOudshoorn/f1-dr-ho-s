@@ -12,25 +12,19 @@
         <main>
             <div class="next">
                 <div>
-                    <div class="nextTitle titleFont">
+                    <div class="titleFont">
                         Aankomende race:
                     </div>
-                    <div class="nextBlock">
-                        <div class="nextDetail">
-                            Locatie:
-                            <br>
-                            sdaaaaa
-                        </div>
-                        <div>
-                            Datum:
-                            <br>
-                            sssssss
-                        </div>
-                        <div>
-                            Tijd:
-                            <br>
-                            ssssssssss
-                        </div>
+                    <div>
+                        Gegeven locatie idk
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        Tijd 21203-1203-1023
+                    </div>
+                    <div>
+                        Ga naar race
                     </div>
                 </div>
             </div>
