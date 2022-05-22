@@ -8,6 +8,7 @@
                 exit;
             }
         ?>
+        <link rel="stylesheet" href="css/admin.css">
         <script>
             function edit_user(id){
                 var x = document.getElementById("form-" + id);
@@ -25,55 +26,80 @@
             <link rel="stylesheet" href="css/admin.css">
         </header>
         <main>
-            <div class="user container">
+            <div class="user_container">
                 <div class="inner_user">
-                    <br>
-                    <form method="POST">
-                        <table class="table table-striped table-dark text-center">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Username</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Points</th>
-                                    <th>Site Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    foreach($au as $allUsers){
-                                        if($_SESSION["is_admin"] === "2"){
-                                            echo "<tr style=\"cursor:pointer;\" onclick=\"edit_user(". $allUsers->idperson . ")\">";
-                                        }else{
-                                            echo "<tr>";
-                                        }
-                                            echo "<th>" . $allUsers->idperson . "</th>";
-                                            echo "<th>" . $allUsers->username . "</th>";
-                                            echo "<th>" . $allUsers->firstname . " " . $allUsers->lastname . "</th>";
-                                            echo "<th>" . $allUsers->email . "</th>";
-                                            echo "<th>" . $allUsers->total_points . "</th>";
-                                            switch($allUsers->is_admin){
-                                                default:
-                                                case 0:
-                                                    echo "<th>User</th>";
-                                                    break;
-                                                case 1:
-                                                    echo "<th>Moderator</th>";
-                                                    break;
-                                                case 2:
-                                                    echo "<th>Admin</th>";
-                                                    break;
+                    <?php
+                        foreach($au as $allUser){
+                            echo "<div class=\"user_card user_id_" . $allUser->idperson . "\">";
+                                echo "<div class=\"ucPicture\">";
+                                    echo "<img src=\"profile/" . $allUser->profile_picture . "\">";
+                                echo "</div>";
+                                echo "<div class=\"ucName\">";
+                                    echo "<h2>Username = " . $allUser->username . "</h2>";
+                                    echo "<h2>Naam = " . $allUser->firstname . " " . $allUser->lastname . "</h2>";
+                                    echo "<h2>Email = " . $allUser->email . "</h2>";
+                                echo "</div>";
+                                echo "<div class=\"ucPoints\">";
+                                    echo "<h2>Points<span>" . $allUser->total_points . "</span></h2>";
+                                echo "</div>";
+                                echo "<div class=\"ucIsAdmin\">";
+                                    echo "<h2>Status = ";
+                                            if($_SESSION["is_admin"] != "2"){
+                                                switch($allUser->is_admin){
+                                                    case "0":
+                                                        echo "User";
+                                                        break;
+                                                    case "1":
+                                                        echo "Moderator";
+                                                        break;
+                                                    case "2":
+                                                        echo "Admin";
+                                                        break;
+                                                }
+                                            }else{
+                                                echo "<select class=\"browser-default custom-select mb-4 textDarkColor\" name=\"is_adminChange" . $allUser->idperson . "\" id=\"is_adminChange" . $allUser->idperson . "\" onchange=\"val()\">";
+                                                    switch($allUser->is_admin){
+                                                        case "0":
+                                                            echo "<option value=\"\" disabled>Kies een optie</option>";
+                                                            echo "<option value=\"0\" selected>User</option>";
+                                                            echo "<option value=\"1\">Moderator</option>";
+                                                            echo "<option value=\"1\">Admin</option>";
+                                                            break;
+                                                        case "1":
+                                                            echo "<option value=\"\" disabled>Kies een optie</option>";
+                                                            echo "<option value=\"0\">User</option>";
+                                                            echo "<option value=\"1\" selected>Moderator</option>";
+                                                            echo "<option value=\"1\">Admin</option>";
+                                                            break;
+                                                        case "2":
+                                                            echo "<option value=\"\" disabled>Kies een optie</option>";
+                                                            echo "<option value=\"0\">User</option>";
+                                                            echo "<option value=\"1\">Moderator</option>";
+                                                            echo "<option value=\"1\" selected>Admin</option>";
+                                                            break;
+                                                    }
+                                                echo "</select>";
+                                                echo "<script>";
+                                                echo "$('#is_adminChange" . $allUser->idperson . "').change(function(){";
+                                                echo "    switch($(this).val()){";
+                                                echo "        case \"0\":";
+                                                echo "            ";
+                                                echo "            break;";
+                                                echo "        case \"1\":";
+                                                echo "            ";
+                                                echo "            break;";
+                                                echo "        case \"2\":";
+                                                echo "            ";
+                                                echo "            break;";
+                                                echo "    };";
+                                                echo "})";
+                                                echo "</script>";
                                             }
-                                        echo "  <div id=\"form-$allUsers->idperson\" style=\"display:none;\">";
-                                        echo "          <input type=\"text\" name=\"username\" value=\"$allUsers->username\">";
-                                        echo "  </div>";
-                                        echo "</tr>";
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </form>
+                                    echo "</h2>";
+                                echo "</div>";
+                            echo "</div><br/><br/>";
+                        }
+                    ?>
                 </div>
             </div>
         </main>
