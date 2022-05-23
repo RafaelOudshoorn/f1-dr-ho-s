@@ -87,10 +87,23 @@
 
             return $stmt->fetchObject();
 
-            // 0 = geen admin
-            // 1 = is admin zonder rechten om andere admin te geven of te ontemen
-            // 2 = is admin met de rechten om andere admin te geven of te ontemen
+            // 0 = is User. Geen Admin.
+            // 1 = is Moderator. Admin zonder rechten om andere admin te geven of te ontemen
+            // 2 = is Admin met de rechten om andere admin te geven of te ontemen
 
+        }
+        public static function updateAsAdmin($iUsername, $iIs_admin, $iId){
+            global $con;
+
+            $query = "UPDATE user ";
+            $query .= "SET username = ? , is_admin = ? ";
+            $query .= "WHERE idperson = ? ";
+
+            $stmt=$con->prepare($query);    
+            $stmt->bindValue(1,$iUsername);
+            $stmt->bindValue(2,$iIs_admin);
+            $stmt->bindValue(3,$iId);
+            $stmt->execute();
         }
     }
 

@@ -29,13 +29,15 @@
             <div class="user_container">
                 <div class="inner_user">
                     <?php
+                        echo "<form method=\"POST\">";
                         foreach($au as $allUser){
+                            
                             echo "<div class=\"user_card user_id_" . $allUser->idperson . "\">";
                                 echo "<div class=\"ucPicture\">";
                                     echo "<img src=\"profile/" . $allUser->profile_picture . "\">";
                                 echo "</div>";
                                 echo "<div class=\"ucName\">";
-                                    echo "<h2>Username = " . $allUser->username . "</h2>";
+                                    echo "<h2>Username = <input type=\"text\" name=\"usernameUpdate$allUser->username\" value=\"$allUser->username\" style=\"width:150px;\"></h2>";
                                     echo "<h2>Naam = " . $allUser->firstname . " " . $allUser->lastname . "</h2>";
                                     echo "<h2>Email = " . $allUser->email . "</h2>";
                                 echo "</div>";
@@ -44,7 +46,7 @@
                                 echo "</div>";
                                 echo "<div class=\"ucIsAdmin\">";
                                     echo "<h2>Status = ";
-                                            if($_SESSION["is_admin"] != "2"){
+                                            if($_SESSION["is_admin"] != "2" || $_SESSION["user_id"] == $allUser->idperson){
                                                 switch($allUser->is_admin){
                                                     case "0":
                                                         echo "User";
@@ -57,48 +59,51 @@
                                                         break;
                                                 }
                                             }else{
-                                                echo "<select class=\"browser-default custom-select mb-4 textDarkColor\" name=\"is_adminChange" . $allUser->idperson . "\" id=\"is_adminChange" . $allUser->idperson . "\" onchange=\"val()\">";
+                                                echo "<select class=\"browser-default custom-select mb-4 textDarkColor\" name=\"is_adminChange$allUser->idperson\" id=\"is_adminChange" . $allUser->idperson . "\" onchange=\"changeStatus" . $allUser->idperson . "()\">";
                                                     switch($allUser->is_admin){
                                                         case "0":
                                                             echo "<option value=\"\" disabled>Kies een optie</option>";
                                                             echo "<option value=\"0\" selected>User</option>";
                                                             echo "<option value=\"1\">Moderator</option>";
-                                                            echo "<option value=\"1\">Admin</option>";
+                                                            echo "<option value=\"2\">Admin</option>";
                                                             break;
                                                         case "1":
                                                             echo "<option value=\"\" disabled>Kies een optie</option>";
                                                             echo "<option value=\"0\">User</option>";
                                                             echo "<option value=\"1\" selected>Moderator</option>";
-                                                            echo "<option value=\"1\">Admin</option>";
+                                                            echo "<option value=\"2\">Admin</option>";
                                                             break;
                                                         case "2":
                                                             echo "<option value=\"\" disabled>Kies een optie</option>";
                                                             echo "<option value=\"0\">User</option>";
                                                             echo "<option value=\"1\">Moderator</option>";
-                                                            echo "<option value=\"1\" selected>Admin</option>";
+                                                            echo "<option value=\"2\" selected>Admin</option>";
                                                             break;
                                                     }
                                                 echo "</select>";
-                                                echo "<script>";
-                                                echo "$('#is_adminChange" . $allUser->idperson . "').change(function(){";
-                                                echo "    switch($(this).val()){";
-                                                echo "        case \"0\":";
-                                                echo "            ";
-                                                echo "            break;";
-                                                echo "        case \"1\":";
-                                                echo "            ";
-                                                echo "            break;";
-                                                echo "        case \"2\":";
-                                                echo "            ";
-                                                echo "            break;";
-                                                echo "    };";
-                                                echo "})";
-                                                echo "</script>";
                                             }
                                     echo "</h2>";
+                                    echo "<input type=\"submit\" name=\"changeUser$allUser->idperson\" value=\"Pas aan\">";
                                 echo "</div>";
                             echo "</div><br/><br/>";
+                            if(isset($_POST["changeUser$allUser->idperson"])){
+                                if($_POST["is_adminChange$allUser->idperson"] != NULL){
+                                    $id_admin_num = intval($_POST["is_adminChange$allUser->idperson"]);
+                                }else{
+
+                                    $id_admin_num = intval($allUser->is_admin);
+                                }
+                                var_dump($id_admin_num);
+                                var_dump($_POST["usernameUpdate$allUser->username"]);
+                                userManager::updateAsAdmin(
+                                    htmlspecialchars($_POST["usernameUpdate$allUser->username"]),
+                                    intval($id_admin_num),
+                                    $allUser->idperson
+                                );
+                                header("location:admin");
+                            }
                         }
+                        echo "</form>";
                     ?>
                 </div>
             </div>
