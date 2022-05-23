@@ -49,7 +49,7 @@
             global $con;
 
             $points = 0;
-            $profile_picture = "pictures/user_profile.png";
+            $profile_picture = "pfp/user_profile.png";
             $isAdmin = 0;
 
             $password = password_hash($nHashedPassword, PASSWORD_DEFAULT);
@@ -79,7 +79,7 @@
             $email = "test@test.nl";
             $nHashedPassword = "testtest";
             $points = 0;
-            $profile_picture = "pictures/user_profile.png";
+            $profile_picture = "pfp/user_profile.png";
             $isAdmin = 0;
 
             $password = password_hash($nHashedPassword, PASSWORD_DEFAULT);

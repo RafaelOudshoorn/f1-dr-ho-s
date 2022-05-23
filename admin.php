@@ -46,7 +46,7 @@
                             
                             echo "<div class=\"user_card user_id_" . $allUser->idperson . "\">";
                                 echo "<div class=\"ucPicture\">";
-                                    echo "<img src=\"profile/" . $allUser->profile_picture . "\">";
+                                    echo "<img src=\"pfp/" . $allUser->profile_picture . "\">";
                                 echo "</div>";
                                 echo "<div class=\"ucName\">";
                                     echo "<h2>Username = <input required type=\"text\" id=\"usernameUpdate\" name=\"usernameUpdate$allUser->username\" value=\"$allUser->username\" style=\"width:150px;\" maxlength=\"20\"></h2>";
@@ -96,6 +96,7 @@
                                             }
                                     echo "</h2>";
                                     echo "<input type=\"submit\" name=\"changeUser$allUser->idperson\" value=\"Pas aan\">";
+                                    echo "<a href=\"profile.php?usersame=$allUser->username\">Ga naar profiel</a>";
                                 echo "</div>";
                             echo "</div><br/><br/>";
                             if(isset($_POST["changeUser$allUser->idperson"])){

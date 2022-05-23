@@ -48,11 +48,11 @@
             if (in_array($cPF_fileLowerType, $cPF_allowedTypes)) {
                 if($cPF_fileError === 0){
                     if($cPF_fileSize < 3000000){
-                        if($oldfileName != "pictures/user_profile.png"){
-                            unlink("profile/" . $oldfileName);
+                        if($oldfileName != "pfp/user_profile.png"){
+                            unlink("pfp/" . $oldfileName);
                         }
                         $cPF_fileNameUpload = uniqid("", true) . "." . $cPF_fileLowerType;
-                        $cPF_fileDestination = "profile/pictures/" . $cPF_fileNameUpload;
+                        $cPF_fileDestination = "pfp/pictures/" . $cPF_fileNameUpload;
                         move_uploaded_file($cPF_fileTmpName, $cPF_fileDestination);
 
                         $query = "UPDATE user ";

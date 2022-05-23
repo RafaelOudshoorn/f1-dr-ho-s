@@ -10,7 +10,7 @@
         <main>
         <?php
             echo "<div class=\"profielAfbeeldingKader\">";
-            echo "<img src=\"profile/" . $pf->profile_picture . "\" class=\"profielAfbeelding\" >";
+            echo "<img src=\"pfp/" . $pf->profile_picture . "\" class=\"profielAfbeelding\" >";
             echo "</div>";
         ?>
         <br/>
