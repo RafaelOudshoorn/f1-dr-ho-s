@@ -3,6 +3,8 @@
     $loginCheck = loginManager::loginCheck();
     $au = userManager::select();    
     $ac = userManager::selectOnId($_SESSION["user_id"]);
+    $_SESSION["user_id"] = $ac->idperson;
+    $_SESSION["username"] = $ac->username;
     $_SESSION["is_admin"] = $ac->is_admin;
     $pf = userManager::getProfileInfoHeader($_SESSION["user_id"]);
 ?>

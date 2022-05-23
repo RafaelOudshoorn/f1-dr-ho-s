@@ -53,8 +53,9 @@
                                                         echo "</div>";
 
                                                         $_SESSION["user_id"] = $userInlog->idperson;
+                                                        $_SESSION["username"] = $userInlog->username;
                                                         $_SESSION["is_admin"] = $userInlog->is_admin;
-
+                                                        
                                                         header("location:index.php");
                                                     }
                                                     else{

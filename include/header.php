@@ -11,11 +11,11 @@
     ?>
     <a href="scoreboard">Scorebord</a>
     <a href="drivers">Coureurs</a>
-    <a href="profile.php">
-        <?php
+    <?php
+    echo "<a href=\"profile.php?username=" . $_SESSION['username'] . "\">";
             echo "<img src=\"pfp/$pf->profile_picture\" alt=\"PFP\" class=\"pfp\">";
-        ?>
-        </a>
+    echo "</a>";
+    ?>
     <a href="logout">
         <span class="material-symbols-outlined">logout</span>
     </a>
