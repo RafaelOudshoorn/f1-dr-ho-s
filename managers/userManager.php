@@ -17,6 +17,15 @@
 
             return $stmt->fetchObject();
         }
+        public static function selectOnUsernameGet($username){
+            global $con;
+
+            $stmt=$con->prepare("SELECT * FROM user WHERE username = ? ");
+            $stmt->bindValue(1, htmlspecialchars($username));
+            $stmt->execute();
+
+            return $stmt->fetchObject();
+        }
         public static function getProfileInfoHeader($id){
             global $con;
 

@@ -96,7 +96,7 @@
                                             }
                                     echo "</h2>";
                                     echo "<input type=\"submit\" name=\"changeUser$allUser->idperson\" value=\"Pas aan\">";
-                                    echo "<a href=\"profile.php?usersame=$allUser->username\">Ga naar profiel</a>";
+                                    echo "<a href=\"profile.php?username=$allUser->username\">Ga naar profiel</a>";
                                 echo "</div>";
                             echo "</div><br/><br/>";
                             if(isset($_POST["changeUser$allUser->idperson"])){
