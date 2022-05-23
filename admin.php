@@ -1,6 +1,7 @@
 <html>
     <head>
         <?php 
+            error_reporting(0);
             include "include/head.php";
 
             if($_SESSION["is_admin"] === "0"){
@@ -18,6 +19,17 @@
                     x.style.display = "none";
                 }
             };
+            $(document).ready(function(){
+                $("input#usernameUpdate").on({
+                    keydown: function(e) {
+                        if (e.which === 32)
+                        return false;
+                    },
+                    change: function() {
+                        this.value = this.value.replace(/\s/g, "");
+                    }
+                });
+            });
         </script>
     </head>
     <body>
@@ -37,7 +49,7 @@
                                     echo "<img src=\"profile/" . $allUser->profile_picture . "\">";
                                 echo "</div>";
                                 echo "<div class=\"ucName\">";
-                                    echo "<h2>Username = <input type=\"text\" name=\"usernameUpdate$allUser->username\" value=\"$allUser->username\" style=\"width:150px;\"></h2>";
+                                    echo "<h2>Username = <input required type=\"text\" id=\"usernameUpdate\" name=\"usernameUpdate$allUser->username\" value=\"$allUser->username\" style=\"width:150px;\" maxlength=\"20\"></h2>";
                                     echo "<h2>Naam = " . $allUser->firstname . " " . $allUser->lastname . "</h2>";
                                     echo "<h2>Email = " . $allUser->email . "</h2>";
                                 echo "</div>";
@@ -100,7 +112,6 @@
                                     intval($id_admin_num),
                                     $allUser->idperson
                                 );
-                                header("location:admin");
                             }
                         }
                         echo "</form>";

@@ -9,6 +9,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="css/loginstyle.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function(){
+                $("input#username").on({
+                    keydown: function(e) {
+                        if (e.which === 32)
+                        return false;
+                    },
+                    change: function() {
+                        this.value = this.value.replace(/\s/g, "");
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="main_container">
@@ -105,7 +119,7 @@
                                             if(strtolower($dupelicateUsername_check->username) == strtolower($_POST["username"])){
                                                 echo "<form method=\"POST\">";
                                                     echo "<div class=\"txt_field\">";
-                                                        echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
+                                                        echo "<input required type=\"text\" id=\"username\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label style=\"color: red;\">Username bestaat al *</label>";
                                                     echo "</div>";
@@ -151,7 +165,7 @@
                                             else{
                                                 echo "<form method=\"POST\">";
                                                     echo "<div class=\"txt_field\">";
-                                                        echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
+                                                        echo "<input required type=\"text\" id=\"username\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Username *</label>";
                                                     echo "</div>";
@@ -198,7 +212,7 @@
                                         else{
                                             echo "<form method=\"POST\">";
                                                 echo "<div class=\"txt_field\">";
-                                                    echo "<input required type=\"text\" name=\"username\" maxlength=\"20\">";
+                                                    echo "<input required type=\"text\" id=\"username\" name=\"username\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Username *</label>";
                                                 echo "</div>";

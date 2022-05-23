@@ -104,6 +104,8 @@
             $stmt->bindValue(2,$iIs_admin);
             $stmt->bindValue(3,$iId);
             $stmt->execute();
+
+            return header("location:admin");
         }
     }
 
