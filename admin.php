@@ -41,7 +41,14 @@
             <div class="user_container">
                 <div class="inner_user">
                     <?php
+                        var_dump($_GET["status"]);
+                        var_dump($_GET["order"]);
                         include "adminChange.php";
+                        $select = userManager::selectOnAdmin(
+                            htmlspecialchars($_GET["status"]), 
+                            htmlspecialchars($_GET["order"]),
+                            htmlspecialchars($_GET["username"])
+                        );
                         echo "<form method=\"POST\">";
                         foreach($select as $allUsers){
                             switch($allUsers->is_admin){
@@ -127,8 +134,7 @@
                                             $allUsers->idperson,
                                             htmlspecialchars($_GET["search"])
                                         );
-                                        echo "<script>window.location.href = \"admin?search=" . htmlspecialchars($_GET["search"]) . "\"</script>";
-                                        // header("location:admin?search=" . htmlspecialchars($_GET["search"]));
+                                        echo "<script>window.location.href = \"admin?status=". $_GET['status'] . "&order=" . $_GET['order'] . "\"</script>";
                                     }
                                 }else{
                                     userManager::updateAsAdmin(
@@ -137,8 +143,7 @@
                                         $allUsers->idperson,
                                         htmlspecialchars($_GET["search"])
                                     );
-                                    echo "<script>window.location.href = \"admin?search=" . htmlspecialchars($_GET["search"]) . "\"</script>";
-                                    // header("location:admin?search=" . htmlspecialchars($_GET["search"]));
+                                    echo "<script>window.location.href = \"admin?status=". $_GET['status'] . "&order=" . $_GET['order'] . "\"</script>";
                                 }
                             }
                         }

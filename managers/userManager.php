@@ -35,13 +35,51 @@
 
             return $stmt->fetchObject();
         }
-        public static function selectOnAdmin($num){
+        public static function selectOnAdmin($GETusers, $GETorder){
             global $con;
 
-            $query = "SELECT * FROM user WHERE is_admin = ? ";
+            switch($GETusers){
+                default:
+                case "searchAll":
+                    $query = "SELECT * FROM user ";
+                    break;
+                case "searchUsers":
+                    $users = 0;
+                    $query = "SELECT * FROM user where is_admin = ? ";
+                    break;
+                case "searchMods":
+                    $users = 1;
+                    $query = "SELECT * FROM f1_db.user where is_admin = ? ";
+                    break;
+                case "searchAdmins":
+                    $users = 2;
+                    $query = "SELECT * FROM f1_db.user where is_admin = ? ";
+                    break;
+                case "searchModsEnAdmins":
+                    $users = 1;
+                    $users2 = 2;
+                    $query = "SELECT * FROM f1_db.user where is_admin = ? || ? ";
+                    break;
+            }
+            switch($GETorder){
+                default:
+                case "joinDate":
+                    $order = "getAll";
+                    break;
+                case "A-Z":
+                    $query .= "order by username asc ";
+                    break;
+                case "Z-A":
+                    $query .= "order by username desc ";
+                    break;
+            }
 
             $stmt=$con->prepare($query);
-            $stmt->bindValue(1, $num);
+            $stmt->bindValue(1, $users);
+            if($GETusers !== "searchModsEnAdmins"){
+            }else{
+                $stmt->bindValue(2, $users2);
+            }
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_OBJ);

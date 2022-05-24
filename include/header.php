@@ -6,7 +6,7 @@
         if($_SESSION["is_admin"] == 0){
 
         }else{
-            echo "<a href=\"admin?search=searchAll\">Admin</a>";
+            echo "<a href=\"admin?status=searchAll&order=joinDate\">Admin</a>";
         }
     ?>
     <a href="scoreboard">Scorebord</a>
