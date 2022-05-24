@@ -68,7 +68,7 @@
             if (in_array($cPF_fileLowerType, $cPF_allowedTypes)) {
                 if($cPF_fileError === 0){
                     if($cPF_fileSize < 3000000){
-                        if($oldfileName != "pfp/user_profile.png"){
+                        if($oldfileName != "pictures/user_profile.png"){
                             unlink("pfp/" . $oldfileName);
                         }
                         $cPF_fileNameUpload = uniqid("", true) . "." . $cPF_fileLowerType;
@@ -84,7 +84,7 @@
                         $stmt->bindValue(2, $id);
                         $stmt->execute();
 
-                        header("location:profile.php");
+                        header("location:profile");
                     }else{
                         echo "The image you uploaded was too big. Plz downscale the image or choose another one.";
                     }
@@ -124,9 +124,6 @@
             $stmt->bindValue(2,$iIs_admin);
             $stmt->bindValue(3,$iId);
             $stmt->execute();
-
-            return header("location:admin?search=$page_info");
-            return var_dump($page_info);
         }
     }
 
