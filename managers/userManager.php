@@ -35,6 +35,17 @@
 
             return $stmt->fetchObject();
         }
+        public static function selectOnAdmin($num){
+            global $con;
+
+            $query = "SELECT * FROM user WHERE is_admin = ? ";
+
+            $stmt=$con->prepare($query);
+            $stmt->bindValue(1, $num);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
         public static function updateProfilePicture($oldfileName, $file, $id){
             global $con;
 
@@ -101,7 +112,7 @@
             // 2 = is Admin met de rechten om andere admin te geven of te ontemen
 
         }
-        public static function updateAsAdmin($iUsername, $iIs_admin, $iId){
+        public static function updateAsAdmin($iUsername, $iIs_admin, $iId, $page_info){
             global $con;
 
             $query = "UPDATE user ";
@@ -114,7 +125,8 @@
             $stmt->bindValue(3,$iId);
             $stmt->execute();
 
-            return header("location:admin");
+            return header("location:admin?search=$page_info");
+            return var_dump($page_info);
         }
     }
 

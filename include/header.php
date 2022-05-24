@@ -6,13 +6,13 @@
         if($_SESSION["is_admin"] == 0){
 
         }else{
-            echo "<a href=\"admin\">Admin</a>";
+            echo "<a href=\"admin?search=searchAll\">Admin</a>";
         }
     ?>
     <a href="scoreboard">Scorebord</a>
     <a href="drivers">Coureurs</a>
     <?php
-    echo "<a href=\"profile.php?username=" . $_SESSION['username'] . "\">";
+    echo "<a href=\"profile?username=" . $_SESSION['username'] . "\">";
             echo "<img src=\"pfp/$pf->profile_picture\" alt=\"PFP\" class=\"pfp\">";
     echo "</a>";
     ?>
