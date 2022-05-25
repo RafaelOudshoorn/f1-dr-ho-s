@@ -1,7 +1,7 @@
                     <div class="searchFuncties_div">
                         <!-- Zoek functie om accounts op basis van welke rechten elk account heeft te sorteren. -->
                         <form action="admin" method="get" id="filter_form">
-                            <label for="status" class="textDarkColor">Filter:&nbsp;</label>
+                            <label for="status" style="color:#FFF;">Filter:&nbsp;</label>
                             <select class="browser-default custom-select mb-4 textDarkColor" name="status" id="status" onchange="status()">
                                 <option value="" disabled>Kies een optie</option>
                                 <?php
