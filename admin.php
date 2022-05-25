@@ -41,8 +41,8 @@
             <div class="user_container">
                 <div class="inner_user">
                     <?php
-                        var_dump($_GET["status"]);
-                        var_dump($_GET["order"]);
+                        // var_dump($_GET["status"]);
+                        // var_dump($_GET["order"]);
                         include "adminChange.php";
                         $select = userManager::selectOnAdmin(
                             htmlspecialchars($_GET["status"]), 

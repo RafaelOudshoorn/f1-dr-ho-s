@@ -38,27 +38,28 @@
         public static function selectOnAdmin($GETusers, $GETorder){
             global $con;
 
+            $query = "SELECT * FROM user ";
+
             switch($GETusers){
                 default:
                 case "searchAll":
-                    $query = "SELECT * FROM user ";
                     break;
                 case "searchUsers":
                     $users = 0;
-                    $query = "SELECT * FROM user where is_admin = ? ";
+                    $query .= "where is_admin = ? ";
                     break;
                 case "searchMods":
                     $users = 1;
-                    $query = "SELECT * FROM f1_db.user where is_admin = ? ";
+                    $query .= "where is_admin = ? ";
                     break;
                 case "searchAdmins":
                     $users = 2;
-                    $query = "SELECT * FROM f1_db.user where is_admin = ? ";
+                    $query .= "where is_admin = ? ";
                     break;
                 case "searchModsEnAdmins":
                     $users = 1;
                     $users2 = 2;
-                    $query = "SELECT * FROM f1_db.user where is_admin = ? || ? ";
+                    $query .= "where is_admin = ? || is_admin = ? ";
                     break;
             }
             switch($GETorder){

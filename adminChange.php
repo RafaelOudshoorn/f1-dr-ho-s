@@ -1,8 +1,8 @@
                     <div class="searchFuncties_div">
                         <!-- Zoek functie om accounts op basis van welke rechten elk account heeft te sorteren. -->
-                        <form action="admin" method="get">
+                        <form action="admin" method="get" id="filter_form">
                             <label for="status" class="textDarkColor">Filter:&nbsp;</label>
-                            <select class="browser-default custom-select mb-4 textDarkColor" name="status" id="searchStatusFuncties" onchange="status()">
+                            <select class="browser-default custom-select mb-4 textDarkColor" name="status" id="status" onchange="status()">
                                 <option value="" disabled>Kies een optie</option>
                                 <?php
                                     switch($_GET["status"]){
@@ -47,7 +47,7 @@
                                     }
                                 ?>
                             </select>
-                            <select class="browser-default custom-select mb-4 textDarkColor" name="order" onchange="order()">
+                            <select class="browser-default custom-select mb-4 textDarkColor" name="order" id="order" onchange="order()">
                                 <option value="" disabled>Kies een optie</option>
                                 <?php
                                     switch($_GET["order"]){
@@ -70,13 +70,27 @@
                                         case "":
                                             header("location:admin?status=" . $_GET["status"] . "&order=A-Z");
                                     }
-                                    // if(isset($_GET["username"])){
-                                    //     echo "<input type=\"text\" name=\"username\" maxlength=\"20\" style=\"margin-left: 5px; height: 25px;\" value=\"" . htmlspecialchars($_GET['username']) . "\" placeholder=\"zoek op username\">";
-                                    // }else{
-                                    //     echo "<input type=\"text\" name=\"username\" maxlength=\"20\" style=\"margin-left: 5px; height: 25px;\" placeholder=\"zoek op username\">";
-                                    // }
+                                    echo "<input type=\"text\" ";
+                                    echo "      name=\"username\" ";
+                                    echo "      maxlength=\"20\" ";
+                                    echo "      style=\"margin-left: 5px; height: 25px;\" ";
+                                    if(isset($_GET["username"])){
+                                        if($_GET["username"] === ''){
+                                            $_GET["username"] = null;
+                                            header("location:admin?status=" . htmlspecialchars($_GET['status']) . "&order=" . htmlspecialchars($_GET['order']));
+                                        }
+                                        echo "value=\"" . htmlspecialchars($_GET['username']) . "\" ";
+                                    }
+                                    echo "placeholder=\"zoek op username ...\">";
                                 ?>
-                                <input type="submit" value="Zoek Op" style="margin-left: 5px;width: 250px;">
                             </select>
                         </form>
                     </div>
+                    <script>
+                        $("#status").change(function(){
+                            $("#filter_form").submit();
+                        });
+                        $("#order").change(function(){
+                            $("#filter_form").submit();
+                        });
+                    </script>
