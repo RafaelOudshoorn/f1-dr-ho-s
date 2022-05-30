@@ -36,7 +36,7 @@
                         <th>Filler</th>
                         <th>Filler</th>
                         <th>Filler</th>
-                        <th>Filler</th>
+                        <th class="tableBtnSize"></th>
                     </thead>
                     <tbody>
                         <tr>
@@ -45,7 +45,7 @@
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
-                            <td>fffffffffff</td>
+                            <td><span class="material-symbols-outlined tableBtn">forward</span></td>
                         </tr>
                         <tr>
                             <td>fffffffffff</td>
@@ -53,7 +53,7 @@
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
-                            <td>fffffffffff</td>
+                            <td><span class="material-symbols-outlined tableBtn">forward</span></td>
                         </tr>
                         <tr>
                             <td>fffffffffff</td>
@@ -61,7 +61,7 @@
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
                             <td>fffffffffff</td>
-                            <td>fffffffffff</td>
+                            <td><span class="material-symbols-outlined tableBtn">forward</span></td>
                         </tr>
                     </tbody>
                 </table>
