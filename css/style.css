@@ -57,6 +57,9 @@ nav img:hover{
     color: #D2042D;
     cursor: pointer;
 }
+.tableR:hover{
+    color: black !important;
+}
 
 footer{
     height: 80px;
