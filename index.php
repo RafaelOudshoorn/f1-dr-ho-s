@@ -60,9 +60,9 @@
                                 $time= $timestring . $time;
                                 echo "<td>$time</td>";
                                 if($nextRace->IDrace !== $race->IDrace){
-                                    echo "<td><span class='material-symbols-outlined tableBtn'>forward</span></td>";
+                                    echo "<td class='tableBtnSize'><span class='material-symbols-outlined tableBtn'>forward</span></td>";
                                 }else{
-                                    echo "<td><span class='material-symbols-outlined tableBtn tableR'>forward</span></td>";
+                                    echo "<td class='tableBtnSize'><span class='material-symbols-outlined tableBtn tableR'>forward</span></td>";
                                 }
                                 
                             echo "</tr>";
