@@ -1,6 +1,8 @@
 <html>
     <head>
-        <?php include "include/head.php"; ?>
+        <?php include "include/head.php"; 
+            $races = RaceManager::select();
+        ?>
     </head>
     <body>
         <header>
@@ -31,39 +33,29 @@
             <div>
                 <table class="table table-striped">
                     <thead class="table-dark">
-                        <th>Filler</th>
-                        <th>Filler</th>
-                        <th>Filler</th>
-                        <th>Filler</th>
-                        <th>Filler</th>
-                        <th>Filler</th>
+                        <th>Race name</th>
+                        <th>Country</th>
+                        <th>Race Date</th>
+                        <th>Race Time</th>
+                        <th></th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                        </tr>
-                        <tr>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                        </tr>
-                        <tr>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                            <td>fffffffffff</td>
-                        </tr>
-                    </tbody>
+                        <?php
+                        foreach($races as $race){
+                            echo "<tr>";
+                            echo "<td>$race->raceName </td>";
+                            echo "<td>$race->country </td>";
+                            echo "<td>$race->race_date </td>";
+                            $time = $race->race_time;
+                            $timestring = substr($time ,0,2);
+                            $time = substr($time ,2,3);
+                            $timestring = $timestring + 2;
+                            $time= $timestring . $time;
+                            echo "<td>$time</td>";
+                            echo "<td><span class='material-symbols-outlined tableBtn'>forward</span></td>";
+                            echo "</tr>";
+                        }
+                        ?>
                 </table>
             </div>
         </main>
