@@ -8,6 +8,17 @@
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
+        public static function AankomendeRace(){
+            global $con;
+            $dateToday = date("Y-m-d");
+
+            $stmt = $con->prepare("SELECT * FROM race where race_date > ? limit 1 ");
+            $stmt->bindValue(1, $dateToday);
+            $stmt -> execute();
+
+            return $stmt->fetchObject();
+
+        }
         public static function insert(){
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/current.json');
@@ -23,7 +34,7 @@
         
                 $timesecond = $jsonItem->SecondPractice->time;
                 $timesecond = substr($timesecond,0,5);
-        
+
                 if (isset($jsonItem->ThirdPractice)){
                     $thirdPractice = $jsonItem->ThirdPractice->date;
         
@@ -40,11 +51,9 @@
         
                     $thirdPractice = "0000-00-00";
                     $timethird = "00:00";
-        
                 }
                 $timequaly = $jsonItem->Qualifying->time;
                 $timequaly = substr($timequaly, 0,5);
-        
                 
                 $stmt = $con -> prepare("INSERT INTO `f1_db`.`race` (`season`, `round`, `raceName`, `circuitid`, `circuitName`, `country`, `race_date`, `race_time`, `FirstPractice_date`, `FirstPractice_time`, `SecondPractice_date`, `SecondPractice_time`, `ThirdPractice_date`, `ThirdPractice_time`, `Qualifying_date`, `Qualifying_time`, `Sprint_date`, `Sprint_time`)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");

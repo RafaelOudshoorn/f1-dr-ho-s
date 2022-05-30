@@ -35,37 +35,42 @@
 
             return $stmt->fetchObject();
         }
-        public static function selectOnAdmin($GETusers, $GETorder){
+        public static function selectOnAdmin($GETusers, $GETorder, $GETusername){
             global $con;
 
-            $query = "SELECT * FROM user ";
+            $query = "SELECT * FROM user where";
+
 
             switch($GETusers){
                 default:
                 case "searchAll":
+                    $query = "SELECT * FROM user ";
                     break;
                 case "searchUsers":
                     $users = 0;
-                    $query .= "where is_admin = ? ";
+                    $query .= " is_admin = ? ";
                     break;
                 case "searchMods":
                     $users = 1;
-                    $query .= "where is_admin = ? ";
+                    $query .= " is_admin = ? ";
                     break;
                 case "searchAdmins":
                     $users = 2;
-                    $query .= "where is_admin = ? ";
+                    $query .= " is_admin = ? ";
                     break;
                 case "searchModsEnAdmins":
                     $users = 1;
                     $users2 = 2;
-                    $query .= "where is_admin = ? || is_admin = ? ";
+                    $query .= " is_admin = ? || is_admin = ? ";
                     break;
+            }
+            if(!isset($GETusername)){
+                $username = htmlspecialchars(strtolower($GETusername));
+                $query .= "username like ? ";
             }
             switch($GETorder){
                 default:
                 case "joinDate":
-                    $order = "getAll";
                     break;
                 case "A-Z":
                     $query .= "order by username asc ";
@@ -76,11 +81,26 @@
             }
 
             $stmt=$con->prepare($query);
-            $stmt->bindValue(1, $users);
-            if($GETusers !== "searchModsEnAdmins"){
+            if(!isset($GETusername)){
+                $stmt->bindValue(1, "%$username%");
+                $stmt->bindValue(2, $users);
+                if($GETusers !== "searchModsEnAdmins"){
+                }else{
+                    $stmt->bindValue(3, $users2);
+                }
             }else{
-                $stmt->bindValue(2, $users2);
+                $stmt->bindValue(1, $users);
+                if($GETusers !== "searchModsEnAdmins"){
+                }else{
+                    $stmt->bindValue(2, $users2);
+                }
             }
+            // $stmt->bindValue(1, $users);
+            // if($GETusers !== "searchModsEnAdmins"){
+            // }else{
+            //     $stmt->bindValue(2, $users2);
+            // }
+
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -101,7 +121,7 @@
             $cPF_allowedTypes = array(
                 "jpg",
                 "jpeg",
-                "gif",
+                // "gif",
                 "png"
             );
             if (in_array($cPF_fileLowerType, $cPF_allowedTypes)) {

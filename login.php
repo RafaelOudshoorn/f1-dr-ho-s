@@ -57,7 +57,7 @@
                                                         $_SESSION["username"] = $userInlog->username;
                                                         $_SESSION["is_admin"] = $userInlog->is_admin;
                                                         
-                                                        header("location:index.php");
+                                                        header("location:index");
                                                     }
                                                     else{
                                                         echo "<div class=\"txt_field\">";

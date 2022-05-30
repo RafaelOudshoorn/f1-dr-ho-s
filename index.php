@@ -2,6 +2,7 @@
     <head>
         <?php include "include/head.php"; 
             $races = RaceManager::select();
+            $nextRace = RaceManager::AankomendeRace();
         ?>
     </head>
     <body>
@@ -23,7 +24,9 @@
                 </div>
                 <div class="nextBlock">
                     <div class="nextTime">
-                        Tijd 21203-1203-1023
+                        <?php
+                            echo "Datum " .  $nextRace->race_date;
+                        ?>
                     </div>
                     <div class="nextButton">
                         Ga naar race
@@ -42,17 +45,21 @@
                     <tbody>
                         <?php
                         foreach($races as $race){
-                            echo "<tr>";
-                            echo "<td>$race->raceName </td>";
-                            echo "<td>$race->country </td>";
-                            echo "<td>$race->race_date </td>";
-                            $time = $race->race_time;
-                            $timestring = substr($time ,0,2);
-                            $time = substr($time ,2,3);
-                            $timestring = $timestring + 2;
-                            $time= $timestring . $time;
-                            echo "<td>$time</td>";
-                            echo "<td><span class='material-symbols-outlined tableBtn'>forward</span></td>";
+                            if($nextRace->IDrace !== $race->IDrace){
+                                echo "<tr>";
+                            }else{
+                                echo "<tr style=\"background:#D2042D; color:#FFFFFF;\">";
+                            }
+                                echo "<td>$race->raceName </td>";
+                                echo "<td>$race->country </td>";
+                                echo "<td>$race->race_date </td>";
+                                $time = $race->race_time;
+                                $timestring = substr($time ,0,2);
+                                $time = substr($time ,2,3);
+                                $timestring = $timestring + 2;
+                                $time= $timestring . $time;
+                                echo "<td>$time</td>";
+                                echo "<td><span class='material-symbols-outlined tableBtn'>forward</span></td>";
                             echo "</tr>";
                         }
                         ?>
