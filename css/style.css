@@ -53,6 +53,10 @@ nav img:hover{
 .tableBtnSize{
     width: 50px;
 }
+.tableBtnSize a{
+    text-decoration: none;
+    color: black;
+}
 .tableBtn:hover{
     color: #D2042D;
     cursor: pointer;
@@ -65,7 +69,7 @@ footer{
     height: 80px;
     width: 100%;
     background-color: #28282B;
-    margin-top: 1000px;
+    margin-top: 500px;
     color:white ; 
     display: grid;
     grid-template: 1fr / 1fr 1fr;
