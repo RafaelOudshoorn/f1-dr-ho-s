@@ -50,6 +50,14 @@ nav img:hover{
     border-color: #D2042D;
 }
 
+.tableBtnSize{
+    width: 50px;
+}
+.tableBtn:hover{
+    color: #D2042D;
+    cursor: pointer;
+}
+
 footer{
     height: 80px;
     width: 100%;

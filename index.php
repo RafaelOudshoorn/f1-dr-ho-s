@@ -56,6 +56,7 @@
                             echo "</tr>";
                         }
                         ?>
+                    </tbody>
                 </table>
             </div>
         </main>

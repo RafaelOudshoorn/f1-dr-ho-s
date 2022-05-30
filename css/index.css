@@ -47,11 +47,8 @@
 }
 .nextButton:hover{
     border-color: white;
-}@media only screen and (max-width: 600px) {
-    body {
-      background-color: lightblue;
-    }
-  }
+    cursor: pointer;
+}
 
 th{
     background-color: #28282B !important;
