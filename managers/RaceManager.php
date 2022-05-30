@@ -2,7 +2,7 @@
     class RaceManager{
         public static function select(){
             global $con;
-            $stmt = $con->prepare("SELECT * FROM race");
+            $stmt = $con->prepare("SELECT * FROM race order by IDrace asc");
             $stmt -> execute();
             
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
