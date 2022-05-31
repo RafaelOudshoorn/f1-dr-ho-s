@@ -28,9 +28,11 @@
                             echo "Datum " .  $nextRace->race_date;
                         ?>
                     </div>
-                    <div class="nextButton">
-                        Ga naar race
-                    </div>
+                    <?php
+                    echo "<div class=\"nextButton\" onclick=\"javascript:location.href='race?id=$nextRace->IDrace'\">";
+                        echo "Ga naar race";
+                    echo "</div>";
+                    ?>
                 </div>
             </div>
             <div>
@@ -60,11 +62,10 @@
                                 $time= $timestring . $time;
                                 echo "<td>$time</td>";
                                 if($nextRace->IDrace !== $race->IDrace){
-                                    echo "<td class='tableBtnSize'><span class='material-symbols-outlined tableBtn'>forward</span></td>";
+                                    echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace'><span class='material-symbols-outlined tableBtn'>forward</span></a></td>";
                                 }else{
-                                    echo "<td class='tableBtnSize'><span class='material-symbols-outlined tableBtn tableR'>forward</span></td>";
+                                    echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace' style='color:white;'><span class='material-symbols-outlined tableBtn tableR'>forward</span></a></td>";
                                 }
-                                
                             echo "</tr>";
                         }
                         ?>
