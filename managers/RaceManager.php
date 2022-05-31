@@ -2,10 +2,19 @@
     class RaceManager{
         public static function select(){
             global $con;
-            $stmt = $con->prepare("SELECT * FROM race order by IDrace asc");
+            $stmt = $con->prepare("SELECT * FROM race");
             $stmt -> execute();
             
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
+
+        }
+        public static function selectOnId($id){
+            global $con;
+            $stmt = $con->prepare("SELECT * FROM race where IDrace = ? ");
+            $stmt->bindValue(1, $id);
+            $stmt -> execute();
+            
+            return $stmt->fetchObject();
 
         }
         public static function AankomendeRace(){
