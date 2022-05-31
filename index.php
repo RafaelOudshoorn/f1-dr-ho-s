@@ -66,7 +66,6 @@
                                 }else{
                                     echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace' style='color:white;'><span class='material-symbols-outlined tableBtn tableR'>forward</span></a></td>";
                                 }
-                                
                             echo "</tr>";
                         }
                         ?>

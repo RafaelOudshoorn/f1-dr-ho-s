@@ -4,7 +4,6 @@
             global $con;
             $stmt = $con->prepare("SELECT * FROM driverstandings_overall");
             $stmt -> execute();
-            
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
