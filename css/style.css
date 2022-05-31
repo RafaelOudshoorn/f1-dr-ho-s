@@ -50,6 +50,9 @@ nav img:hover{
     border-color: #D2042D;
 }
 
+th{
+    background-color: #28282B !important;
+}
 .tableBtnSize{
     width: 50px;
 }
