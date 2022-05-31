@@ -26,11 +26,12 @@
         </script>
     </head>
     <body>
-        <div class="main_container">
-            <div class="inner_container">
-                <div class="login_main">
-                    <div class="login_left">
-                        <?php
+        <main>
+            <div class="loginLeft">
+                <img src="images/logo.png" alt="logo">
+            </div>
+            <div class="loginRight">
+            <?php
                             switch($_GET["form"]){
                                 case "login":
                                 case "":
@@ -41,13 +42,13 @@
 
                                             if($userInlog->email != false){
                                                 echo "<form method=\"POST\">";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"email\" name=\"email\" value=" . htmlspecialchars($_POST["email"]) . " maxlength=\"40\">";
                                                         echo "<span></span>";
                                                         echo "<label>Email</label>";
                                                     echo "</div>";
                                                     if(password_verify( $_POST["password"] , $userInlog->password)){
-                                                        echo "<div class=\"txt_field\">";
+                                                        echo "<div class=\"field\">";
                                                             echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                             echo "<span></span>";
                                                             echo "<label style=\"color:green;\">Wachtwoord correct</label>";
@@ -60,7 +61,7 @@
                                                         header("location:index");
                                                     }
                                                     else{
-                                                        echo "<div class=\"txt_field\">";
+                                                        echo "<div class=\"field\">";
                                                             echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                             echo "<span></span>";
                                                             echo "<label style=\"color:red;\">Wachtwoord niet correct</label>";
@@ -75,12 +76,12 @@
                                             }
                                             else{
                                                 echo "<form method=\"POST\">";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"email\" name=\"email\" value=" . htmlspecialchars($_POST["email"]) . " maxlength=\"40\">";
                                                     echo "<span></span>";
                                                     echo "<label style=\"color: red;\">Ongeldig Email Addres</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Wachtwoord</label>";
@@ -94,12 +95,12 @@
                                         }
                                         else{
                                             echo "<form method=\"POST\">";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"email\" name=\"email\" maxlength=\"40\">";
                                                     echo "<span></span>";
                                                     echo "<label>Email</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Wachtwoord</label>";
@@ -120,22 +121,22 @@
                                             $dupelicateEmail_check = loginManager::selectMailInsert(strtolower($_POST["email"]));
                                             if(strtolower($dupelicateUsername_check->username) == strtolower($_POST["username"])){
                                                 echo "<form method=\"POST\">";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" id=\"username\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label style=\"color: red;\">Username bestaat al *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["voornaam"]) . " name=\"voornaam\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Voornaam *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["achternaam"]) . " name=\"achternaam\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Achternaam *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"email\" value=" . htmlspecialchars($_POST["email"]) . " name=\"email\" maxlength=\"40\">";
                                                         echo "<span></span>";
                                                         if(strtolower($dupelicateEmail_check->email) == strtolower($_POST["email"])){
@@ -153,7 +154,7 @@
                                                             }
                                                         }
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Wachtwoord *</label>";
@@ -166,22 +167,22 @@
                                             }
                                             else{
                                                 echo "<form method=\"POST\">";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" id=\"username\" value=" . htmlspecialchars($_POST["username"]) . " name=\"username\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Username *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["voornaam"]) . " name=\"voornaam\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Voornaam *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"text\" value=" . htmlspecialchars($_POST["achternaam"]) . " name=\"achternaam\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Achternaam *</label>";
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"email\" value=" . htmlspecialchars($_POST["email"]) . " name=\"email\" maxlength=\"40\">";
                                                         echo "<span></span>";
                                                         if(strtolower($dupelicateEmail_check->email) == strtolower($_POST["email"])){
@@ -199,7 +200,7 @@
                                                             }
                                                         }
                                                     echo "</div>";
-                                                    echo "<div class=\"txt_field\">";
+                                                    echo "<div class=\"field\">";
                                                         echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                         echo "<span></span>";
                                                         echo "<label>Wachtwoord *</label>";
@@ -213,27 +214,27 @@
                                         }
                                         else{
                                             echo "<form method=\"POST\">";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"text\" id=\"username\" name=\"username\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Username *</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"text\" name=\"voornaam\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Voornaam *</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"text\" name=\"achternaam\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Achternaam *</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"email\" name=\"email\" maxlength=\"40\">";
                                                     echo "<span></span>";
                                                     echo "<label>Email *</label>";
                                                 echo "</div>";
-                                                echo "<div class=\"txt_field\">";
+                                                echo "<div class=\"field\">";
                                                     echo "<input required type=\"password\" name=\"password\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Wachtwoord *</label>";
@@ -248,13 +249,8 @@
                                     break;
                             }
                         ?>
-                    </div>
-                    <div class="login_right">
-
-                    </div>
-                </div>
             </div>
-            <span style="position: absolute;bottom: 0;right: 10px;color: black;font-size: 50px;">18+</span>
-        </div>
+                        
+        </main>
     </body>
 </html>
