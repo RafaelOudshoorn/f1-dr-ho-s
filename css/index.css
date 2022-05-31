@@ -49,3 +49,27 @@
     border-color: white;
     cursor: pointer;
 }
+th{
+    background-color: #28282B !important;
+}
+table{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border-bottom: #28282B solid 1px;
+}
+thead {
+    flex: 0 0 auto;
+}
+tbody {
+    height: 350px;
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+tr {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+}

@@ -4,6 +4,16 @@
             $races = RaceManager::select();
             $nextRace = RaceManager::AankomendeRace();
         ?>
+        <script>
+            $(document).ready(function(){
+                var offsetnow = document.getElementById("racenow").offsetTop;
+                // var offsetnow = $("#racenow").position();
+                alert(offsetnow);
+                var newOffsetnow = offsetnow / 1.15;
+                alert(newOffsetnow);
+                $("tbody").scrollTop(newOffsetnow);
+            });
+        </script>
     </head>
     <body>
         <header>
@@ -42,7 +52,7 @@
                         <th>Country</th>
                         <th>Race Date</th>
                         <th>Race Time</th>
-                        <th></th>
+                        <th style="width:68px;"></th>
                     </thead>
                     <tbody>
                         <?php
@@ -50,17 +60,19 @@
                             if($nextRace->IDrace !== $race->IDrace){
                                 echo "<tr>";
                             }else{
-                                echo "<tr style=\"background:#D2042D; color:#FFFFFF;\">";
+                                echo "<tr style=\"background:#D2042D; color:#FFFFFF;\" id=\"racenow\">";
                             }
                                 echo "<td>$race->raceName </td>";
                                 echo "<td>$race->country </td>";
                                 echo "<td>$race->race_date </td>";
+
                                 $time = $race->race_time;
                                 $timestring = substr($time ,0,2);
                                 $time = substr($time ,2,3);
                                 $timestring = $timestring + 2;
                                 $time= $timestring . $time;
                                 echo "<td>$time</td>";
+
                                 if($nextRace->IDrace !== $race->IDrace){
                                     echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace'><span class='material-symbols-outlined tableBtn'>forward</span></a></td>";
                                 }else{
