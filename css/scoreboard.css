@@ -1,0 +1,24 @@
+.select{
+    display: grid;
+    grid-template: 1fr / 200px 1fr 200px;
+    height: 50px;
+}
+#s1{
+    padding-left: 10px;
+    line-height: 50px;
+    background-color: #28282B;
+    color: white;
+    transition: .5s;
+}
+#s2{
+    background-color: #28282B;
+    transition: .5s;
+}
+#s3{
+    padding-right: 10px;
+    text-align: right;
+    line-height: 50px;
+    color: white;
+    background-color: #D2042D;
+    transition: .5s;
+}
