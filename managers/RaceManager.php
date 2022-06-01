@@ -28,6 +28,22 @@
             return $stmt->fetchObject();
 
         }
+        public static function eersteRace(){
+            global $con;
+
+            $stmt = $con->prepare("SELECT * FROM race order by IDrace ASC limit 1 ");
+            $stmt -> execute();
+
+            return $stmt->fetchObject();
+        }
+        public static function laatsteRace(){
+            global $con;
+
+            $stmt = $con->prepare("SELECT * FROM race order by IDrace DESC limit 1 ");
+            $stmt -> execute();
+
+            return $stmt->fetchObject();
+        }
         public static function insert(){
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/current.json');

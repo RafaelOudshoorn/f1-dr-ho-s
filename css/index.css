@@ -73,3 +73,7 @@ tr {
     display: table;
     table-layout: fixed;
 }
+tr input{
+    border: none;
+    background: none;
+}

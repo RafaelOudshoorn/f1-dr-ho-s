@@ -3,6 +3,8 @@
         <?php include "include/head.php"; 
             $races = RaceManager::select();
             $nextRace = RaceManager::AankomendeRace();
+
+            $_SESSION["race_id"] = $nextRace->IDrace;
         ?>
         <script>
             $(document).ready(function(){
@@ -36,7 +38,7 @@
                         ?>
                     </div>
                     <?php
-                    echo "<div class=\"nextButton\" onclick=\"javascript:location.href='race?id=$nextRace->IDrace'\">";
+                    echo "<div class=\"nextButton\" onclick=\"javascript:location.href='race'\">";
                         echo "Ga naar race";
                     echo "</div>";
                     ?>
@@ -47,6 +49,7 @@
                     <thead class="table-dark">
                         <th>Race name</th>
                         <th>Country</th>
+                        <th>Circuit</th>
                         <th>Race Date</th>
                         <th>Race Time</th>
                         <th style="width:68px;"></th>
@@ -61,6 +64,7 @@
                             }
                                 echo "<td>$race->raceName </td>";
                                 echo "<td>$race->country </td>";
+                                echo "<td>$race->circuitName </td>";
                                 echo "<td>$race->race_date </td>";
 
                                 $time = $race->race_time;
@@ -69,13 +73,22 @@
                                 $timestring = $timestring + 2;
                                 $time= $timestring . $time;
                                 echo "<td>$time</td>";
-
-                                if($nextRace->IDrace !== $race->IDrace){
-                                    echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace'><span class='material-symbols-outlined tableBtn'>forward</span></a></td>";
-                                }else{
-                                    echo "<td class='tableBtnSize'><a href='race?id=$race->IDrace' style='color:white;'><span class='material-symbols-outlined tableBtn tableR'>forward</span></a></td>";
-                                }
+                                echo "<form method=\"POST\">";
+                                    echo "<td class='tableBtnSize'>";
+                                        echo "<input type='submit' ";
+                                        if($nextRace->IDrace !== $race->IDrace){
+                                            echo "class='material-symbols-outlined tableBtn' ";
+                                        }else{
+                                            echo "class='material-symbols-outlined tableBtn tableR' ";
+                                        }
+                                        echo "value='forward' name='toRace$race->IDrace'>";
+                                    echo "</td>";
+                                echo "</form>";
                             echo "</tr>";
+                            if(isset($_POST["toRace$race->IDrace"])){
+                                $_SESSION["race_id"] = $race->IDrace;
+                                echo "<script>location.href='race'</script>";
+                            }
                         }
                         ?>
                     </tbody>
