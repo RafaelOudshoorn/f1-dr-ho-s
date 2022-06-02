@@ -22,7 +22,6 @@
     font-size: 60px;
     font-weight: 600;
     background: none;
-    border-radius: 50%;
     border: none;
 }
 .arrow_backward{
@@ -34,7 +33,5 @@
 .arrow_backward:hover, .arrow_forward:hover{
     margin-top: 70px;
     font-size: 80px;
-    border: solid 3px;
-    box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.3); 
     transition: .5s;
 }

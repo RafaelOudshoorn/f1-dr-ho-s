@@ -10,7 +10,7 @@
         <main>
             <div class="race_info_container">
                 <?php
-                    // Check of de get is ingevuld. Als de get niet goed is mee gegeven/verkeerd dan is ID de ID van de aankomende race.
+                    // Check of de sesson key is ingevuld. Als de session key niet goed is mee gegeven/verkeerd dan is ID de ID van de aankomende race.
                     // na testen.... het werkt niet ;( het is 00.20 nu... ik ga slapen
                     $nextRace = RaceManager::AankomendeRace();
                     if(!isset($_SESSION["race_id"])){
