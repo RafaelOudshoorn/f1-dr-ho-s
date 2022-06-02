@@ -7,9 +7,9 @@
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
-        public static function update(){
+        public static function update($qualiRacearray){
             $idD = 1;
-            $number = 5;
+            $number = $qualiRacearray;
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/2022/'.$number .'/qualifying.json');
             $jsonObject = json_decode($data);

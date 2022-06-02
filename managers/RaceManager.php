@@ -26,7 +26,16 @@
             $stmt -> execute();
 
             return $stmt->fetchObject();
+        }
+        public static function Qualirace(){
+            global $con;
+            $dateToday = date("Y-m-d");
 
+            $stmt = $con->prepare("SELECT * FROM race where Qualifying_date > ? limit 1 ");
+            $stmt->bindValue(1, $dateToday);
+            $stmt -> execute();
+
+            return $stmt->fetchObject();
         }
         public static function eersteRace(){
             global $con;
