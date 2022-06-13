@@ -25,21 +25,23 @@
             <div class="next">
                 <div class="nextTitle titleFont">
                     <div>
-                        Aankomende race:
+                        Upcoming race:
                     </div>
                     <div>
-                        Gegeven locatie idk
+                        <?php
+                            echo $nextRace->raceName;
+                        ?>
                     </div>
                 </div>
                 <div class="nextBlock">
                     <div class="nextTime">
                         <?php
-                            echo "Datum " .  $nextRace->race_date;
+                            echo $nextRace->race_date;
                         ?>
                     </div>
                     <?php
                     echo "<div class=\"nextButton\" onclick=\"javascript:location.href='race'\">";
-                        echo "Ga naar race";
+                        echo "Go to race";
                     echo "</div>";
                     ?>
                 </div>

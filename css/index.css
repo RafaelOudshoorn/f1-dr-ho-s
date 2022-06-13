@@ -2,7 +2,7 @@
     height: 300px;
     width: 85%;
     background-color: #28282B;
-    margin: 25px auto 0 auto;
+    margin: 25px auto 25px auto;
     display: grid;
     grid-template: 1fr 1fr / 1fr;
     color: white;
@@ -32,6 +32,7 @@
     align-items: center;
     border: 2px solid #D2042D;
     border-radius: 10px;
+    font-weight: bold;
 }
 .nextButton{
     color: white;
@@ -77,3 +78,53 @@ tr input{
     border: none;
     background: none;
 }
+@media only screen and (max-width: 1275px){
+    .next{
+      font-size: 40px;
+    }
+    .nextTitle{
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        margin: 25px auto 25px auto;
+    }
+    .nextTime{
+        font-size: 30px;
+    }
+    .nextButton{
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 550px){
+    .next{
+        height: 95%;
+        width: 100%;
+        background-color: #28282B;
+        margin: 0;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        color: white;
+        font-size: 40px;
+        border-radius: 0;
+    }
+    .nextTitle{
+        height: 150px;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr;
+        margin: 25px auto 25px auto;
+        text-align: center;
+    }
+    .nextBlock{
+        display: grid;
+        margin: 0 0 150px 0;
+    }
+    .nextTime{
+        font-size: 30px;
+        width: 200px;
+        margin-bottom: 25px;
+    }
+    .nextButton{
+        font-size: 30px;
+        width: 200px;
+    }
+}
+    

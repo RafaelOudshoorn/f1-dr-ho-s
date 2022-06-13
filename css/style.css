@@ -17,6 +17,10 @@ header{
     display: grid;
     grid-template: 1fr / 100px 1fr;
 }
+.logoBox{
+    height: 80px;
+    width: 80px;
+}
 .logo{
     height: 80px;
     width: 80px;
@@ -96,4 +100,21 @@ footer span{
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+@media only screen and (max-width: 550px){
+    header{
+        font-size: 13px;
+        grid-template: 1fr / 70px 1fr;
+    }
+    .logo{
+        height: 70px;
+        width: 70px;
+    }
+    .pfp{
+        height: 40px;
+        width: 40px;
+    }
+    nav a span{
+        font-size: 20px !important;
+    }
 }

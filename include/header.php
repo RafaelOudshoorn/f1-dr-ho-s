@@ -1,4 +1,4 @@
-<a href="index">
+<a href="index"">
     <img src="images/logo.png" alt="logo" class="logo">
 </a>
 <nav>
