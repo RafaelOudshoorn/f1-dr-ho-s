@@ -7,11 +7,8 @@
         <script>
             $(document).ready(function(){
                 var offsetnow = document.getElementById("racenow").offsetTop;
-                // var offsetnow = $("#racenow").position();
-                alert(offsetnow);
-                var newOffsetnow = offsetnow / 1.15;
-                alert(newOffsetnow);
-                $("tbody").scrollTop(newOffsetnow);
+                var a = offsetnow - 42;
+                $("tbody").scrollTop(a);
             });
         </script>
     </head>
