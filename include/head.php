@@ -14,8 +14,7 @@
     $time = new DateTime();
     $time = $time->format('H:i');
     if($time == $date){
-        include "update.php";
-        update::update();
+        UpdateManager::update();
     }
 
 ?>
