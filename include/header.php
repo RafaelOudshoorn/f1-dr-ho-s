@@ -13,7 +13,13 @@
     <a href="drivers">Coureurs</a>
     <?php
     echo "<a href=\"profile?username=" . $_SESSION['username'] . "\">";
-            echo "<img src=\"pfp/$pf->profile_picture\" alt=\"PFP\" class=\"pfp\">";
+            if(!file_exists("pfp/$pf->profile_picture")){
+                // echo "<script>alert('1')</script>";
+                echo "<img src=\"pfp/pictures/user_profile_error.png\" alt=\"PFP\" class=\"pfp\">";
+            }else{
+                // echo "<script>alert('2')</script>";
+                echo "<img src=\"pfp/$pf->profile_picture\" alt=\"PFP\" class=\"pfp\">";
+            }
     echo "</a>";
     ?>
     <a href="logout">

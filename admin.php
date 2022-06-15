@@ -63,7 +63,12 @@
                                     break;
                             }
                                 echo "<div class=\"ucPicture\">";
-                                    echo "<img src=\"pfp/" . $allUsers->profile_picture . "\">";
+                                    if(!file_exists("pfp/$allUsers->profile_picture")){
+                                        $UserPFP = "pictures/user_profile_error.png";
+                                    }else{
+                                        $UserPFP = $allUsers->profile_picture;
+                                    }
+                                    echo "<img src=\"pfp/" . $UserPFP . "\">";
                                 echo "</div>";
                                 echo "<div class=\"ucName\">";
                                     echo "<h2>Username = <input required type=\"text\" id=\"usernameUpdate\" name=\"usernameUpdate$allUsers->username\" value=\"$allUsers->username\" style=\"width:150px;\" maxlength=\"20\"></h2>";

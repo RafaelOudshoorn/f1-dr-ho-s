@@ -105,7 +105,7 @@
 
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
-        public static function updateProfilePicture($oldfileName, $file, $id){
+        public static function updateProfilePicture($oldfileName, $file, $id, $getUsername){
             global $con;
 
             $cPF_file = $file;
@@ -143,7 +143,7 @@
                         $stmt->bindValue(2, $id);
                         $stmt->execute();
 
-                        header("location:profile");
+                        header("location:profile?username=$getUsername");
                     }else{
                         echo "The image you uploaded was too big. Plz downscale the image or choose another one.";
                     }
@@ -151,7 +151,7 @@
                     echo "There was an error uploading your profile picture. Plz try again.";
                 }
             }else{
-                echo "Upload an picture you moron!!";
+                // echo "Upload an picture!";
             }
         }
         public static function insert(){

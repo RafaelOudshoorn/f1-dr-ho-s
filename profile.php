@@ -18,8 +18,8 @@
                 }
             }
             if(isset($_POST["DPF"])){
-                userManager::DeleteProfilePicture($_SESSION["user_id"]);
-                header("location:profile?username=" . $_SESSION["username"]);
+                userManager::DeleteProfilePicture($gUInfo->idperson);
+                header("location:profile?username=" . $_GET["username"]);
             }
         ?>
     </head>
@@ -29,23 +29,31 @@
         </header>
         <main>
         <?php
+            echo "<p>User: <span style=\"font-weight:700;\">$gUInfo->username</span></p>";
             echo "<div class=\"profielAfbeeldingKader\">";
-            echo "<img src=\"pfp/" . $gUInfo->profile_picture . "\" class=\"profielAfbeelding\" >";
+            if(!file_exists("pfp/$gUInfo->profile_picture")){
+                $gUInfoPFP = "pictures/user_profile_error.png";
+            }else{
+                $gUInfoPFP = $gUInfo->profile_picture;
+            }
+            echo "<img src=\"pfp/" . $gUInfoPFP . "\" class=\"profielAfbeelding\" >";
             echo "</div><br/>";
             if($_SESSION["is_admin"] == 0 && $_GET["username"] != $_SESSION["username"]){
 
             }else{
                 if(isset($_POST["cPF"])){
                     $pfUpdate = userManager::updateProfilePicture(
-                        $pf->profile_picture,
+                        $gUInfo->profile_picture,
                         $_FILES['file'],
-                        $_SESSION["user_id"]
+                        $gUInfo->idperson,
+                        htmlspecialchars($_GET["username"])
                     );
                 }
                 echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
                 echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\"><br/>";
                 echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\"><br>";
-                if($gUInfo->profile_picture != "pictures/user_profile.png"){
+
+                if($gUInfoPFP != "pictures/user_profile.png"){
                     echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
                 }
                 echo "</form>";

@@ -11,7 +11,8 @@
             <div class="race_info_container">
                 <?php
                     // Check of de sesson key is ingevuld. Als de session key niet goed is mee gegeven/verkeerd dan is ID de ID van de aankomende race.
-                    // na testen.... het werkt niet ;( het is 00.20 nu... ik ga slapen
+                    // update 6/6/2022 als je niet bent aangemeld dan kan je deze pagina niet zien. 
+                    // en in de index worde $_session["race_id"] al ingevuld met nextRace.
                     $nextRace = RaceManager::AankomendeRace();
                     if(!isset($_SESSION["race_id"])){
                         $race = RaceManager::selectOnId($nextRace->IDrace);
@@ -44,6 +45,9 @@
                         echo "<script>location.href='race'</script>";
                     }
                 ?>
+                    <div class="race_form" style="margin-top:50px;">
+                        
+                    </div>
                 </div>
             </div>
         </main>
