@@ -157,6 +157,30 @@
         public static function insert(){
             
         }
+        public static function DeleteProfilePicture($id){
+            global $con;
+
+            $stmt=$con->prepare("SELECT * FROM user WHERE idperson = ? ");
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+            $user = $stmt->fetchObject();
+
+            if($user->profile_picture != "pictures/user_profile.png"){
+                unlink("pfp/" . $user->profile_picture);
+            }
+
+            $query = "UPDATE user ";
+            $query .= "SET profile_picture = ? ";
+            $query .= "WHERE idperson = ? ";
+
+            $stmt=$con->prepare($query);
+            $stmt->bindValue(1, "pictures/user_profile.png");
+            $stmt->bindValue(2, $id);
+            $stmt->execute();
+
+
+            
+        }
         public static function checkIsAdmin($id){
             global $con;
 

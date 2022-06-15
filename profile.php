@@ -6,16 +6,20 @@
             // check of de get goed is ingevuld.
             // zo NIET dan ga je naar je eigen profiel.
             if(!isset($_GET["username"])){
-                header("location:profile.php?username=" . $_SESSION["username"]);
+                header("location:profile?username=" . $_SESSION["username"]);
             }else{
                 if(! $_GET["username"]){
-                    header("location:profile.php?username=" . $_SESSION["username"]);
+                    header("location:profile?username=" . $_SESSION["username"]);
                 }else{
                     $gUInfo = userManager::selectOnUsernameGet($_GET["username"]);
                     if($gUInfo->username != $_GET["username"]){
-                        header("location:profile.php?username=" . $_SESSION["username"]);
+                        header("location:profile?username=" . $_SESSION["username"]);
                     }
                 }
+            }
+            if(isset($_POST["DPF"])){
+                userManager::DeleteProfilePicture($_SESSION["user_id"]);
+                header("location:profile?username=" . $_SESSION["username"]);
             }
         ?>
     </head>
@@ -28,9 +32,8 @@
             echo "<div class=\"profielAfbeeldingKader\">";
             echo "<img src=\"pfp/" . $gUInfo->profile_picture . "\" class=\"profielAfbeelding\" >";
             echo "</div><br/>";
+            if($_SESSION["is_admin"] == 0 && $_GET["username"] != $_SESSION["username"]){
 
-            if($_GET["username"] !== $_SESSION["username"]){
-                
             }else{
                 if(isset($_POST["cPF"])){
                     $pfUpdate = userManager::updateProfilePicture(
@@ -41,7 +44,10 @@
                 }
                 echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
                 echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\"><br/>";
-                echo "<input type=\"submit\" name=\"cPF\" value=\"change profile picture\">";
+                echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\"><br>";
+                if($gUInfo->profile_picture != "pictures/user_profile.png"){
+                    echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
+                }
                 echo "</form>";
             }
         ?>
