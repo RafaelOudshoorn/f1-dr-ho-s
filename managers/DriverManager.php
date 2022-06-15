@@ -10,8 +10,8 @@
         }
         public static function truncate(){
             global $con;
-
             $stmt = $con->prepare("TRUNCATE TABLE drivers");
+            $stmt-> execute();
             $stmt = $con->prepare("ALTER TABLE drivers AUTO_INCREMENT = 1");
             $stmt -> execute();
         }

@@ -11,6 +11,7 @@
             global $con;
 
             $stmt = $con->prepare("TRUNCATE TABLE qualifying");
+            $stmt-> execute();
             $stmt = $con->prepare("ALTER TABLE qualifying AUTO_INCREMENT = 1");
             $stmt -> execute();
         }
@@ -84,7 +85,7 @@
         }
 
         public static function insert(){
-            $number = 5;
+            $number = 1;
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/2022/'.$number .'/qualifying.json');
             $jsonObject = json_decode($data);

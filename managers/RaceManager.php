@@ -57,6 +57,7 @@
             global $con;
 
             $stmt = $con->prepare("TRUNCATE TABLE race");
+            $stmt-> execute();
             $stmt = $con->prepare("ALTER TABLE race AUTO_INCREMENT = 1");
             $stmt -> execute();
         }

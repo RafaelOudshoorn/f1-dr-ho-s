@@ -1,5 +1,5 @@
 <?php
-    class update{
+    class UpdateManager{
         public static function update(){
             $now = date("Y-m-d",(strtotime("now")));
             $sun = date("Y-m-d",(strtotime("this sun")));
@@ -92,9 +92,25 @@
             };
         }
         public static function updateAll(){
+            global $con;
+            $stmt = $con->prepare("SET FOREIGN_KEY_CHECKS = 0");
+            $stmt -> execute();
             Driverstandings_overall::truncate();
             LastraceManager::truncate();
+            DriverManager::truncate();
             QualifyingManager::truncate();
+            RaceManager::truncate();
+            $stmt = $con->prepare("TRUNCATE TABLE points");
+            $stmt -> execute();
+
+            $stmt = $con->prepare("SET FOREIGN_KEY_CHECKS = 1");
+            $stmt -> execute();
+            
+            RaceManager::insert();
+            DriverManager::insert();
+            QualifyingManager::insert();
+            LastraceManager::insert();
+            Driverstandings_overall::insert();
         }
     }
     

@@ -11,6 +11,7 @@
             global $con;
 
             $stmt = $con->prepare("TRUNCATE TABLE driverstandings_overall");
+            $stmt ->execute();
             $stmt = $con->prepare("ALTER TABLE driverstandings_overall AUTO_INCREMENT = 1");
             $stmt -> execute();
         }
