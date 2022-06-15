@@ -30,6 +30,9 @@
         <main>
         <?php
             echo "<p>User: <span style=\"font-weight:700;\">$gUInfo->username</span></p>";
+            echo "<p>Name: <span style=\"font-weight:700;\">$gUInfo->firstname $gUInfo->lastname</span></p>";
+            echo "<p>Email: <span style=\"font-weight:700;\">$gUInfo->email</span></p>";
+            echo "<p>Total Points: <span style=\"font-weight:700;\">$gUInfo->total_points</span></p>";
             echo "<div class=\"profielAfbeeldingKader\">";
             if(!file_exists("pfp/$gUInfo->profile_picture")){
                 $gUInfoPFP = "pictures/user_profile_error.png";
