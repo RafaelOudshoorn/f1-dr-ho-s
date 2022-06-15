@@ -7,6 +7,13 @@
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
+        public static function truncate(){
+            global $con;
+
+            $stmt = $con->prepare("TRUNCATE TABLE driverstandings_overall");
+            $stmt = $con->prepare("ALTER TABLE driverstandings_overall AUTO_INCREMENT = 1");
+            $stmt -> execute();
+        }
         public static function update(){
             $idD = 1;
             global $con;

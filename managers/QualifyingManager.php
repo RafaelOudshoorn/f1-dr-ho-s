@@ -7,6 +7,13 @@
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
+        public static function truncate(){
+            global $con;
+
+            $stmt = $con->prepare("TRUNCATE TABLE qualifying");
+            $stmt = $con->prepare("ALTER TABLE qualifying AUTO_INCREMENT = 1");
+            $stmt -> execute();
+        }
         public static function update($qualiRacearray){
             $idD = 1;
             $number = $qualiRacearray;

@@ -7,6 +7,17 @@
     $_SESSION["username"] = $ac->username;
     $_SESSION["is_admin"] = $ac->is_admin;
     $pf = userManager::getProfileInfoHeader($_SESSION["user_id"]);
+
+    date_default_timezone_set("Europe/Amsterdam");
+    $date = date_create('23:55');
+    $date = $date->format('H:i');
+    $time = new DateTime();
+    $time = $time->format('H:i');
+    if($time == $date){
+        include "update.php";
+        update::update();
+    }
+
 ?>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />

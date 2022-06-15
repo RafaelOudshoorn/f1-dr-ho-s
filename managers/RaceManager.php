@@ -53,6 +53,13 @@
 
             return $stmt->fetchObject();
         }
+        public static function truncate(){
+            global $con;
+
+            $stmt = $con->prepare("TRUNCATE TABLE race");
+            $stmt = $con->prepare("ALTER TABLE race AUTO_INCREMENT = 1");
+            $stmt -> execute();
+        }
         public static function insert(){
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/current.json');

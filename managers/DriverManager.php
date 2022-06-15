@@ -8,6 +8,13 @@
             
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
         }
+        public static function truncate(){
+            global $con;
+
+            $stmt = $con->prepare("TRUNCATE TABLE drivers");
+            $stmt = $con->prepare("ALTER TABLE drivers AUTO_INCREMENT = 1");
+            $stmt -> execute();
+        }
         public static function update(){
             global $con;
             $stmt=$con->prepare("SELECT IDdrivers from drivers");
