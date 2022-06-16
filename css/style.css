@@ -118,3 +118,19 @@ footer span{
         font-size: 20px !important;
     }
 }
+.unhide{
+    display: none;
+}
+@media only screen and (max-width: 1000px){
+    .hide1000{
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 700px){
+    .hide700{
+        display: none !important;
+    }
+    .unhide{
+        display: table-cell;
+    }
+}
