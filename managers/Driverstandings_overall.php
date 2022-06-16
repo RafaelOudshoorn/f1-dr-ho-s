@@ -60,7 +60,7 @@
         }
 
         public static function insert(){
-            $number = 5;
+            $number = 1;
             global $con;
             $data = file_get_contents('http://ergast.com/api/f1/2022/'.$number .'/driverStandings.json');
             $jsonObject = json_decode($data);

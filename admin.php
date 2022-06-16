@@ -39,8 +39,19 @@
         </header>
         <main>
             <div class="user_container">
+                <form method="POST">
+                    <input value="Data manual update" name="data" type="submit"/>
+                    <input value="Update na season" name="season" type="submit"/>
+                </form>
                 <div class="inner_user">
                     <?php
+                        if(isset($_POST["season"])){
+                            UpdateManager::updateAll();
+                        }
+                        if(isset($_POST["data"])){
+                            UpdateManager::updatemanual();
+                        }
+
                         // var_dump($_GET["status"]);
                         // var_dump($_GET["order"]);
                         include "adminChange.php";
