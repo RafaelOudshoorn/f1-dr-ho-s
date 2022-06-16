@@ -11,17 +11,18 @@
         <main>
             <table class="table table-striped">
                 <thead class="table-dark">
-                    <th>Race name</th>
+                    <th class="hide1000">Race name</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>nationality</th>
-                    <th>permanentNumber</th>
+                    <th class="hide700">permanentNumber</th>
+                    <th class="unhide"></th>
                 </thead>
                 <tbody>
                     <?php
                         foreach($drivers as $driver){
                             echo "<tr>";
-                            echo "<td>$driver->drivername</td>";
+                            echo "<td class='hide1000'>$driver->drivername</td>";
                             echo "<td>$driver->givenName</td>";
                             echo "<td>$driver->familyName</td>";
                             echo "<td>$driver->nationality</td>";

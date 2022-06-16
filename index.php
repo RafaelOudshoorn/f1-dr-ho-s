@@ -50,7 +50,7 @@
                 <table class="table table-striped">
                     <thead class="table-dark">
                         <th>Race name</th>
-                        <th>Country</th>
+                        <th class="hide1000">Country</th>
                         <th>Circuit</th>
                         <th>Race Date</th>
                         <th>Race Time</th>
@@ -65,7 +65,7 @@
                                 echo "<tr style=\"background:#D2042D; color:#FFFFFF;\" id=\"racenow\">";
                             }
                                 echo "<td>$race->raceName </td>";
-                                echo "<td>$race->country </td>";
+                                echo "<td class='hide1000'>$race->country </td>";
                                 echo "<td>$race->circuitName </td>";
                                 echo "<td>$race->race_date </td>";
 
