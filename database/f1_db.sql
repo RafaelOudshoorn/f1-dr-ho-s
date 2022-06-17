@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 19 mei 2022 om 21:18
--- Serverversie: 5.7.36
--- PHP-versie: 7.4.26
+-- Gegenereerd op: 17 jun 2022 om 07:31
+-- Serverversie: 5.7.31
+-- PHP-versie: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `bet`
+--
+
+DROP TABLE IF EXISTS `bet`;
+CREATE TABLE IF NOT EXISTS `bet` (
+  `idBet` int(11) NOT NULL AUTO_INCREMENT,
+  `position` varchar(45) NOT NULL,
+  `driver ID` varchar(45) NOT NULL,
+  `user_idperson` int(11) NOT NULL,
+  PRIMARY KEY (`idBet`),
+  KEY `fk_Bet_user1_idx` (`user_idperson`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `construcotors`
 --
 
@@ -35,22 +51,9 @@ CREATE TABLE IF NOT EXISTS `construcotors` (
   `url` varchar(45) DEFAULT NULL,
   `name` varchar(45) NOT NULL,
   `nationality` varchar(45) NOT NULL,
-  PRIMARY KEY (`idConstrucotors`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `construcotors_has_drivers`
---
-
-DROP TABLE IF EXISTS `construcotors_has_drivers`;
-CREATE TABLE IF NOT EXISTS `construcotors_has_drivers` (
-  `Construcotors_idConstrucotors` int(11) NOT NULL,
-  `Drivers_idDrivers` int(11) NOT NULL,
-  PRIMARY KEY (`Construcotors_idConstrucotors`,`Drivers_idDrivers`),
-  KEY `fk_Construcotors_has_Drivers_Drivers1_idx` (`Drivers_idDrivers`),
-  KEY `fk_Construcotors_has_Drivers_Construcotors1_idx` (`Construcotors_idConstrucotors`)
+  `drivers_IDdrivers` int(11) NOT NULL,
+  PRIMARY KEY (`idConstrucotors`),
+  KEY `fk_construcotors_drivers1_idx` (`drivers_IDdrivers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `drivers` (
   `dateOfBirth` varchar(45) NOT NULL,
   `nationality` varchar(45) NOT NULL,
   PRIMARY KEY (`IDdrivers`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `drivers`
@@ -128,26 +131,26 @@ CREATE TABLE IF NOT EXISTS `driverstandings_lastrace` (
 --
 
 INSERT INTO `driverstandings_lastrace` (`IDdriverStandings_lastrace`, `season`, `round`, `timerace`, `permanentNumber`, `position`, `points`, `grid`, `status`, `time`, `Drivers_idDrivers`, `race_idRace`) VALUES
-(1, '2022', '5', '19:30:00', 33, '1', '26', 3, 'Finished', '1:34:24.258', 19, 5),
-(2, '2022', '5', '19:30:00', 16, '2', '18', 1, 'Finished', '+3.786', 8, 5),
-(3, '2022', '5', '19:30:00', 55, '3', '15', 2, 'Finished', '+8.229', 15, 5),
-(4, '2022', '5', '19:30:00', 11, '4', '12', 4, 'Finished', '+10.638', 12, 5),
-(5, '2022', '5', '19:30:00', 63, '5', '10', 12, 'Finished', '+18.582', 14, 5),
-(6, '2022', '5', '19:30:00', 44, '6', '8', 6, 'Finished', '+21.368', 5, 5),
-(7, '2022', '5', '19:30:00', 77, '7', '6', 5, 'Finished', '+25.073', 3, 5),
-(8, '2022', '5', '19:30:00', 31, '8', '4', 20, 'Finished', '+28.386', 11, 5),
-(9, '2022', '5', '19:30:00', 23, '9', '2', 18, 'Finished', '+32.365', 1, 5),
-(10, '2022', '5', '19:30:00', 18, '10', '1', 0, 'Finished', '+37.026', 17, 5),
-(11, '2022', '5', '19:30:00', 14, '11', '0', 11, 'Finished', '+37.128', 2, 5),
-(12, '2022', '5', '19:30:00', 22, '12', '0', 9, 'Finished', '+40.146', 18, 5),
-(13, '2022', '5', '19:30:00', 3, '13', '0', 14, 'Finished', '+40.902', 13, 5),
-(14, '2022', '5', '19:30:00', 6, '14', '0', 19, 'Finished', '+49.936', 7, 5),
-(15, '2022', '5', '19:30:00', 47, '15', '0', 15, 'Finished', '+1:13.305', 16, 5),
-(16, '2022', '5', '19:30:00', 20, '16', '0', 16, 'Front wing', '00:00', 9, 5),
-(17, '2022', '5', '19:30:00', 5, '17', '0', 0, 'Collision', '00:00', 20, 5),
-(18, '2022', '5', '19:30:00', 10, '18', '0', 7, 'Suspension', '00:00', 4, 5),
-(19, '2022', '5', '19:30:00', 4, '19', '0', 8, 'Collision', '00:00', 10, 5),
-(20, '2022', '5', '19:30:00', 24, '20', '0', 17, 'Water leak', '00:00', 21, 5);
+(1, '2022', '8', '11:00:00', 33, '1', '25', 3, 'Finished', '1:34:05.941', 19, 8),
+(2, '2022', '8', '11:00:00', 11, '2', '19', 2, 'Finished', '+20.823', 12, 8),
+(3, '2022', '8', '11:00:00', 63, '3', '15', 5, 'Finished', '+45.995', 14, 8),
+(4, '2022', '8', '11:00:00', 44, '4', '12', 7, 'Finished', '+1:11.679', 5, 8),
+(5, '2022', '8', '11:00:00', 10, '5', '10', 6, 'Finished', '+1:17.299', 4, 8),
+(6, '2022', '8', '11:00:00', 5, '6', '8', 9, 'Finished', '+1:24.099', 20, 8),
+(7, '2022', '8', '11:00:00', 14, '7', '6', 10, 'Finished', '+1:28.596', 2, 8),
+(8, '2022', '8', '11:00:00', 3, '8', '4', 12, 'Finished', '+1:32.207', 13, 8),
+(9, '2022', '8', '11:00:00', 4, '9', '2', 11, 'Finished', '+1:32.556', 10, 8),
+(10, '2022', '8', '11:00:00', 31, '10', '1', 13, 'Finished', '+15.628', 11, 8),
+(11, '2022', '8', '11:00:00', 77, '11', '0', 15, '+1 Lap', '00:00', 3, 8),
+(12, '2022', '8', '11:00:00', 23, '12', '0', 17, '+1 Lap', '00:00', 1, 8),
+(13, '2022', '8', '11:00:00', 22, '13', '0', 8, '+1 Lap', '00:00', 18, 8),
+(14, '2022', '8', '11:00:00', 47, '14', '0', 20, '+1 Lap', '00:00', 16, 8),
+(15, '2022', '8', '11:00:00', 6, '15', '0', 18, '+1 Lap', '00:00', 7, 8),
+(16, '2022', '8', '11:00:00', 18, '16', '0', 19, 'Vibrations', '00:00', 17, 8),
+(17, '2022', '8', '11:00:00', 20, '17', '0', 16, 'Power Unit', '00:00', 9, 8),
+(18, '2022', '8', '11:00:00', 24, '18', '0', 14, 'Technical', '00:00', 21, 8),
+(19, '2022', '8', '11:00:00', 16, '19', '0', 1, 'Power Unit', '00:00', 8, 8),
+(20, '2022', '8', '11:00:00', 55, '20', '0', 4, 'Brakes', '00:00', 15, 8);
 
 -- --------------------------------------------------------
 
@@ -169,34 +172,33 @@ CREATE TABLE IF NOT EXISTS `driverstandings_overall` (
   PRIMARY KEY (`IDdriverStandings_overall`),
   KEY `fk_DriverStandings_overall_Drivers_idx` (`Drivers_idDrivers`),
   KEY `fk_driverstandings_overall_race1_idx` (`race_idRace`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `driverstandings_overall`
 --
 
 INSERT INTO `driverstandings_overall` (`IDdriverStandings_overall`, `season`, `round`, `position`, `points`, `wins`, `permanentNumber`, `Drivers_idDrivers`, `race_idRace`) VALUES
-(1, 2022, 5, 1, 104, 2, 16, 8, 5),
-(2, 2022, 5, 2, 85, 3, 33, 19, 5),
-(3, 2022, 5, 3, 66, 0, 11, 12, 5),
-(4, 2022, 5, 4, 59, 0, 63, 14, 5),
-(5, 2022, 5, 5, 53, 0, 55, 15, 5),
-(6, 2022, 5, 6, 36, 0, 44, 5, 5),
-(7, 2022, 5, 7, 35, 0, 4, 10, 5),
-(8, 2022, 5, 8, 30, 0, 77, 3, 5),
-(9, 2022, 5, 9, 24, 0, 31, 11, 5),
-(10, 2022, 5, 10, 15, 0, 20, 9, 5),
-(11, 2022, 5, 11, 11, 0, 3, 13, 5),
-(12, 2022, 5, 12, 10, 0, 22, 18, 5),
-(13, 2022, 5, 13, 6, 0, 10, 4, 5),
-(14, 2022, 5, 14, 4, 0, 5, 20, 5),
-(15, 2022, 5, 15, 3, 0, 23, 1, 5),
-(16, 2022, 5, 16, 2, 0, 14, 2, 5),
-(17, 2022, 5, 17, 2, 0, 18, 17, 5),
-(18, 2022, 5, 18, 1, 0, 24, 21, 5),
-(19, 2022, 5, 19, 0, 0, 47, 16, 5),
-(20, 2022, 5, 20, 0, 0, 27, 6, 5),
-(21, 2022, 5, 21, 0, 0, 6, 7, 5);
+(1, 2022, 8, 1, 150, 5, 33, 19, 8),
+(2, 2022, 8, 2, 129, 1, 11, 12, 8),
+(3, 2022, 8, 3, 116, 2, 16, 8, 8),
+(4, 2022, 8, 4, 99, 0, 63, 14, 8),
+(5, 2022, 8, 5, 83, 0, 55, 15, 8),
+(6, 2022, 8, 6, 62, 0, 44, 5, 8),
+(7, 2022, 8, 7, 50, 0, 4, 10, 8),
+(8, 2022, 8, 8, 40, 0, 77, 3, 8),
+(9, 2022, 8, 9, 31, 0, 31, 11, 8),
+(10, 2022, 8, 10, 16, 0, 10, 4, 8),
+(11, 2022, 8, 11, 16, 0, 14, 2, 8),
+(12, 2022, 8, 12, 15, 0, 20, 9, 8),
+(13, 2022, 8, 13, 15, 0, 3, 13, 8),
+(14, 2022, 8, 14, 13, 0, 5, 20, 8),
+(15, 2022, 8, 15, 11, 0, 22, 18, 8),
+(16, 2022, 8, 16, 3, 0, 23, 1, 8),
+(17, 2022, 8, 17, 2, 0, 18, 17, 8),
+(18, 2022, 8, 18, 1, 0, 24, 21, 8),
+(19, 2022, 8, 19, 0, 0, 47, 16, 8),
+(20, 2022, 8, 20, 0, 0, 27, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -247,26 +249,26 @@ CREATE TABLE IF NOT EXISTS `qualifying` (
 --
 
 INSERT INTO `qualifying` (`IDqualifying`, `season`, `round`, `raceName`, `date`, `time`, `number`, `permanentNumber`, `position`, `Q1`, `Q2`, `Q3`, `Drivers_idDrivers`, `race_idRace`) VALUES
-(1, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 16, 16, 1, '01:29:00', '01:29:00', '01:28:01', 8, 5),
-(2, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 55, 55, 2, '01:30:00', '01:29:01', '01:28:01', 15, 5),
-(3, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 1, 33, 3, '01:29:01', '01:29:00', '01:28:01', 19, 5),
-(4, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 11, 11, 4, '01:30:00', '01:29:01', '01:29:00', 12, 5),
-(5, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 77, 77, 5, '01:30:01', '01:29:01', '01:29:00', 3, 5),
-(6, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 44, 44, 6, '01:30:00', '01:29:01', '01:29:01', 5, 5),
-(7, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 10, 10, 7, '01:30:01', '01:30:00', '01:29:01', 4, 5),
-(8, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 4, 4, 8, '01:30:01', '01:29:01', '01:29:01', 10, 5),
-(9, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 22, 22, 9, '01:30:00', '01:30:00', '01:29:01', 18, 5),
-(10, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 18, 18, 10, '01:30:00', '01:29:01', '01:30:01', 17, 5),
-(11, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 14, 14, 11, '01:30:00', '01:30:00', '00:00:00', 2, 5),
-(12, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 63, 63, 12, '01:30:00', '01:30:00', '00:00:00', 14, 5),
-(13, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 5, 5, 13, '01:30:01', '01:30:00', '00:00:00', 20, 5),
-(14, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 3, 3, 14, '01:30:01', '01:30:00', '00:00:00', 13, 5),
-(15, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 47, 47, 15, '01:30:01', '01:30:00', '00:00:00', 16, 5),
-(16, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 20, 20, 16, '01:30:01', '00:00:00', '00:00:00', 9, 5),
-(17, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 24, 24, 17, '01:31:00', '00:00:00', '00:00:00', 21, 5),
-(18, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 23, 23, 18, '01:31:00', '00:00:00', '00:00:00', 1, 5),
-(19, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 6, 6, 19, '01:31:00', '00:00:00', '00:00:00', 7, 5),
-(20, 2022, 5, 'Miami Grand Prix', '2022-05-08', '19:30:00', 31, 31, 20, '00:00:00', '00:00:00', '00:00:00', 11, 5);
+(1, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 16, 16, 1, '01:42:01', '01:42:00', '01:41:00', 8, 8),
+(2, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 11, 11, 2, '01:42:01', '01:41:01', '01:41:01', 12, 8),
+(3, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 1, 33, 3, '01:42:01', '01:42:00', '01:41:01', 19, 8),
+(4, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 55, 55, 4, '01:42:01', '01:42:00', '01:41:01', 15, 8),
+(5, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 63, 63, 5, '01:43:01', '01:43:00', '01:42:01', 14, 8),
+(6, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 10, 10, 6, '01:43:00', '01:43:00', '01:42:01', 4, 8),
+(7, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 44, 44, 7, '01:43:01', '01:43:00', '01:42:01', 5, 8),
+(8, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 22, 22, 8, '01:43:01', '01:43:00', '01:43:00', 18, 8),
+(9, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 5, 5, 9, '01:43:00', '01:43:00', '01:43:00', 20, 8),
+(10, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 14, 14, 10, '01:44:00', '01:43:00', '01:43:00', 2, 8),
+(11, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 4, 4, 11, '01:44:00', '01:43:00', '00:00:00', 10, 8),
+(12, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 3, 3, 12, '01:44:00', '01:43:01', '00:00:00', 13, 8),
+(13, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 31, 31, 13, '01:43:01', '01:43:01', '00:00:00', 11, 8),
+(14, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 24, 24, 14, '01:43:01', '01:43:01', '00:00:00', 21, 8),
+(15, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 77, 77, 15, '01:44:00', '01:44:00', '00:00:00', 3, 8),
+(16, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 20, 20, 16, '01:44:01', '00:00:00', '00:00:00', 9, 8),
+(17, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 23, 23, 17, '01:44:01', '00:00:00', '00:00:00', 1, 8),
+(18, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 6, 6, 18, '01:45:00', '00:00:00', '00:00:00', 7, 8),
+(19, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 18, 18, 19, '01:45:00', '00:00:00', '00:00:00', 17, 8),
+(20, 2022, 8, 'Azerbaijan Grand Prix', '2022-06-12', '11:00:00', 47, 47, 20, '01:45:01', '00:00:00', '00:00:00', 16, 8);
 
 -- --------------------------------------------------------
 
@@ -296,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `race` (
   `Sprint_date` varchar(45) DEFAULT NULL,
   `Sprint_time` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`IDrace`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `race`
@@ -344,18 +346,30 @@ CREATE TABLE IF NOT EXISTS `user` (
   `profile_picture` varchar(200) NOT NULL,
   `is_admin` int(11) NOT NULL,
   PRIMARY KEY (`idperson`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `user`
+--
+
+INSERT INTO `user` (`idperson`, `username`, `firstname`, `lastname`, `email`, `password`, `total_points`, `profile_picture`, `is_admin`) VALUES
+(1, 'koen', 'Koen', 'Herrebrugh', 'koen@homus.nl', '$2y$10$XNH7OHbc2ImSJHG8ASUwK.vq5col.0jO95kuhj13UVGIfDPKiRZLa', 0, 'pictures/user_profile.png', 1);
 
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
 
 --
--- Beperkingen voor tabel `construcotors_has_drivers`
+-- Beperkingen voor tabel `bet`
 --
-ALTER TABLE `construcotors_has_drivers`
-  ADD CONSTRAINT `fk_Construcotors_has_Drivers_Construcotors1` FOREIGN KEY (`Construcotors_idConstrucotors`) REFERENCES `construcotors` (`idConstrucotors`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Construcotors_has_Drivers_Drivers1` FOREIGN KEY (`Drivers_idDrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `bet`
+  ADD CONSTRAINT `fk_Bet_user1` FOREIGN KEY (`user_idperson`) REFERENCES `user` (`idperson`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Beperkingen voor tabel `construcotors`
+--
+ALTER TABLE `construcotors`
+  ADD CONSTRAINT `fk_construcotors_drivers1` FOREIGN KEY (`drivers_IDdrivers`) REFERENCES `drivers` (`IDdrivers`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Beperkingen voor tabel `driverstandings_lastrace`

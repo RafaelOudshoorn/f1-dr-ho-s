@@ -6,10 +6,12 @@
     </head>
     <body>
         <header>
+            <link rel="stylesheet" href="css/drivers.css">
             <?php include "include/header.php"; ?>
         </header>
         <main>
-            <table class="table table-striped">
+            <div class="driver">
+                <table class="table table-striped">
                 <thead class="table-dark">
                     <th class="hide1000">Race name</th>
                     <th>Firstname</th>
@@ -32,6 +34,8 @@
                     ?>
                 </tbody>
             </table>
+            </div>
+            
         </main>
         <footer>
             <?php include "include/footer.php"; ?>
