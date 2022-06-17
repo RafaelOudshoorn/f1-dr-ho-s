@@ -36,6 +36,7 @@
             <div>
             </div>
             <table class="table table-striped">
+                <!-- race overall -->
                 <thead class="table-dark">
                     <th>Points</th>
                     <th>Wins</th>
@@ -56,6 +57,7 @@
                     </tbody>
             </table>
             <table class="table table-striped">
+                <!-- lastrace -->
                 <thead class="table-dark">
                     <th>Position</th>
                     <th>Points</th>
@@ -80,6 +82,7 @@
                     </tbody>
             </table>
             <table class="table table-striped">
+                <!-- qualifying -->
                 <thead class="table-dark">
                     <th>Date</th>
                     <th>Time</th>
