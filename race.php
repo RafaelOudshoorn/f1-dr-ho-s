@@ -45,10 +45,24 @@
                         echo "<script>location.href='race'</script>";
                     }
                 ?>
-                    <div class="race_form" style="margin-top:50px;">
-                        
-                    </div>
-                </div>
+                <?php
+                    $Drivers = DriverManager::select();
+                    $placement = 1;
+                    echo "";
+                    echo "<form class='raceBet'>";
+                    echo '<div></div>';
+                    echo '<div style="height:20px;"></div>';
+                    foreach($Drivers as $Driver){
+                    echo "<select name='$placement'>";
+                    echo "<option value='0'>$placement</option>";
+                    $placement ++;
+                    foreach($Drivers as $Names){
+                    echo "<option value='$Names->IDdrivers'>$Names->permanentNumber - $Names->givenName $Names->familyName</option>";
+                    }
+                    echo "</select>";
+                    }
+                    echo "</form>";
+                ?>
             </div>
         </main>
         <footer>
