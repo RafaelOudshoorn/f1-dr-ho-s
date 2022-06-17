@@ -47,9 +47,11 @@
                     <?php
                         if(isset($_POST["season"])){
                             UpdateManager::updateAll();
+                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
                         }
                         if(isset($_POST["data"])){
                             UpdateManager::updatemanual();
+                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
                         }
 
                         // var_dump($_GET["status"]);

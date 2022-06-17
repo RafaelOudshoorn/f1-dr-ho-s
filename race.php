@@ -49,7 +49,7 @@
                     $Drivers = DriverManager::select();
                     $placement = 1;
                     echo "";
-                    echo "<form class='raceBet'>";
+                    echo "<form method='POST' class='raceBet'>";
                     echo '<div></div>';
                     echo '<div style="height:20px;"></div>';
                     foreach($Drivers as $Driver){
@@ -61,7 +61,12 @@
                     }
                     echo "</select>";
                     }
+                    echo "<input type='submit' value='punten vast stellen'/>";
                     echo "</form>";
+                    if($_POST){
+                        PuntenManager::before($_POST);
+                        var_dump($_POST[$placement]);
+                    }
                 ?>
             </div>
         </main>

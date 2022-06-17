@@ -3,7 +3,7 @@
 
     //var_dump($_POST);
     if($_POST){
-        PuntenManager::before();
+        PuntenManager::before($id);
     }
 ?>
 <html>
