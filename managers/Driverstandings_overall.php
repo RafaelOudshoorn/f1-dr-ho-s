@@ -7,6 +7,15 @@
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
 
         }
+        public static function join(){
+            global $con;
+            $stmt = $con->prepare("SELECT driverstandings_overall.points, driverstandings_overall.wins, driverstandings_overall.position, drivers.familyName
+                FROM driverstandings_overall 
+                join drivers on driverstandings_overall.Drivers_idDrivers = drivers.idDrivers 
+                join race on  driverstandings_overall.race_idRace = race.IDrace;");
+            $stmt -> execute();
+            return $stmt -> fetchAll(PDO::FETCH_OBJ);
+        }
         public static function truncate(){
             global $con;
 

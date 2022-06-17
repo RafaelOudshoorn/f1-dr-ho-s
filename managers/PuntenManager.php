@@ -10,7 +10,6 @@
 
             $time = substr($nextRace->race_time,0,2);
 
-            //var_dump();
             
             if($nextRace->race_date == $nowdate){
                 if($time == $nowtime){

@@ -5,11 +5,18 @@
             $stmt = $con->prepare("SELECT * FROM qualifying");
             $stmt -> execute();
             return $stmt -> fetchAll(PDO::FETCH_OBJ);
-
+        }
+        public static function join(){
+            global $con;
+            $stmt = $con->prepare("SELECT qualifying.date, qualifying.time, qualifying.Q1, qualifying.Q2, qualifying.Q3,drivers.familyName
+            FROM f1_db.qualifying
+                join drivers on qualifying.Drivers_idDrivers = drivers.idDrivers 
+                join race on qualifying.race_idRace = race.IDrace;");
+            $stmt -> execute();
+            return $stmt -> fetchAll(PDO::FETCH_OBJ);
         }
         public static function truncate(){
             global $con;
-
             $stmt = $con->prepare("TRUNCATE TABLE qualifying");
             $stmt-> execute();
             $stmt = $con->prepare("ALTER TABLE qualifying AUTO_INCREMENT = 1");
@@ -60,7 +67,6 @@
                 }else{
                     $Q3 = 0;
                 }
-
                 $stmt = $con-> prepare("UPDATE `f1_db`.`qualifying` SET 
                 season = ?, `round` = ?, raceName = ?, `date` = ?, `time` = ?, `number` = ?, permanentNumber = ?, position = ?, Q1 = ?, Q2 = ?, Q3 = ?, Drivers_idDrivers = ?, race_idRace = ? WHERE (IDqualifying = ?);)");
                 $stmt->bindValue(1, $jsonObject->MRData->RaceTable->Races[0]->season);
