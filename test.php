@@ -3,7 +3,7 @@
 
     //var_dump($_POST);
     if($_POST){
-        UpdateManager::updateAll();
+        PuntenManager::before();
     }
 ?>
 <html>
