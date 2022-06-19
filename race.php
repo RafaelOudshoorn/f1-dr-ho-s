@@ -65,7 +65,6 @@
                     echo "</form>";
                     if($_POST){
                         PuntenManager::before($_POST);
-                        var_dump($_POST[$placement]);
                     }
                 ?>
             </div>
