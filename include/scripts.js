@@ -1,19 +1,40 @@
 function toTop() {
     document.body.scrollTop = 0;
 };
-function scoreSelect(side){
-    var S1 = document.getElementById("s1");
-    var S2 = document.getElementById("s2");
-    var S3 = document.getElementById("s3");
-    var S1c = getComputedStyle(S1);
-    var S3c = getComputedStyle(S3);
-    if(side == "l" && S1c.backgroundColor != "rgb(40, 40, 43)"){
-        S1.style.backgroundColor = "#28282B";
-        S2.style.backgroundColor = "#28282B";
-        S3.style.backgroundColor = "#D2042D";
-    } else if(side == "r" && S3c.backgroundColor != "rgb(40, 40, 43)"){
-        S1.style.backgroundColor = "#D2042D";
-        S2.style.backgroundColor = "#28282B";
-        S3.style.backgroundColor = "#28282B";
+function scoreSelect(block){
+    var S = document.getElementById("s");
+    var T1 = document.getElementById("t1");
+    var T2 = document.getElementById("t2");
+    var T3 = document.getElementById("t3");
+    var T4 = document.getElementById("t4");
+    switch (block){
+        case 1:
+            S.style.marginLeft = "0%";
+            T1.style.display = "table";
+            T2.style.display = "none";
+            T3.style.display = "none";
+            T4.style.display = "none";
+            break;
+        case 2:
+            S.style.marginLeft = "25%";
+            T1.style.display = "none";
+            T2.style.display = "table";
+            T3.style.display = "none";
+            T4.style.display = "none";
+            break;
+        case 3:
+            S.style.marginLeft = "50%";
+            T1.style.display = "none";
+            T2.style.display = "none";
+            T3.style.display = "table";
+            T4.style.display = "none";
+            break;
+        case 4:
+            S.style.marginLeft = "75%";
+            T1.style.display = "none";
+            T2.style.display = "none";
+            T3.style.display = "none";
+            T4.style.display = "table";
+            break;
     }
 }

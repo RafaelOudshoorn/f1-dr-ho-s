@@ -16,6 +16,7 @@ header{
     top: 0;
     display: grid;
     grid-template: 1fr / 100px 1fr;
+    z-index: 1;
 }
 .logoBox{
     height: 80px;

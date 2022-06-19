@@ -13,15 +13,23 @@
         </header>
         <main>
             <div class="select">
-                <div id="s1" onclick="scoreSelect('l')">
+                <div class="selectBlock" id="s1" onclick="scoreSelect(1)">
                     Users
                 </div>
-                <div id="s2"></div>
-                <div id="s3" onclick="scoreSelect('r')">
+                <div class="selectBlock" id="s2" onclick="scoreSelect(2)">
                     Standings
                 </div>
+                <div class="selectBlock" id="s3" onclick="scoreSelect(3)">
+                    Last race
+                </div>
+                <div class="selectBlock" id="s4" onclick="scoreSelect(4)">
+                    Qualifiers
+                </div>
             </div>
-            <table class="table table-striped">
+            <div class="selected" id="s">
+                
+            </div>
+            <table class="table table-striped" id="t1">
                 <thead class="table-dark">
                     <th>Username</th>
                     <th>Points</th>
@@ -35,7 +43,7 @@
             </table>
             <div>
             </div>
-            <table class="table table-striped">
+            <table class="table table-striped" id="t2">
                 <!-- race overall -->
                 <thead class="table-dark">
                     <th>Points</th>
@@ -56,7 +64,7 @@
                         ?>
                     </tbody>
             </table>
-            <table class="table table-striped">
+            <table class="table table-striped" id="t3">
                 <!-- lastrace -->
                 <thead class="table-dark">
                     <th>Position</th>
@@ -81,7 +89,7 @@
                         ?>
                     </tbody>
             </table>
-            <table class="table table-striped">
+            <table class="table table-striped" id="t4">
                 <!-- qualifying -->
                 <thead class="table-dark">
                     <th>Date</th>

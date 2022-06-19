@@ -1,24 +1,29 @@
 .select{
     display: grid;
-    grid-template: 1fr / 200px 1fr 200px;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr;
     height: 50px;
-}
-#s1{
-    padding-left: 10px;
-    line-height: 50px;
     background-color: #28282B;
-    color: white;
-    transition: .5s;
 }
-#s2{
-    background-color: #28282B;
-    transition: .5s;
+.selectBlock{
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-#s3{
-    padding-right: 10px;
-    text-align: right;
-    line-height: 50px;
-    color: white;
+.selected{
     background-color: #D2042D;
-    transition: .5s;
+    height: 50px;
+    width: 25%;
+    margin-top: -50px;
+    transition: .1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+table{
+    display: none;
+}
+#t1{
+    display: table;
 }
