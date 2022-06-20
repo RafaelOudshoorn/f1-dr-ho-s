@@ -235,7 +235,7 @@
                                                     echo "<label>Email *</label>";
                                                 echo "</div>";
                                                 echo "<div class=\"field\">";
-                                                    echo "<input required type=\"password\" name=\"password\" maxlength=\"20\">";
+                                                    echo "<input required type=\"password\" name=\"password\" minlength=\"5\" maxlength=\"20\">";
                                                     echo "<span></span>";
                                                     echo "<label>Wachtwoord *</label>";
                                                 echo "</div>";
