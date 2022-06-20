@@ -30,7 +30,12 @@
     margin-right:auto;
 }
 .buttonChooseFile{
-
+    color: transparent;
+    width: 125px;
+    margin-left: 20px;
+}
+input{
+    margin-left: 20px;
 }
 .change-profile{
 
@@ -47,6 +52,7 @@
     float: left;
 }
 .formProfile{
+    display: none;
     margin-left: 30%;
     margin-top: 100px;
 }
