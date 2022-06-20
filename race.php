@@ -54,11 +54,12 @@
                <div class="raceBlock">
                     <?php
                         $Drivers = DriverManager::select();
+                        $LastRace = LastraceManager::select();
                         $placement = 1;
                         echo "<form method='POST' class='raceBet'>";
                         echo "<input class='submit' type='submit' value='Lock in'></input>";
                         echo "<div class='raceGrid'>";
-                            foreach($Drivers as $Driver){
+                            foreach($LastRace as $race){
                             echo "<div class='raceSegment'>";
                             echo "<select name='$placement'>";
                             echo "<option value='0' selected disabled>$placement</option>";
