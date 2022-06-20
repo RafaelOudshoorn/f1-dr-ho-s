@@ -52,7 +52,7 @@
                     }
                 ?>
                 <?php
-                    $Drivers = DriverManager::select();
+                    $lastrace = LastraceManager::select();
                     $placement = 1;
                     echo "";
                     echo "<form method='POST' class='raceBet'>";
