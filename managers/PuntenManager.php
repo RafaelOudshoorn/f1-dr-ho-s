@@ -48,8 +48,27 @@
             $select = BetManager::select();
             $selectrace = LastraceManager::select();
 
-            // var_dump($select);
-            var_dump($selectrace);
+                // var_dump($select);
+                var_dump($selectrace);
+
+            foreach($select as $bet){
+                var_dump(in_array($bet->))
+            }
+            
+            //var_dump($select->driverID, $select->position);
+            //var_dump($selectrace->position, $selectrace->Drivers_idDrivers);
+
+            // foreach($select as $s){
+            //     foreach($selectrace as $race){
+            //         echo "race";
+            //         if($s->position ){
+
+            //         }
+                    
+            //         echo "einde race";
+            //     }
+                
+            // }
         }
     }
 ?>
