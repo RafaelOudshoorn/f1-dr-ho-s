@@ -46,7 +46,7 @@
                     }
                 ?>
                 <?php
-                    $Drivers = DriverManager::select();
+                    $lastrace = LastraceManager::select();
                     $placement = 1;
                     echo "";
                     echo "<form method='POST' class='raceBet'>";
@@ -61,9 +61,9 @@
                     }
                     echo "</select>";
                     }
-                    echo "<input type='submit' value='punten vast stellen'/>";
+                    echo "<input type='submit' value='punten vast stellen' name='submitpunt'/>";
                     echo "</form>";
-                    if($_POST){
+                    if(isset($_POST["submitpunt"])){
                         PuntenManager::before($_POST);
                     }
                 ?>
