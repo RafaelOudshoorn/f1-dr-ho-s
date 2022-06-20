@@ -21,9 +21,15 @@
                     }
                     $firstRaceId = RaceManager::eersteRace();
                     $lastRaceId = RaceManager::laatsteRace();
+                    $time = RaceManager::tijdConverter($race->race_time);
 
                     echo "<div class=\"race_info_header text-center\">";
                     echo "  <h1>" . $race->raceName . "</h1>";
+                    echo "  <p>";
+                    echo "      Land: $race->country,";
+                    echo "      Datum: $race->race_date,";
+                    echo "      Tijd: $time";
+                    echo "  </p>";
                     echo "  <form method=\"POST\">";
                                 if($_SESSION["race_id"] == $firstRaceId->IDrace){
                                 }else{

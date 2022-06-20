@@ -28,11 +28,10 @@
             <?php include "include/header.php";?>
         </header>
         <main>
+        <div class="vakLinks">
+                <br/><br/>
         <?php
-            echo "<p>User: <span style=\"font-weight:700;\">$gUInfo->username</span></p>";
-            echo "<p>Name: <span style=\"font-weight:700;\">$gUInfo->firstname $gUInfo->lastname</span></p>";
-            echo "<p>Email: <span style=\"font-weight:700;\">$gUInfo->email</span></p>";
-            echo "<p>Total Points: <span style=\"font-weight:700;\">$gUInfo->total_points</span></p>";
+            
             echo "<div class=\"profielAfbeeldingKader\">";
             if(!file_exists("pfp/$gUInfo->profile_picture")){
                 $gUInfoPFP = "pictures/user_profile_error.png";
@@ -52,6 +51,10 @@
                         htmlspecialchars($_GET["username"])
                     );
                 }
+                echo "<p class='persoonsgegevens'>User: <span style=\"font-weight:500;\">$gUInfo->username</span></p>";
+                echo "<p class='persoonsgegevens'>Name: <span style=\"font-weight:500;\">$gUInfo->firstname $gUInfo->lastname</span></p>";
+                echo "<p class='persoonsgegevens'>Email: <span style=\"font-weight:500;\">$gUInfo->email</span></p>";
+                echo "<p class='persoonsgegevens'> Total Points: <span style=\"font-weight:500;\">$gUInfo->total_points</span></p>";
                 echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
                 echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\"><br/>";
                 echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\"><br>";
@@ -62,6 +65,18 @@
                 echo "</form>";
             }
         ?>
+                </div>
+        <div class="vakRechts">
+            <form class="formProfile">
+                Firstname:<br/>
+                <input type="text" placeholder="firstname"><br/><br/>
+                Lastname:<br/>
+                <input type="text" placeholder="firstname"><br/><br/>
+                email:<br/>
+                <input type="text" placeholder="firstname"><br/><br/>
+                <input type="button" value="change" class="btn btn-danger">
+            </form>
+        </div>
         </main>
         <footer>
             <?php include "include/footer.php";?>

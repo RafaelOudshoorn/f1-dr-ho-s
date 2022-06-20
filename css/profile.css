@@ -6,7 +6,6 @@
     overflow:hidden;
     background:#28282B;
     margin-left: 80px;
-    margin-top: 80px;
 }
 .profielAfbeelding{
     height:250px;
@@ -14,4 +13,51 @@
     margin-left:auto;
     margin-right:auto;
 }
+.profielAfbeeldingKader{
+    width:250px;
+    height:250px;
+    border:solid 5px #28282B;
+    border-radius:50%;
+    overflow:hidden;
+    background:#010104;
+    margin-left: 25%;
+
+}
+.profielAfbeelding{
+    height:250px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+.buttonChooseFile{
+
+}
+.change-profile{
+
+}
+.vakLinks{
+    background-color: #28282B;
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+.vakRechts{
+    width:  58%;
+    height: 100%;
+    float: left;
+}
+.formProfile{
+    margin-left: 30%;
+    margin-top: 100px;
+}
+input[type=text]{
+    width: 300px;
+    height: 40px;
+}
+.persoonsgegevens{
+    color: white;
+    margin-top: -15px;
+    margin-left: 30px;
+}
+
 
