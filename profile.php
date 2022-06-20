@@ -56,28 +56,69 @@
                 echo "<p class='persoonsgegevens'>Email: <span style=\"font-weight:500;\">$gUInfo->email</span></p>";
                 echo "<p class='persoonsgegevens'> Total Points: <span style=\"font-weight:500;\">$gUInfo->total_points</span></p>";
                 echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
-                echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\"><br/>";
-                echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\"><br>";
-
+                echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\">";
+                echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\">";
                 if($gUInfoPFP != "pictures/user_profile.png"){
                     echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
+
                 }
                 echo "</form>";
             }
         ?>
                 </div>
         <div class="vakRechts">
-            <form class="formProfile">
-                Firstname:<br/>
-                <input type="text" placeholder="firstname"><br/><br/>
-                Lastname:<br/>
-                <input type="text" placeholder="firstname"><br/><br/>
+            <button class="m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
+            <form class="formProfile" id="formProfile">
+                User:<br/>
+                <input type="text" placeholder=<?php echo "$gUInfo->username"?>><br/><br/>
+                name:<br/>
+                <input type="text" placeholder=<?php echo "$gUInfo->firstname $gUInfo->lastname"?>><br/><br/>
                 email:<br/>
-                <input type="text" placeholder="firstname"><br/><br/>
+                <input type="text" placeholder=<?php echo "$gUInfo->email"?>><br/><br/>
                 <input type="button" value="change" class="btn btn-danger">
             </form>
+            <table class="table table-striped m-3" id="tablePoints">
+                <thead class="table-dark">
+                    <th>d</th>
+                    <th>d</th>
+                    <th>d</th>
+                    <th>d</th>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>f</td>
+                    <td>f</td>
+                    <td>f</td>
+                    <td>f</td>
+                    </tr>
+                    <tr>
+                    <td>f</td>
+                    <td>f</td>
+                    <td>f</td>
+                    <td>f</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         </main>
+        <script>
+            var page = 0;
+            function handleButtonChangeProfile(){
+                
+                if(page == 0){
+                    document.getElementById("formProfile").style.display = "table";
+                    document.getElementById("tablePoints").style.display = "none";
+                    document.getElementById("buttonChangeProfilePoints").innerHTML = "My Points";
+                    page = 1;
+            } else{
+                    document.getElementById("formProfile").style.display = "none";
+                    document.getElementById("tablePoints").style.display = "table";
+                    document.getElementById("buttonChangeProfilePoints").innerHTML = "change profile";
+                    page = 0;
+            }
+            }
+       
+        </script>
         <footer>
             <?php include "include/footer.php";?>
         </footer>
