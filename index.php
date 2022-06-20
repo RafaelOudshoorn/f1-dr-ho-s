@@ -68,12 +68,7 @@
                                 echo "<td class='hide1000'>$race->country </td>";
                                 echo "<td>$race->circuitName </td>";
                                 echo "<td>$race->race_date </td>";
-
-                                $time = $race->race_time;
-                                $timestring = substr($time ,0,2);
-                                $time = substr($time ,2,3);
-                                $timestring = $timestring + 2;
-                                $time= $timestring . $time;
+                                $time = RaceManager::tijdConverter($race->race_time);
                                 echo "<td>$time</td>";
                                 echo "<form method=\"POST\">";
                                     echo "<td class='tableBtnSize'>";
