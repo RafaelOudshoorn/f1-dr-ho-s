@@ -27,13 +27,6 @@
 
             return $stmt->fetchObject();
         }
-        public static function tijdConverter($time){
-            $timestring = substr($time ,0,2);
-            $time = substr($time ,2,3);
-            $timestring = $timestring + 2;
-            $time= $timestring . $time;
-            return $time;
-        }
         public static function Qualirace(){
             global $con;
             $dateToday = date("Y-m-d");
