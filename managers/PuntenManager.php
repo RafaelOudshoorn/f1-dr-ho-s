@@ -47,12 +47,15 @@
             global $con;
             $betstandings = BetManager::selectstandings();
             foreach($betstandings as $bet){
+                var_dump($bet);
                 if($bet->position == $bet->drivers_ending_position){
-                    echo "3";
-                    if($bet->position == $bet->drivers_ending_position){
+                    echo "+3";
+                };
+                if($bet->position >=1& $bet->drivers_ending_position){
+                    echo "+2";
+                }
+                
 
-                    }
-            }
             }
         }
     }
