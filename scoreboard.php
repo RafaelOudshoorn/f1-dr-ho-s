@@ -4,6 +4,7 @@
         $drivers = Driverstandings_overall::join();
         $last = LastraceManager::join();
         $qualifying = QualifyingManager::join();
+        $users = userManager::select();
         ?>
         <link rel="stylesheet" href="css/scoreboard.css">
     </head>
@@ -35,10 +36,14 @@
                     <th>Points</th>
                 </thead>
                     <tbody>
-                       <tr>
-                           <td>xd</td>
-                           <td>xd</td>
-                       </tr>
+                        <?php
+                            foreach($users as $user){
+                                echo "<tr>";
+                                    echo "<td>$user->firstname $user->lastname</td>";
+                                    echo "<td>$user->total_points</td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
             </table>
             <div>
