@@ -45,28 +45,32 @@
                         echo "<script>location.href='race'</script>";
                     }
                 ?>
-                <?php
-                    $Drivers = DriverManager::select();
-                    $placement = 1;
-                    echo "";
-                    echo "<form method='POST' class='raceBet'>";
-                    echo '<div></div>';
-                    echo '<div style="height:20px;"></div>';
-                    foreach($Drivers as $Driver){
-                    echo "<select name='$placement'>";
-                    echo "<option value='0'>$placement</option>";
-                    $placement ++;
-                    foreach($Drivers as $Names){
-                    echo "<option value='$Names->IDdrivers'>$Names->permanentNumber - $Names->givenName $Names->familyName</option>";
-                    }
-                    echo "</select>";
-                    }
-                    echo "<input type='submit' value='punten vast stellen'/>";
-                    echo "</form>";
-                    if($_POST){
-                        PuntenManager::before($_POST);
-                    }
-                ?>
+                <div class="raceBlock">
+                    <?php
+                        $Drivers = DriverManager::select();
+                        $placement = 1;
+                        echo "<form method='POST' class='raceBet'>";
+                        echo "<input class='submit' type='submit' value='Lock in'></input>";
+                        echo "<div class='raceGrid'>";
+                            foreach($Drivers as $Driver){
+                            echo "<div class='raceSegment'>";
+                            echo "<select name='$placement'>";
+                            echo "<option value='0' selected disabled>$placement</option>";
+                            $placement ++;
+                            foreach($Drivers as $Names){
+                            echo "<option value='$Names->IDdrivers'>$Names->permanentNumber - $Names->givenName $Names->familyName</option>";
+                            }
+                            echo "</select>";
+                            echo "<div class='raceExtend'></div>";
+                            echo "</div>";
+                            }
+                        echo "</div>";
+                        echo "</form>";
+                        if($_POST){
+                            PuntenManager::before($_POST);
+                        }
+                    ?>
+                </div>
             </div>
         </main>
         <footer>

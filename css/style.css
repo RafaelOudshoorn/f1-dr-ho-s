@@ -78,7 +78,6 @@ footer{
     height: 80px;
     width: 100%;
     background-color: #28282B;
-    margin-top: 500px;
     color:white ; 
     display: grid;
     grid-template: 1fr / 1fr 1fr;

@@ -36,20 +36,58 @@
     font-size: 80px;
     transition: .5s;
 }
-.raceBet{
-    width: 40%;
-    margin: auto;
-    padding-top: 20px;
+.raceBlock{
+    background-color: #28282B;
+    width: 50%;
     z-index: -1;
+    margin: auto;
+}
+.raceBet{
+    width: 95%;
+    margin: auto;
+    border-right: 10px dashed #D2042D;
+    border-left: 10px dashed #D2042D;
+    background:
+      linear-gradient(to right, white, 10px, transparent 5px),
+      linear-gradient(to left, white, 10px, transparent 5px);
+    background-origin: border-box;
+}
+.raceGrid{
     display: grid;
     grid-template: 1fr / 1fr 1fr;
-    background-color: #f2f2f2;
+    padding-top: 20px;
 }
-.raceBet select{
+.submit{
+    height: 50px;
+    width: 70%;
+    border: 1px solid black;
+    margin: 10px 15% 0 15%;
+    font-weight: bold;
+    font-size: 20px;
+    position: sticky;
+    top: 80px;
+}
+.raceSegment{
     width: 200px;
     margin: 0 auto 10px auto;
+    margin-bottom: 25px;
+    max-height: 80px;
+}
+.raceSegment:nth-of-type(even){
+    margin-top: 40px;
+}
+.raceSegment select{
+    width: 200px;
+    height: 40px;
+    margin: 0 auto 10px auto;
     font-size: 20px;
-    border-top: 5px solid black;
-    border-left: 5px solid black;
-    border-right: 5px solid black;
+    border-top: 5px solid white;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+}
+.raceExtend{
+    height: 30px;
+    margin-top: -10px;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
 }
