@@ -46,16 +46,20 @@
         public static function after(){
             global $con;
             $betstandings = BetManager::selectstandings();
+            $points = 0;
             foreach($betstandings as $bet){
                 var_dump($bet);
                 if($bet->position == $bet->drivers_ending_position){
-                    echo "+3";
-                };
-                if($bet->position >=1& $bet->drivers_ending_position){
-                    echo "+2";
+                    $points = 3;
+                }else{
+                    $diffrents = abs($bet->drivers_ending_position - $bet->position);
+                    $points = 2 - $diffrents;
+
+                    if(str_contains($points, "-")){
+                        $points = 0;
+                    }
                 }
                 
-
             }
         }
     }
