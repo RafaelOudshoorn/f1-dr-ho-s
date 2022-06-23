@@ -45,22 +45,31 @@
         }
         public static function after(){
             global $con;
-            $betstandings = BetManager::selectstandings();
+            $user = userManager::select();
+
+            foreach($user as $U){
+                $betstandings = BetManager::selectstandings($U->idperson);
+                $user = userManager::selectOnId($betstandings->user_idperson);
+                var_dump($user);
+            }
             $points = 0;
+            $totalpoints =  0;
             foreach($betstandings as $bet){
-                var_dump($bet);
                 if($bet->position == $bet->drivers_ending_position){
                     $points = 3;
                 }else{
-                    $diffrents = abs($bet->drivers_ending_position - $bet->position);
-                    $points = 2 - $diffrents;
+                    $different = abs($bet->drivers_ending_position - $bet->position);
+                    $points = 3 - $different;
 
-                    if(str_contains($points, "-")){
+                    if(strpos($points, "-") !== false) {
                         $points = 0;
+                        
                     }
                 }
-                
+                $totalpoints = $points + $totalpoints;
             }
+            var_dump($totalpoints);
+            
         }
     }
 ?>
