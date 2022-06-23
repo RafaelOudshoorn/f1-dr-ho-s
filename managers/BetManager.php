@@ -18,7 +18,7 @@
             FROM bet where user_idperson = ?");
             $stmt->bindValue(1,$id);
             $stmt->execute();
-            return $stmt->fetchObject();
+            return $stmt -> fetchAll(PDO::FETCH_OBJ);
         }
     }
 ?>
