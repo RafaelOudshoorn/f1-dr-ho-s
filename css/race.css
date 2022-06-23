@@ -113,4 +113,8 @@
     .race_info_header form input{
         bottom: 150px;
     }
+}@media only screen and (orientation: landscape) {
+  body {
+    background-color: lightblue;
+  }
 }
