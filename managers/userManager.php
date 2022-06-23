@@ -208,6 +208,24 @@
             $stmt->bindValue(3,$iId);
             $stmt->execute();
         }
+        public static function updateUserData($data, $id){
+            global $con;
+
+            $password = password_hash($data["password"], PASSWORD_DEFAULT);
+
+            $query = "UPDATE user ";
+            $query .= "SET username = ? , firstname = ?, lastname = ?, email = ?, password = ?";
+            $query .= "WHERE idperson = ? ";
+
+            $stmt=$con->prepare($query);    
+            $stmt->bindValue(1,$data["username"]);
+            $stmt->bindValue(2,$data["firstname"]);
+            $stmt->bindValue(3,$data["lastname"]);
+            $stmt->bindValue(4,$data["email"]);
+            $stmt->bindValue(5,$password);
+            $stmt->bindValue(6,$id);
+            $stmt->execute();
+        }
     }
 
 ?>

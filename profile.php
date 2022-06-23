@@ -55,48 +55,65 @@
                 echo "<p class='persoonsgegevens'>Name: <span style=\"font-weight:500;\">$gUInfo->firstname $gUInfo->lastname</span></p>";
                 echo "<p class='persoonsgegevens'>Email: <span style=\"font-weight:500;\">$gUInfo->email</span></p>";
                 echo "<p class='persoonsgegevens'> Total Points: <span style=\"font-weight:500;\">$gUInfo->total_points</span></p>";
-                echo "<form method=\"POST\" enctype=\"multipart/form-data\">";
-                echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\">";
-                echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\">";
-                if($gUInfoPFP != "pictures/user_profile.png"){
-                    echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
-
-                }
-                echo "</form>";
+               
             }
         ?>
+
                 </div>
         <div class="vakRechts">
             <button class="m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
-            <form class="formProfile" id="formProfile">
+            <?php
+                if(isset($_POST["username"])){
+                    userManager::updateUserData($_POST, $gUInfo->idperson);
+                    header("location: profile.php");
+                    var_dump($_POST);
+
+                }
+            ?>
+            <div id="formProfile">
+            <form class="formProfile"  method="POST">
                 User:<br/>
-                <input type="text" placeholder=<?php echo "$gUInfo->username"?>><br/><br/>
-                name:<br/>
-                <input type="text" placeholder=<?php echo "$gUInfo->firstname $gUInfo->lastname"?>><br/><br/>
+                <input type="text" value=<?php echo "$gUInfo->username"?> name="username" maxlength="20" required><br/><br/>
+                firstname:<br/>
+                <input type="text" value=<?php echo "$gUInfo->firstname"?> name="firstname" maxlength="20" required><br/><br/>
+                lastname:<br/>
+                <input type="text" value=<?php echo "$gUInfo->lastname"?> name="lastname" maxlength="20" required><br/><br/>
                 email:<br/>
-                <input type="text" placeholder=<?php echo "$gUInfo->email"?>><br/><br/>
-                <input type="button" value="change" class="btn btn-danger">
+                <input type="text" value=<?php echo "$gUInfo->email"?> name="email" maxlength="20" required><br/><br/>
+                Password:<br/>
+                <input type="password" name="password" maxlength="20" minlength="5" required><br/><br/>
+            
+                <input type="submit" value="change" class="btn btn-danger"><br/><br/><br/><br/>
+                
             </form>
-            <table class="table table-striped m-3" id="tablePoints">
+            
+                <?php
+                    echo "<form method=\"POST\" enctype=\"multipart/form-data\" class=\"buttonsCentrerenDiv\">";
+                    echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\">";
+                    echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\">";
+                    if($gUInfoPFP != "pictures/user_profile.png"){
+                        echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
+                    }
+                    echo "</form>";
+                ?>
+            </div>
+            <table class="table table-striped" id="tablePoints">
                 <thead class="table-dark">
-                    <th>d</th>
                     <th>d</th>
                     <th>d</th>
                     <th>d</th>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>f</td>
-                    <td>f</td>
-                    <td>f</td>
-                    <td>f</td>
-                    </tr>
-                    <tr>
-                    <td>f</td>
-                    <td>f</td>
-                    <td>f</td>
-                    <td>f</td>
-                    </tr>
+                    <?php
+                        // foreach(){
+                        //     echo "<tr>";
+                        //     echo "<td></td>";
+                        //     echo "<td></td>";
+                        //     echo "<td></td>";
+                        //     echo "<tr>";
+                        // }
+                    
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -104,9 +121,8 @@
         <script>
             var page = 0;
             function handleButtonChangeProfile(){
-                
                 if(page == 0){
-                    document.getElementById("formProfile").style.display = "table";
+                    document.getElementById("formProfile").style.display = "block";
                     document.getElementById("tablePoints").style.display = "none";
                     document.getElementById("buttonChangeProfilePoints").innerHTML = "My Points";
                     page = 1;
