@@ -53,9 +53,11 @@ input{
     float: left;
 }
 .formProfile{
-    display: none;
     margin-left: 30%;
     margin-top: 100px;
+}
+#formProfile{
+    display: none;
 }
 
 .persoonsgegevens{
