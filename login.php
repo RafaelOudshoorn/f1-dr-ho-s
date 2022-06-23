@@ -1,7 +1,6 @@
 <?php
     error_reporting(0);
     include "include/autoloader.php";
-    // $insertTest = loginManager::inserttest();
 ?>
 <!doctype html>
 <html>
@@ -194,8 +193,16 @@
                                                             }else{
                                                                 echo "<label>Email *</label>";
                                                                 if(strtolower($dupelicateUsername_check->username) !== strtolower($_POST["username"])){
-                                                                    loginManager::insert($_POST["username"], $_POST["voornaam"], $_POST["achternaam"], $_POST["email"], $_POST["password"]);
-                                                                    header("location:?form=login");
+                                                                    $_SESSION["signup_username"] = $_POST["username"];
+                                                                    $_SESSION["signup_voornaam"] = $_POST["voornaam"];
+                                                                    $_SESSION["signup_achternaam"] = $_POST["achternaam"];
+                                                                    $_SESSION["signup_email"] = $_POST["email"];
+                                                                    $_SESSION["signup_password"] = $_POST["password"];
+
+                                                                    $verify_code = loginManager::getVerifyCode();
+                                                                    $_SESSION["verify_code"] = $verify_code;
+                                                                    loginManager::sendVerifyMail($_POST["email"],$_POST["username"], $_SESSION["verify_code"]);
+                                                                    header("location:?form=verify");
                                                                 }
                                                             }
                                                         }
@@ -246,6 +253,39 @@
                                             echo "</form>";
                                         }
                                     echo "</div>";
+                                    break;
+                                case "verify":
+                                    if(!isset($_SESSION["verify_code"])){
+                                        header("location:login?form=login");
+                                    }
+                                    echo "<div class=\"signup_form\">";
+                                        echo "<h5 class=\"title text-center\">Er is een vertificatie code naar u gestuurt naar het door u ingevulde email adress!</h5>";
+                                        echo "<h5>Zonder code komt u niet in onze website!</h5>";
+                                        echo "<form method=\"POST\">";
+                                            echo "<div class=\"field\">";
+                                                echo "<input type=\"text\" id=\"verify_code_input\" name=\"verify_code_input\" maxlength=\"6\">";
+                                                echo "<span></span>";
+                                                if(isset($_POST["verify_code_input"])){
+                                                    if($_POST["verify_code_input"] != $_SESSION["verify_code"]){
+                                                        echo "<label>Code niet juist *</label>";
+                                                    }else{
+                                                        loginManager::insert($_SESSION["signup_username"], $_SESSION["signup_voornaam"], $_SESSION["signup_achternaam"], $_SESSION["signup_email"], $_SESSION["signup_password"]);
+                                                        header("location:logout");
+                                                    }
+                                                    echo "<label>Code niet juist *</label>";
+                                                }else{
+                                                    echo "<label>Code *</label>";
+                                                }
+                                            echo "</div>";
+                                            echo "<input type=\"submit\" name=\"verify_code_submit\" value=\"Verifiëren\">";
+                                            echo "<input type=\"submit\" name=\"verify_code_again_submit\" value=\"Stuur code opnieuw.\" style=\"background:none;border:none;color:black;\">";
+                                            if(isset($_POST["verify_code_again_submit"])){
+                                                $verify_code = loginManager::getVerifyCode();
+                                                $_SESSION["verify_code"] = $verify_code;
+                                                loginManager::sendVerifyMail($_SESSION["signup_email"],$_SESSION["signup_username"], $_SESSION["verify_code"]);
+                                                echo "<p style=\"font-size:10px;\">Nieuwe code gestuurt naar " . $_SESSION["signup_email"] . "</p>";
+                                            }
+                                        echo "</form>";
                                     break;
                             }
                         ?>

@@ -1,9 +1,57 @@
 <?php
+    require "include/PHPMailer-master/src/PHPMailer.php";
+    require "include/PHPMailer-master/src/SMTP.php";
+    require "include/PHPMailer-master/src/Exception.php";
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
     class loginManager{
         public static function loginCheck(){
             if(! $_SESSION["user_id"]){
                 header("location:login");
+            }
+        }
+        public static function getVerifyCode(){
+            $verify_code = rand(100000,999999);
+            return $verify_code;
+        }
+        public static function sendVerifyMail($aToEmailAdress,$aUsername, $aCode){
+
+            $mail = new PHPMailer(true);
+
+            $body = 
+"<div>
+    <h1 style='color:#D2042D;'>Beste $aUsername,</h1>
+    <h2 style='color:#D2042D;'>Uw vertificatie code: <span style='color:#28282B;'>$aCode</span></h2>
+    <p style='color:#D2042D;'>Zodra u uw email heeft geverifieerd dan hoeft u dit niet nogmaals te doen.</p>
+    <p>Door <a href='#'>Dr-Ho's circulation promoter F1 group project</a></p>
+</div>";
+
+            try {
+                $mail->isSMTP();
+                $mail->Host = "smtp.strato.com";
+                $mail->SMTPAuth = true;
+                $mail->Username   = 'student@computercampus.nl';
+                $mail->Password   = 'Sp@mmenmagniet!';
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+                
+                //Recipients
+                $mail->setFrom('no-reply@ictcampusF1.nl', 'Formule 1');
+
+                $mail->addAddress($aToEmailAdress);
+
+                //Content
+                $mail->isHTML(true);
+                $mail->Subject = "Email vertificatie";
+                $mail->Body    = $body;
+
+                $mail->send();
+               
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         }
         public static function selectUserLogin($email){
