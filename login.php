@@ -283,6 +283,9 @@
                                                 $verify_code = loginManager::getVerifyCode();
                                                 $_SESSION["verify_code"] = $verify_code;
                                                 loginManager::sendVerifyMail($_SESSION["signup_email"],$_SESSION["signup_username"], $_SESSION["verify_code"]);
+                                                header("location:login?form=verify&nc=1");
+                                            }
+                                            if(isset($_GET["nc"]) == 1 ){
                                                 echo "<p style=\"font-size:10px;\">Nieuwe code gestuurt naar " . $_SESSION["signup_email"] . "</p>";
                                             }
                                         echo "</form>";
