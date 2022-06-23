@@ -57,7 +57,7 @@
                         $LastRace = LastraceManager::select();
                         $placement = 1;
                         echo "<form method='POST' class='raceBet'>";
-                        echo "<input class='submit' type='submit' value='Lock in'></input>";
+                        echo "<input class='submit' name='raceBet' type='submit' value='Lock in'></input>";
                         echo "<div class='raceGrid'>";
                             foreach($LastRace as $race){
                             echo "<div class='raceSegment'>";
@@ -73,8 +73,9 @@
                             }
                         echo "</div>";
                         echo "</form>";
-                        if($_POST){
+                        if(isset($_POST["raceBet"])){
                             PuntenManager::before($_POST);
+                            header("location:race");
                         }
                     ?>
                 </div>
