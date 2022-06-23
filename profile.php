@@ -58,6 +58,7 @@
                
             }
         ?>
+
                 </div>
         <div class="vakRechts">
             <button class="m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
@@ -69,7 +70,8 @@
 
                 }
             ?>
-            <form class="formProfile" id="formProfile" method="POST">
+            <div id="formProfile">
+            <form class="formProfile"  method="POST">
                 User:<br/>
                 <input type="text" value=<?php echo "$gUInfo->username"?> name="username"><br/><br/>
                 firstname:<br/>
@@ -78,19 +80,25 @@
                 <input type="text" value=<?php echo "$gUInfo->lastname"?> name="lastname"><br/><br/>
                 email:<br/>
                 <input type="text" value=<?php echo "$gUInfo->email"?> name="email"><br/><br/>
+                Password:<br/>
+                <input type="password" name="password"><br/><br/>
             
                 <input type="submit" value="change" class="btn btn-danger"><br/><br/><br/><br/>
-                <?php
-                     echo "<form method=\"POST\" enctype=\"multipart/form-data\" class=\"buttonsCentrerenDiv\">";
-                     echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\">";
-                     echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\">";
-                     if($gUInfoPFP != "pictures/user_profile.png"){
-                         echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
-     
-                     }
-                     echo "</form>";
-                ?>
+                
             </form>
+            
+            <?php
+            
+        echo "<form method=\"POST\" enctype=\"multipart/form-data\" class=\"buttonsCentrerenDiv\">";
+        echo "<input type=\"file\" name=\"file\" class=\"buttonChooseFile\">";
+        echo "<input type=\"submit\" name=\"cPF\" value=\"Change profile picture\">";
+        if($gUInfoPFP != "pictures/user_profile.png"){
+            echo "<input type=\"submit\" name=\"DPF\" value=\"Delete profile picture\">";
+
+        }
+        echo "</form>";
+   ?>
+   </div>
             <table class="table table-striped" id="tablePoints">
                 <thead class="table-dark">
                     <th>d</th>
