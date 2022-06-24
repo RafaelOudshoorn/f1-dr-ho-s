@@ -75,10 +75,8 @@
                         echo "</form>";
                         if(isset($_POST["raceBet"])){
                             $post = $_POST;
-                            //PuntenManager::before($_POST);
-                            //header("location:race");
                             $delete = array_shift($post);
-                            var_dump($post);
+                            PuntenManager::before($post);
                         }
                     ?>
                 </div>

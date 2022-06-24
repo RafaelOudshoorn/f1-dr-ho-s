@@ -46,30 +46,51 @@
         public static function after(){
             global $con;
             $user = userManager::select();
-
             foreach($user as $U){
-                $betstandings = BetManager::selectstandings($U->idperson);
-                $user = userManager::selectOnId($betstandings->user_idperson);
-                var_dump($user);
-            }
-            $points = 0;
-            $totalpoints =  0;
-            foreach($betstandings as $bet){
-                if($bet->position == $bet->drivers_ending_position){
-                    $points = 3;
-                }else{
-                    $different = abs($bet->drivers_ending_position - $bet->position);
-                    $points = 3 - $different;
+                $betstandings = BetManager::selectstandingsID($U->idperson);
+                
+                $points = 0;
+                $totalpoints = 0;
+                $id = 0;
+                foreach($betstandings as $bet){
+                    if($bet->user_idperson == $U->idperson){
+                        if($bet->position == $bet->drivers_ending_position){
+                            $points = 3;
+                        }else{
+                            $different = abs($bet->drivers_ending_position - $bet->position);
+                            $points = 3 - $different;
+                            if(strpos($points, "-") !== false) {
+                                $points = 0;
+                            }
+                        }
+                        $totalpoints = $points + $totalpoints;
+                        $id = $betstandings[0]->user_idperson;
 
-                    if(strpos($points, "-") !== false) {
-                        $points = 0;
-                        
+                    }else{
+                        $totalpoints = 0;
+                        $id = $U->idperson;
                     }
                 }
-                $totalpoints = $points + $totalpoints;
+                $userid = userManager::selectOnId($id);
+                var_dump($id);
+                var_dump($id = $U->idperson);
+
+                if(isset($userid->total_points)){
+                    $databasepoints = 0;
+                }else{
+                    $databasepoints = $userid->total_points + $totalpoints;
+                    var_dump($databasepoints);
+                }
+                //var_dump($userid->total_points);
+
+                
+
+                $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
+                $stmt->bindValue(1, $databasepoints);
+                $stmt->bindValue(2, $id);
+                //$stmt->execute();
+                
             }
-            var_dump($totalpoints);
-            
         }
     }
 ?>
