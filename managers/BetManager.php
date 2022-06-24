@@ -14,6 +14,7 @@
                 position,
                 (SELECT position FROM driverstandings_lastrace WHERE driverstandings_lastrace.Drivers_idDrivers = bet.driverID) as drivers_ending_position,
                 driverID,
+                raceID,
                 user_idperson
             FROM bet where user_idperson = ?");
             $stmt->bindValue(1,$id);
@@ -27,6 +28,7 @@
                 position,
                 (SELECT position FROM driverstandings_lastrace WHERE driverstandings_lastrace.Drivers_idDrivers = bet.driverID) as drivers_ending_position,
                 driverID,
+                raceID,
                 user_idperson
             FROM bet");
             $stmt->execute();

@@ -56,5 +56,26 @@
                 $stmt->execute();
             }
         }
+        public static function searchOption($order){
+            global $con;
+
+            $query = "SELECT * FROM drivers ";
+            switch($order){
+                case "name":
+                    $query .= "ORDER BY drivername ASC ";
+                    break;
+                case "country":
+                    $query .= "ORDER BY nationality ASC ";
+                    break;
+                case "number":
+                    $query .= "ORDER BY permanentNumber ASC ";
+                    break;
+            }
+
+            $stmt = $con->prepare($query);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
     }
 ?>
