@@ -52,44 +52,52 @@
             $user = userManager::select();
             foreach($user as $U){
                 $betstandings = BetManager::selectstandingsID($U->idperson);
-                echo "USERS";
-                var_dump($U);
+                $lastRaceId = RaceManager::lastRace();
                 $points = 0;
                 $totalpoints = 0;
                 foreach($betstandings as $bet){
                     //of je al iets hebt ingevuld
-                        if($bet->position == $bet->drivers_ending_position){
-                            $points = 3;
+                        if($bet->raceID == $lastRaceId->IDrace){
+                            if($bet->position == $bet->drivers_ending_position){
                             //punten of het geleijk is
-                        }else{
+                            $points = 3;
+                            }else{
+                            //punten mogen niet de min in gaan
                             $different = abs($bet->drivers_ending_position - $bet->position);
                             $points = 3 - $different;
-                            //punten mogen niet de min in gaan
                             if(strpos($points, "-") !== false) {
                                 $points = 0;
                             }
-                        }
-                        //total points is array
+                            }
                         $totalpoints = $points + $totalpoints;
-                        $id = $betstandings[0]->user_idperson;
+                        //total points is array
                         //var_dump($id);
-                }
-                var_dump($totalpoints);
-                $userid = userManager::selectOnId($id);
-
-                if($totalpoints != 0){
-                    //als user al wat heeft ingevuld
-                    if($userid == false){
-                        $databasepoints = 0;
-                    }else{
-                        $databasepoints = $userid->total_points + $totalpoints;
+                        $id = $betstandings[0]->user_idperson;
                     }
-                    var_dump($databasepoints);
-                    $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
-                    $stmt->bindValue(1, $databasepoints);
-                    $stmt->bindValue(2, $id);
-                    $stmt->execute();
-                    var_dump("changed");
+                }
+                if(isset($id)){
+                    $userid = userManager::selectOnId($id);
+
+                    if($totalpoints != 0){
+                        //als user al wat heeft ingevuld
+                        if($userid == false){
+                            $databasepoints = 0;
+                        }else{
+                            $databasepoints = $userid->total_points + $totalpoints;
+                        }
+                        $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
+                        $stmt->bindValue(1, $databasepoints);
+                        $stmt->bindValue(2, $id);
+                        $stmt->execute();
+                        if($userid == false){
+                            $totalpoints = 0;
+                        }
+                        $stmt = $con->prepare("INSERT INTO points (Points, race_idRace, user_idperson) VALUES (?, ?, ?)");
+                        $stmt->bindValue(1, $totalpoints);
+                        $stmt->bindValue(2, $bet->raceID);
+                        $stmt->bindValue(3, $U->idperson);
+                        $stmt->execute();
+                    }
                 }
             }
         }
