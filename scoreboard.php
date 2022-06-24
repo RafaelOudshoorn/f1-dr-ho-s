@@ -71,6 +71,12 @@
             </table>
             <table class="table table-striped" id="t3">
                 <!-- lastrace -->
+                <div id="tLastRace">
+                    <?php 
+                        $prev = RaceManager::lastRace();
+                        echo "$prev->raceName, $prev->circuitName";
+                    ?>
+                </div>
                 <thead class="table-dark">
                     <th>Position</th>
                     <th>Points</th>

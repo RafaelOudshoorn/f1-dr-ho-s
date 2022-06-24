@@ -128,6 +128,17 @@
                 $stmt->execute();
             }
         }
+        public static function lastRace(){
+            $aankomend = RaceManager::AankomendeRace();
+            $last = $aankomend->IDrace - 1;
+            
+            global $con;
+            $stmt = $con->prepare("SELECT * FROM race where IDrace = ? ");
+            $stmt->bindValue(1, $last);
+            $stmt -> execute();
+            
+            return $stmt->fetchObject();
+        }
     }
 
 ?>
