@@ -15,6 +15,7 @@
     $time = $time->format('H:i');
     if($time == $date){
         UpdateManager::update();
+        UpdateManager::puntenupdate();
     }
 
 ?>
