@@ -1,5 +1,36 @@
 <?php
     class UpdateManager{
+        public static function puntenupdate(){
+            $now = date("Y-m-d",(strtotime("now")));
+            $sun = date("Y-m-d",(strtotime("this sun")));
+            if($now == $sun){
+                PuntenManager::after();
+                if(){
+                    if(){
+                        if(){
+                            if(){
+                                if(){
+                                    if(){
+                                        if(){
+
+                                        }else{
+                                            if(){
+                                                if(){
+
+                                                }else(
+                                                    
+                                                )
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
         public static function update(){
             $now = date("Y-m-d",(strtotime("now")));
             $sun = date("Y-m-d",(strtotime("this sun")));
