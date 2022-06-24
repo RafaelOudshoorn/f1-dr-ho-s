@@ -2,16 +2,20 @@
     class PuntenManager{
         public static function before($post){
             global $con;
+
             date_default_timezone_set("Europe/Amsterdam");
             $nowdate = date("Y-m-d",(strtotime("now")));
             $nowtime = date("H",(strtotime("now")));
+            //time
             $nextRace = RaceManager::AankomendeRace();
             $user = $_SESSION["user_id"];
+            //wie user is
             $selectid = BetManager::selectID($user);
             $round = $nextRace->round;
             $time = substr($nextRace->race_time,0,2);
 
             if($nextRace->race_date == $nowdate){
+                //kijken of de datum en tijd kloppen
                 if($time == $nowtime){
                     echo "Je mag geen punten in zetten";
                 }else{
@@ -48,43 +52,46 @@
             $user = userManager::select();
             foreach($user as $U){
                 $betstandings = BetManager::selectstandingsID($U->idperson);
-                
+
+                var_dump($U->idperson);
                 $points = 0;
                 $totalpoints = 0;
-                $id = 0;
                 foreach($betstandings as $bet){
-                    if($bet->user_idperson == $U->idperson){
+                    //of je al iets hebt ingevuld
+                    if($bet->user_idperson != $U->idperson){
+                        $totalpoints = 0;
+                        $id = $U->idperson;
+                        var_dump("hallo");
+                    }else{
                         if($bet->position == $bet->drivers_ending_position){
                             $points = 3;
+                            //punten of het geleijk is
                         }else{
                             $different = abs($bet->drivers_ending_position - $bet->position);
                             $points = 3 - $different;
+                            //punten mogen niet de min in gaan
                             if(strpos($points, "-") !== false) {
                                 $points = 0;
                             }
                         }
+                        //total points is array
                         $totalpoints = $points + $totalpoints;
                         $id = $betstandings[0]->user_idperson;
-
-                    }else{
-                        $totalpoints = 0;
-                        $id = $U->idperson;
+                        //var_dump($id);
                     }
                 }
-                $userid = userManager::selectOnId($id);
+                var_dump($totalpoints);
+                
                 var_dump($id);
-                var_dump($id = $U->idperson);
+                $userid = userManager::selectOnId($id);
 
-                if(isset($userid->total_points)){
+                //als user al wat heeft ingevuld
+                if($userid == false){
                     $databasepoints = 0;
                 }else{
                     $databasepoints = $userid->total_points + $totalpoints;
-                    var_dump($databasepoints);
                 }
-                //var_dump($userid->total_points);
-
-                
-
+                var_dump($databasepoints);
                 $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
                 $stmt->bindValue(1, $databasepoints);
                 $stmt->bindValue(2, $id);

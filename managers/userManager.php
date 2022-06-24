@@ -17,6 +17,15 @@
 
             return $stmt->fetchObject();
         }
+        public static function selectOnIdfetch($id){
+            global $con;
+
+            $stmt=$con->prepare("SELECT * FROM user WHERE idperson = ? ");
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
         public static function selectOnUsernameGet($username){
             global $con;
 
