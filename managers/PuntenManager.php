@@ -52,17 +52,12 @@
             $user = userManager::select();
             foreach($user as $U){
                 $betstandings = BetManager::selectstandingsID($U->idperson);
-
-                var_dump($U->idperson);
+                echo "USERS";
+                var_dump($U);
                 $points = 0;
                 $totalpoints = 0;
                 foreach($betstandings as $bet){
                     //of je al iets hebt ingevuld
-                    if($bet->user_idperson != $U->idperson){
-                        $totalpoints = 0;
-                        $id = $U->idperson;
-                        var_dump("hallo");
-                    }else{
                         if($bet->position == $bet->drivers_ending_position){
                             $points = 3;
                             //punten of het geleijk is
@@ -78,25 +73,24 @@
                         $totalpoints = $points + $totalpoints;
                         $id = $betstandings[0]->user_idperson;
                         //var_dump($id);
-                    }
                 }
                 var_dump($totalpoints);
-                
-                var_dump($id);
                 $userid = userManager::selectOnId($id);
 
-                //als user al wat heeft ingevuld
-                if($userid == false){
-                    $databasepoints = 0;
-                }else{
-                    $databasepoints = $userid->total_points + $totalpoints;
+                if($totalpoints != 0){
+                    //als user al wat heeft ingevuld
+                    if($userid == false){
+                        $databasepoints = 0;
+                    }else{
+                        $databasepoints = $userid->total_points + $totalpoints;
+                    }
+                    var_dump($databasepoints);
+                    $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
+                    $stmt->bindValue(1, $databasepoints);
+                    $stmt->bindValue(2, $id);
+                    $stmt->execute();
+                    var_dump("changed");
                 }
-                var_dump($databasepoints);
-                $stmt = $con->prepare("UPDATE user SET `total_points` = ? WHERE (`idperson` = ?);");
-                $stmt->bindValue(1, $databasepoints);
-                $stmt->bindValue(2, $id);
-                //$stmt->execute();
-                
             }
         }
     }
