@@ -15,7 +15,11 @@
                     foreach($drivers as $driver){
                         echo "<div class='driver'>";
                         echo "<div class='driverL'>";
-                        echo "<img src='pfp\pictures\user_profile.png' alt='$driver->familyName'>";
+                        if(file_exists("images/$driver->drivername.png")){
+                            echo "<img src='images/$driver->drivername.png' alt='$driver->familyName'>";
+                        } else{
+                            echo "<img src='pfp/pictures/user_profile.png' alt='$driver->familyName'>";
+                        }
                         echo "<div class='titleFont num'>$driver->permanentNumber</div>";
                         echo "</div>";
                         echo "<div class='driverR'>";
