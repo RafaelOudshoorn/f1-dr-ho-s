@@ -1,5 +1,11 @@
 <?php
     class BetManager{
+        public static function select(){
+            global $con;
+            $stmt = $con->prepare("SELECT * FROM bet");
+            $stmt->execute();
+            return $stmt->fetchObject();
+        }
         public static function selectID($id){
             global $con;
             $stmt = $con->prepare("SELECT * FROM bet where user_idperson = ?");

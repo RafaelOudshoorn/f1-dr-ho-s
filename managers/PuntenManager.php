@@ -7,12 +7,13 @@
             $nowdate = date("Y-m-d",(strtotime("now")));
             $nowtime = date("H",(strtotime("now")));
             //time
-            $nextRace = RaceManager::AankomendeRace();
+            $nextRace = RaceManager::lastRace();
             $user = $_SESSION["user_id"];
             //wie user is
             $selectid = BetManager::selectID($user);
             $round = $nextRace->round;
             $time = substr($nextRace->race_time,0,2);
+            $bet = BetManager::select();
 
             if($nextRace->race_date == $nowdate){
                 //kijken of de datum en tijd kloppen
