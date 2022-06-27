@@ -102,6 +102,12 @@
             </table>
             <table class="table table-striped" id="t4">
                 <!-- qualifying -->
+                <div id="tLastRace">
+                    <?php 
+                        $prev = RaceManager::lastRace();
+                        echo "$prev->raceName, $prev->circuitName";
+                    ?>
+                </div>
                 <thead class="table-dark">
                     <th>Date</th>
                     <th>Time</th>

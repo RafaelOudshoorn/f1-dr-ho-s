@@ -57,7 +57,10 @@
                         $LastRace = LastraceManager::select();
                         $placement = 1;
                         echo "<form method='POST' class='raceBet'>";
-                        echo "<input class='submit' name='raceBet' type='submit' value='Lock in'></input>";
+                        $racecheck = RaceManager::AankomendeRace();
+                        if($racecheck->IDrace <= $_SESSION["race_id"]){
+                            echo "<input class='submit' name='raceBet' type='submit' value='Lock in'></input>";
+                        }
                         echo "<div class='raceGrid'>";
                             foreach($LastRace as $race){
                             echo "<div class='raceSegment'>";
