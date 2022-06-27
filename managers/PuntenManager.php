@@ -9,42 +9,52 @@
             //time
             $nextRace = RaceManager::lastRace();
             $user = $_SESSION["user_id"];
+            $race = $_SESSION["race_id"];
             //wie user is
             $selectid = BetManager::selectID($user);
             $round = $nextRace->round;
             $time = substr($nextRace->race_time,0,2);
             $bet = BetManager::select();
-
-            if($nextRace->race_date == $nowdate){
+            var_dump($post);
+            
+            if($bet->position == true and $bet->user_idperson == $user and $selectid->raceID == $race){
+                foreach($post as $p){
+                $stmt = $con->prepare("UPDATE `bet` SET position = ?  WHERE `user_idperson` = ? and raceID = ?");
+                $stmt->bindValue(1,$p);
+                $stmt->bindValue(2,$user);
+                $stmt->bindValue(3,$round);
+                $stmt->execute();
+                }
+            }else{
+                if($nextRace->race_date == $nowdate){
                 //kijken of de datum en tijd kloppen
                 if($time == $nowtime){
                     echo "Je mag geen punten in zetten";
                 }else{
-                    if(!$selectid->raceID == $round){
-                        $id = 1;
-                        foreach($post as $p){
-                        $stmt = $con -> prepare("INSERT INTO bet (`position`, `driverID`, `raceID`, `user_idperson`) VALUES (?, ?, ?, ?);");
-                        $stmt->bindValue(1,$p);
-                        $stmt->bindValue(2,$id);
-                        $stmt->bindValue(3,$round);
-                        $stmt->bindValue(4,$selectid);
-                        $stmt->execute();
+                    $id = 1;
+                    foreach($post as $p){
+                    $stmt = $con -> prepare("INSERT INTO bet (`position`, `driverID`, `raceID`, `user_idperson`) VALUES (?, ?, ?, ?);");
+                    $stmt->bindValue(1,$p);
+                    $stmt->bindValue(2,$id);
+                    $stmt->bindValue(3,$race);
+                    $stmt->bindValue(4,$user);
+                    $stmt->execute();
 
-                        $id++;
-                        }
+                    $id++;
                     }
                 }
-            }else{
-                $id = 1;
-                foreach($post as $p){
-                $stmt = $con -> prepare("INSERT INTO bet (`position`, `driverID`, `raceID`, `user_idperson`) VALUES (?, ?, ?, ?);");
-                $stmt->bindValue(1,$p);
-                $stmt->bindValue(2,$id);
-                $stmt->bindValue(3,$round);
-                $stmt->bindValue(4,$user);
-                $stmt->execute();
+                }else{
+                    $id = 1;
+                    foreach($post as $p){
+                    $stmt = $con -> prepare("INSERT INTO bet (`position`, `driverID`, `raceID`, `user_idperson`) VALUES (?, ?, ?, ?);");
+                    $stmt->bindValue(1,$p);
+                    $stmt->bindValue(2,$id);
+                    $stmt->bindValue(3,$race);
+                    $stmt->bindValue(4,$user);
+                    $stmt->execute();
 
-                $id++;
+                    $id++;
+                    }
                 }
             }
         }
