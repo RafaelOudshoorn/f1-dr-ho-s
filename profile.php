@@ -40,9 +40,6 @@
             }
             echo "<img src=\"pfp/" . $gUInfoPFP . "\" class=\"profielAfbeelding\" >";
             echo "</div><br/>";
-            if($_SESSION["is_admin"] == 0 && $_GET["username"] != $_SESSION["username"]){
-
-            }else{
                 if(isset($_POST["cPF"])){
                     $pfUpdate = userManager::updateProfilePicture(
                         $gUInfo->profile_picture,
@@ -56,13 +53,15 @@
                 echo "<p class='persoonsgegevens'>Email: <span style=\"font-weight:500;\">$gUInfo->email</span></p>";
                 echo "<p class='persoonsgegevens'> Total Points: <span style=\"font-weight:500;\">$gUInfo->total_points</span></p>";
                
-            }
         ?>
 
                 </div>
         <div class="vakRechts">
-            <button class="btn m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">Change profile</button>
+            
             <?php
+            if($_SESSION["is_admin"] != 0 or $_GET["username"] == $_SESSION["username"]){
+                echo "<button class='btn m-3' id='buttonChangeProfilePoints' onclick='handleButtonChangeProfile()'>Change profile</button>";
+            }
                 if(isset($_POST["username"])){
                     userManager::updateUserData($_POST, $gUInfo->idperson);
                     header("location: profile.php");
