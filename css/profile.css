@@ -32,11 +32,14 @@
 }
 .buttonChooseFile{
     color: transparent;
-    width: 125px;
-    margin-left: 20px;
+    width: 130px;
+    height: 35px;
+    margin-left: 5%;
+
 }
 input{
-    margin-left: 20px;
+    width: 250px;
+    height: 35px;
 }
 .change-profile{
 
@@ -54,7 +57,7 @@ input{
 }
 .formProfile{
     margin-left: 30%;
-    margin-top: 100px;
+    margin-top: 30px;
 }
 #formProfile{
     display: none;
@@ -62,12 +65,12 @@ input{
 
 .persoonsgegevens{
     color: white;
-    margin-top: -15px;
-    margin-left: 30px;
+    margin-top: 15px;
+    margin-left: 80px;
 }
 .buttonsCentrerenDiv{
     width: 90%;
-    margin-left: 5%;
+    margin-left: 20%;
 }
 #tablePoints{
     width: 90%;
@@ -98,6 +101,10 @@ input{
     #tablePoints{
         width: 100%;
         margin-left: 0;
+    }
+    .buttonsCentrerenDiv{
+        width: 90%;
+        margin-left: 20%;
     }
   }
 

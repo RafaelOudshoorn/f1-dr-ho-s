@@ -61,7 +61,7 @@
 
                 </div>
         <div class="vakRechts">
-            <button class="m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
+            <button class="btn m-3 btn-danger" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
             <?php
                 if(isset($_POST["username"])){
                     userManager::updateUserData($_POST, $gUInfo->idperson);
