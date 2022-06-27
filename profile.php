@@ -99,20 +99,20 @@
             </div>
             <table class="table table-striped" id="tablePoints">
                 <thead class="table-dark">
-                    <th>d</th>
-                    <th>d</th>
-                    <th>d</th>
+                    <th>Race</th>
+                    <th>Points</th>
+                    <th>User</th>
                 </thead>
                 <tbody>
                     <?php
-                        // foreach(){
-                        //     echo "<tr>";
-                        //     echo "<td></td>";
-                        //     echo "<td></td>";
-                        //     echo "<td></td>";
-                        //     echo "<tr>";
-                        // }
-                    
+                    $points;
+                        foreach($points as $point){
+                            echo "<tr>";
+                            echo "<td></td>";
+                            echo "<td></td>";
+                            echo "<td></td>";
+                            echo "<tr>";
+                        }
                     ?>
                 </tbody>
             </table>
