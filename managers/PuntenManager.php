@@ -1,5 +1,15 @@
 <?php
     class PuntenManager{
+        public static function getall(){
+            global $con;
+            $user = $_SESSION["user_id"];
+            $stmt = $con->prepare("select sum(points.Points), race.raceName, user.username 
+            from points join race on race.IDrace = points.race_idRace join user on 
+            user.idperson = points.user_idperson where user_idperson = ?");
+            $stmt->bindValue(1,$user);
+            $stmt->execute();
+            return $stmt->fetchall(PDO::FETCH_OBJ);
+        }
         public static function before($post){
             global $con;
 
@@ -12,17 +22,15 @@
             $race = $_SESSION["race_id"];
             //wie user is
             $selectid = BetManager::selectID($user);
-            $round = $nextRace->round;
             $time = substr($nextRace->race_time,0,2);
             $bet = BetManager::select();
-            var_dump($post);
-            
+
             if($bet->position == true and $bet->user_idperson == $user and $selectid->raceID == $race){
                 foreach($post as $p){
-                $stmt = $con->prepare("UPDATE `bet` SET position = ?  WHERE `user_idperson` = ? and raceID = ?");
+                $stmt = $con->prepare("UPDATE `bet` SET position = ? WHERE (`user_idperson` = ?) and (`raceID` = ?)");
                 $stmt->bindValue(1,$p);
                 $stmt->bindValue(2,$user);
-                $stmt->bindValue(3,$round);
+                $stmt->bindValue(3,$race);
                 $stmt->execute();
                 }
             }else{

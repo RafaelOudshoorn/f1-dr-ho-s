@@ -80,6 +80,7 @@
                             $post = $_POST;
                             $delete = array_shift($post);
                             PuntenManager::before($post);
+                            unset($_POST["raceBet"]);
                         }
                     ?>
                 </div>
