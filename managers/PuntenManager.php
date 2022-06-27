@@ -1,10 +1,9 @@
 <?php
     class PuntenManager{
-        public static function getall(){
+        public static function getall($id){
             global $con;
-            $user = $_SESSION["user_id"];
             $stmt = $con->prepare("select sum(points.Points) as point, race.raceName as race, user.username from points join race on race.IDrace = points.race_idRace join user on user.idperson = points.user_idperson where user_idperson = ? group by race.raceName");
-            $stmt->bindValue(1,$user);
+            $stmt->bindValue(1,$id);
             $stmt->execute();
             return $stmt->fetchall(PDO::FETCH_OBJ);
         }

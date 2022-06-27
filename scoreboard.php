@@ -71,7 +71,7 @@
             </table>
             <table class="table table-striped" id="t3">
                 <!-- lastrace -->
-                <div id="tLastRace">
+                <div id="tLastRace1">
                     <?php 
                         $prev = RaceManager::lastRace();
                         echo "$prev->raceName, $prev->circuitName";
@@ -102,7 +102,7 @@
             </table>
             <table class="table table-striped" id="t4">
                 <!-- qualifying -->
-                <div id="tLastRace">
+                <div id="tLastRace2">
                     <?php 
                         $prev = RaceManager::lastRace();
                         echo "$prev->raceName, $prev->circuitName";

@@ -7,7 +7,8 @@ function scoreSelect(block){
     var T2 = document.getElementById("t2");
     var T3 = document.getElementById("t3");
     var T4 = document.getElementById("t4");
-    var T5 = document.getElementById("tLastRace");
+    var T5 = document.getElementById("tLastRace1");
+    var T6 = document.getElementById("tLastRace2");
     switch (block){
         case 1:
             S.style.marginLeft = "0%";
@@ -24,6 +25,7 @@ function scoreSelect(block){
             T3.style.display = "none";
             T4.style.display = "none";
             T5.style.display = "none";
+            T5.style.display = "none";
             break;
         case 3:
             S.style.marginLeft = "50%";
@@ -32,6 +34,7 @@ function scoreSelect(block){
             T3.style.display = "table";
             T4.style.display = "none";
             T5.style.display = "block";
+            T5.style.display = "none";
             break;
         case 4:
             S.style.marginLeft = "75%";
@@ -40,6 +43,7 @@ function scoreSelect(block){
             T3.style.display = "none";
             T4.style.display = "table";
             T5.style.display = "none";
+            T5.style.display = "block";
             break;
     }
 }

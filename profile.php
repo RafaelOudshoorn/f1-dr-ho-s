@@ -101,16 +101,14 @@
                 <thead class="table-dark">
                     <th>Points</th>
                     <th>Race</th>
-                    <th></th>
                 </thead>
                 <tbody>
                     <?php
-                    $points = PuntenManager::getall();
+                    $points = PuntenManager::getall($gUInfo->idperson);
                         foreach($points as $point){
                             echo "<tr>";
                             echo "<td>$point->point</td>";
                             echo "<td>$point->race</td>";
-                            echo "<td></td>";
                             echo "<tr>";
                         }
                     ?>
