@@ -24,7 +24,7 @@
                     Last race
                 </div>
                 <div class="selectBlock" id="s4" onclick="scoreSelect(4)">
-                    Qualifiers
+                    Qualifying
                 </div>
             </div>
             <div class="selected" id="s">
