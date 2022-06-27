@@ -42,6 +42,7 @@
                 <form method="POST">
                     <input value="Data manual update" name="data" type="submit"/>
                     <input value="Update na season" name="season" type="submit"/>
+                    <input value="Punten berekenen" name="punten" type="submit"/>
                 </form>
                 <div class="inner_user">
                     <?php
@@ -51,6 +52,10 @@
                         }
                         if(isset($_POST["data"])){
                             UpdateManager::updatemanual();
+                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
+                        }
+                        if(isset($_POST["punten"])){
+                            PuntenManager::after();
                             header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
                         }
 
