@@ -77,13 +77,14 @@
             foreach ($jsonArray as $jsonItem){
                 $time = $jsonItem->time;
                 $time = substr($time, 0,5);
-        
+                // tijd goed zetten en in de database zetten
                 $timefirst = $jsonItem->FirstPractice->time;
                 $timefirst = substr($timefirst,0,5);
         
                 $timesecond = $jsonItem->SecondPractice->time;
                 $timesecond = substr($timesecond,0,5);
 
+                //of third practice in de api gevuld is ja of nee
                 if (isset($jsonItem->ThirdPractice)){
                     $thirdPractice = $jsonItem->ThirdPractice->date;
         
