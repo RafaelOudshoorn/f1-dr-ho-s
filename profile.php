@@ -61,7 +61,7 @@
 
                 </div>
         <div class="vakRechts">
-            <button class="btn m-3 btn-danger" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">change profile</button>
+            <button class="btn m-3" id="buttonChangeProfilePoints" onclick="handleButtonChangeProfile()">Change profile</button>
             <?php
                 if(isset($_POST["username"])){
                     userManager::updateUserData($_POST, $gUInfo->idperson);
@@ -83,7 +83,7 @@
                 Password:<br/>
                 <input type="password" name="password" maxlength="20" minlength="5" required><br/><br/>
             
-                <input type="submit" value="change" class="btn btn-danger"><br/><br/><br/><br/>
+                <input type="submit" value="Change" class="btn" id="submitForm"><br/><br/><br/><br/>
                 
             </form>
             
@@ -99,17 +99,17 @@
             </div>
             <table class="table table-striped" id="tablePoints">
                 <thead class="table-dark">
-                    <th>Race</th>
                     <th>Points</th>
-                    <th>User</th>
+                    <th>Race</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <?php
-                    $points;
+                    $points = PuntenManager::getall();
                         foreach($points as $point){
                             echo "<tr>";
-                            echo "<td></td>";
-                            echo "<td></td>";
+                            echo "<td>$point->point</td>";
+                            echo "<td>$point->race</td>";
                             echo "<td></td>";
                             echo "<tr>";
                         }
@@ -129,7 +129,7 @@
             } else{
                     document.getElementById("formProfile").style.display = "none";
                     document.getElementById("tablePoints").style.display = "table";
-                    document.getElementById("buttonChangeProfilePoints").innerHTML = "change profile";
+                    document.getElementById("buttonChangeProfilePoints").innerHTML = "Change profile";
                     page = 0;
             }
             }

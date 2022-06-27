@@ -78,6 +78,14 @@ input{
     margin-right: 5%;
 
 }
+#buttonChangeProfilePoints{
+    background-color: #D2042D;
+    color: white;
+}
+#submitForm{
+    background-color: #D2042D;
+    color: white;
+}
 @media (max-width: 1009px) {
     .vakLinks{
         width: 100%;
