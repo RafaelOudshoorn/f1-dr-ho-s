@@ -16,7 +16,7 @@ function scoreSelect(block){
             T2.style.display = "none";
             T3.style.display = "none";
             T4.style.display = "none";
-            T5.style.display = "none";
+            T6.style.display = "none";
             break;
         case 2:
             S.style.marginLeft = "25%";
@@ -25,7 +25,7 @@ function scoreSelect(block){
             T3.style.display = "none";
             T4.style.display = "none";
             T5.style.display = "none";
-            T5.style.display = "none";
+            T6.style.display = "none";
             break;
         case 3:
             S.style.marginLeft = "50%";
@@ -34,7 +34,7 @@ function scoreSelect(block){
             T3.style.display = "table";
             T4.style.display = "none";
             T5.style.display = "block";
-            T5.style.display = "none";
+            T6.style.display = "none";
             break;
         case 4:
             S.style.marginLeft = "75%";
@@ -43,7 +43,7 @@ function scoreSelect(block){
             T3.style.display = "none";
             T4.style.display = "table";
             T5.style.display = "none";
-            T5.style.display = "block";
+            T6.style.display = "block";
             break;
     }
 }
