@@ -235,7 +235,7 @@ INSERT INTO `driverstandings_overall` (`IDdriverStandings_overall`, `season`, `r
 
 DROP TABLE IF EXISTS `points`;
 CREATE TABLE IF NOT EXISTS `points` (
-  `idPoints` int(11) NOT NULL,
+  `idPoints` int(11) NOT NULL AUTO_INCREMENT,
   `Points` int(11) NOT NULL,
   `race_idRace` int(11) NOT NULL,
   `user_idperson` int(11) NOT NULL,
