@@ -48,17 +48,16 @@
                     <?php
                         if(isset($_POST["season"])){
                             UpdateManager::updateAll();
-                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
+                            header("location:admin?status=".$_GET['status']. "&order=".$_GET['order']);
                         }
                         if(isset($_POST["data"])){
                             UpdateManager::updatemanual();
-                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
+                            header("location:admin?status=".$_GET['status']. "&order=".$_GET['order']);
                         }
                         if(isset($_POST["punten"])){
                             PuntenManager::after();
-                            header("location:admin?satus=".$_GET['satus']. "&order=".$_GET['order']);
+                            header("location:admin?status=".$_GET['status']. "&order=".$_GET['order']);
                         }
-
                         // var_dump($_GET["status"]);
                         // var_dump($_GET["order"]);
                         include "adminChange.php";

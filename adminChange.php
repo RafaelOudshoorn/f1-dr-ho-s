@@ -70,18 +70,18 @@
                                         case "":
                                             header("location:admin?status=" . $_GET["status"] . "&order=A-Z");
                                     }
-                                    echo "<input type=\"text\" ";
-                                    echo "      name=\"username\" ";
-                                    echo "      maxlength=\"20\" ";
-                                    echo "      style=\"margin-left: 5px; height: 25px;\" ";
-                                    if(isset($_GET["username"])){
-                                        if($_GET["username"] === ''){
-                                            $_GET["username"] = null;
-                                            header("location:admin?status=" . htmlspecialchars($_GET['status']) . "&order=" . htmlspecialchars($_GET['order']));
-                                        }
-                                        echo "value=\"" . htmlspecialchars($_GET['username']) . "\" ";
-                                    }
-                                    echo "placeholder=\"zoek op username ...\">";
+                                    // echo "<input type=\"text\" ";
+                                    // echo "      name=\"username\" ";
+                                    // echo "      maxlength=\"20\" ";
+                                    // echo "      style=\"margin-left: 5px; height: 25px;\" ";
+                                    // if(isset($_GET["username"])){
+                                    //     if($_GET["username"] === ''){
+                                    //         $_GET["username"] = null;
+                                    //         header("location:admin?status=" . htmlspecialchars($_GET['status']) . "&order=" . htmlspecialchars($_GET['order']));
+                                    //     }
+                                    //     echo "value=\"" . htmlspecialchars($_GET['username']) . "\" ";
+                                    // }
+                                    // echo "placeholder=\"zoek op username ...\">";
                                 ?>
                             </select>
                         </form>
